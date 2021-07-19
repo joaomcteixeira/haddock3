@@ -23,7 +23,7 @@ class HaddockModule(BaseHaddockModule):
         defaults = recipe_path / "cns" / "generate-topology.toml"
         super().__init__(order, path, cns_script, defaults)
 
-    def run(self, module_information):
+    def run(self, module_information, ncores=1):
         logger.info("Running [topology] module")
 
         logger.info("Generating topologies")
@@ -72,7 +72,7 @@ class HaddockModule(BaseHaddockModule):
 
             # Run CNS engine
             logger.info(f"Running CNS engine with {len(jobs)} jobs")
-            engine = CNSEngine(jobs)
+            engine = CNSEngine(jobs, ncores)
             engine.run()
             logger.info("CNS engine has finished")
 

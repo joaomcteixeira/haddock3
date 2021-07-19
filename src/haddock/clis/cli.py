@@ -28,6 +28,10 @@ def main(args=None):
     # The recipe to be used
     parser.add_argument("recipe", type=argparse.FileType("r"),
                         help="The input recipe file name")
+
+    # Number of cores
+    add_ncores_arg(parser)
+
     # Version
     parser.add_argument("-V", "-v", "--version", help="show version",
                         action="version",
@@ -46,8 +50,11 @@ def main(args=None):
 
     try:
         # Let the chef work
-        workflow = WorkflowManager(recipe_path=options.recipe.name,
-                                   start=options.restart)
+        workflow = WorkflowManager(
+            recipe_path=options.recipe.name,
+            start=options.restart,
+            ncores=options.ncores
+            )
 
         # Main loop of execution
         workflow.run()

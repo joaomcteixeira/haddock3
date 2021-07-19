@@ -2,7 +2,7 @@
 import subprocess
 from haddock.error import CNSRunningError
 from haddock.parallel import Scheduler
-from haddock.defaults import CNS_EXE, NUM_CORES
+from haddock.defaults import CNS_EXE
 
 
 class CNSJob:
@@ -39,14 +39,9 @@ class CNSJob:
 
 class CNSEngine:
     """CNS execution engine"""
-    def __init__(self, jobs, num_cores=0):
+    def __init__(self, jobs, num_cores=1):
         self.jobs = jobs
-        if num_cores:
-            self.num_cores = num_cores
-        elif (num_jobs := len(jobs)) > 1:
-            self.num_cores = min(num_jobs, NUM_CORES)
-        else:
-            self.num_cores = 1
+        self.num_cores = min(len(jobs), num_cores)
 
     def run(self):
         """Run all provided jobs"""

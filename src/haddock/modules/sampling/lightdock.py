@@ -7,7 +7,7 @@ from haddock.modules import BaseHaddockModule
 from haddock.ontology import Format, ModuleIO, PDBFile
 from haddock.pdbutil import PDBFactory
 from haddock.modules import working_directory
-from haddock.defaults import NUM_CORES
+from haddock.gear.ncores import set_ncores
 
 
 logger = logging.getLogger(__name__)
@@ -20,8 +20,9 @@ class HaddockModule(BaseHaddockModule):
         defaults = recipe_path / "sampling.toml"
         super().__init__(order, path, defaults=defaults)
 
-    def run(self, module_information):
+    def run(self, module_information, ncores=1):
         logger.info("Running [sampling-lightdock] module")
+        ncores = set_ncores(ncores)
 
         # Apply module information to defaults
         self.patch_defaults(module_information)
@@ -82,8 +83,7 @@ class HaddockModule(BaseHaddockModule):
         with working_directory(self.path):
             steps = self.defaults["params"]["steps"]
             scoring = self.defaults["params"]["scoring"]
-            cores = NUM_CORES
-            cmd = f"lightdock3.py setup.json {steps} -c {cores} -s {scoring}"
+            cmd = f"lightdock3.py setup.json {steps} -c {num_cores} -s {scoring}"
             subprocess.call(cmd, shell=True)
 
         # Clustering

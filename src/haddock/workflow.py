@@ -13,7 +13,12 @@ logger = logging.getLogger(__name__)
 
 class WorkflowManager:
     """The WorkflowManager reads the recipes and executes them."""
-    def __init__(self, recipe_path, start=0):
+    def __init__(
+            self,
+            recipe_path,
+            start=0,
+            ncores=1,
+            ):
         path = Path(recipe_path)
         if not path.exists():
             raise HaddockError(f"Recipe {recipe_path} does not exist or cannot"
@@ -23,6 +28,8 @@ class WorkflowManager:
         self.workspace = path.parent.absolute()
         # Create a recipe from a TOML file
         self.recipe = Recipe(path)
+
+        self.ncores = ncores
 
     def run(self):
         """High level workflow composer"""

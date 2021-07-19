@@ -10,8 +10,6 @@ if not CNS_EXE:
     bin_path = Path(__file__).resolve().parent.parent.absolute()
     CNS_EXE = bin_path / "bin/cns/cns_solve-1.31-UU-MacIntel.exe"
 
-# Number of cores to use
-NUM_CORES = int(os.getenv("HADDOCK3_NUM_CORES", multiprocessing.cpu_count()))
 
 # Module input and generated data will be stored in folder starting by
 #  this prefix
