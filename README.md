@@ -1,4 +1,3 @@
-
 # WARNING: The `main` branch is not production-ready
 
 The `main` branch is a prototype of newly refined architecture and it
@@ -43,10 +42,10 @@ python setup.py develop --no-deps
 mkdir -p bin/cns
 
 # on mac
-ls -s bin/cns/cns /PATH/TO/cns_solve-1.31-UU-MacIntel.exe
+ls -s bin/cns /PATH/TO/cns_solve-1.31-UU-MacIntel.exe
 
-# on linux, adapt the file name if needed
-ls -s bin/cns/cns /PATH/TO/CNS_FOLDER/intel-x86_64bit-linux/source/cns_solve-2002171359.exe
+# on linux
+ls -s bin/cns /PATH/TO/CNS_FOLDER/intel-x86_64bit-linux/source/cns_solve-2002171359.exe
 ```
 
 ### 1.4 Activate environment variables
@@ -64,6 +63,21 @@ Save and exit. Source the file:
 ```bash
 source bin/activate_haddock
 ```
+
+You need to `source bin/activate_haddock` at each new terminal window
+you wish to use `haddock3`.
+
+### 1.5 Keep up to date
+
+In the `github` folder of `haddock3` run:
+
+```bash
+git pull
+```
+
+This will pull the latest changes to your local folder and because you
+installed `haddock3` with the option `develop` those changes become
+available immediately.
 
 ## 2. Examples
 
