@@ -7,6 +7,7 @@ from haddock.version import CURRENT_VERSION
 from haddock.cli import greeting, adieu
 from haddock.workflow import WorkflowManager
 from haddock.error import HaddockError
+from haddock.gear.ncores import add_ncores_arg
 
 
 def main(args=None):
