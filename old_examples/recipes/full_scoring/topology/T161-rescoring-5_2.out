@@ -1,0 +1,2354 @@
+          ============================================================
+          |                                                          |
+          |            Crystallography & NMR System (CNS)            |
+          |                         CNSsolve                         |
+          |                                                          |
+          ============================================================
+           Version: 1.3 at patch level U
+           Status: Special UU release with Rg and paramagnetic
+                   restraints (A. Bonvin, UU 2011)
+          ============================================================
+           Written by: A.T.Brunger, P.D.Adams, G.M.Clore, W.L.DeLano,
+                       P.Gros, R.W.Grosse-Kunstleve,J.-S.Jiang,J.M.Krahn,
+                       J.Kuszewski, M.Nilges, N.S.Pannu, R.J.Read,
+                       L.M.Rice, G.F.Schroeder, T.Simonson, G.L.Warren.
+           Copyright (c) 1997-2010 Yale University
+          ============================================================
+           Running on machine: hostname unknown (x86_64/Linux,64-bit)
+           Program started by: unknown
+           Program started at: 11:56:56 on 20-Jul-2021
+          ============================================================
+
+ FFT3C: Using FFTPACK4.1
+
+ CNSsolve> 
+ CNSsolve>! Parameters 
+ CNSsolve>eval ($autohis=true) 
+ EVALUATE: symbol $AUTOHIS set to TRUE (logical)
+ CNSsolve>eval ($delenph=true) 
+ EVALUATE: symbol $DELENPH set to TRUE (logical)
+ CNSsolve>eval ($randorien=true) 
+ EVALUATE: symbol $RANDORIEN set to TRUE (logical)
+ CNSsolve>eval ($log_level="verbose") 
+ EVALUATE: symbol $LOG_LEVEL set to "verbose" (string)
+ CNSsolve> 
+ CNSsolve>! FF parameters 
+ CNSsolve>parameter 
+ PARRDR>  @@/home/joao/github/haddock3/src/haddock/data/toppar/haddock.param 
+ ASSFIL: file haddock.param opened.
+ PARRDR>remarks file toppar/ion.param 
+ PARRDR>remarks nonbonded parameters for common ions 
+ PARRDR>remarks new parameters derived from literature for single atom species 
+ PARRDR>remarks PDA 02/09/99 
+ PARRDR> 
+ PARRDR>set echo=off end 
+ PARRDR>! Put in this file your ligand parameters if needed 
+ PARRDR>remarks file toppar/protein-allhdg5-4.param 
+ PARRDR>remark 
+ PARRDR>remark   for file protein-allhdg-ucl.top  version UCL  date 14-MAR-00 
+ PARRDR>remark   for file protein-allhdg-dih-ucl.top  version UCL  date 07-JUL-01 
+ PARRDR>remark   Geometric energy function parameters for distance geometry and 
+ PARRDR>remark   simulated annealing. 
+ PARRDR>remark   Original author: Michael Nilges, EMBL Heidelberg 
+ PARRDR>remark   Modifications: Mark A. Williams, UCL London 
+ PARRDR>remark   Several modifications for HADDOCK: Alexandre Bonvin, Utrecht Uni 
+ PARRDR>remark   Last modification 27-02-2014 
+ PARRDR> 
+ PARRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ PARRDR>set message=off echo=off end 
+ PARRDR> 
+ PARRDR>remarks file toppar/water-allhdg5-4.param 
+ PARRDR>remarks 
+ PARRDR>remarks   PARAM19.SOL (solvent parameters) 
+ PARRDR>remarks   =========== 
+ PARRDR>remarks   available: TIPS3P and DMSO model 
+ PARRDR> 
+ PARRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ PARRDR>set message=off echo=off end 
+ PARRDR>end 
+ %PARRDR-info: duplication of bond HC   NC2 
+ %PARRDR-info: duplication of angle CH2P CH2E HA  
+ CNSsolve> 
+ CNSsolve>! Toplogy 
+ CNSsolve>topology 
+ RTFRDR>  @@/home/joao/github/haddock3/src/haddock/data/toppar/haddock.top 
+ ASSFIL: file haddock.top opened.
+ RTFRDR>remarks file toppar/ion.top 
+ RTFRDR>remarks topology and masses for common ions 
+ RTFRDR>remarks Dingle atom ion residues are given the name of the element. 
+ RTFRDR>remarks By default the atom will be uncharged (eg. the residue MG will 
+ RTFRDR>remarks contain the atom called MG with zero charge). 
+ RTFRDR>remarks To use the charged species the charge state is appended to 
+ RTFRDR>remarks the atom name (eg to use MG2+ the residue name is MG2, and the 
+ RTFRDR>remarks atom name is MG+2 and has charge +2.0). 
+ RTFRDR>remarks NOTE: not all ionic species are represented 
+ RTFRDR>remarks PDA 02/09/99 
+ RTFRDR> 
+ RTFRDR>set echo=false end 
+ RTFRDR>! Put in this file your ligand topology if needed 
+ RTFRDR>remarks file toppar/protein-allhdg5-4.top 
+ RTFRDR>remarks 
+ RTFRDR>remarks   file topallhdg.pro  version 5.4  date 07-July-10 
+ RTFRDR>remarks      for file parallhdg.pro version 5.4 date 07-July-10 or later 
+ RTFRDR>remarks   Geometric energy function parameters for distance geometry and 
+ RTFRDR>remarks      simulated annealing. 
+ RTFRDR>remarks   Author: Michael Nilges, EMBL Heidelberg; Institut Pasteur, Paris 
+ RTFRDR>remarks   This file contains modifications from M. Williams, UCL London 
+ RTFRDR>remarks   and multiple modifications for HADDOCK from A. Bonvin, Utrecht University 
+ RTFRDR>remarks   Last modification 24-09-2014 
+ RTFRDR> 
+ RTFRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ RTFRDR>set message=off echo=off end 
+ %RTFIO-warning: undefined masses in residue CYC 
+ %RTFIO error encountered: there are undefined masses.
+   (CNS is in mode: SET ABORT=NORMal END)
+ RTFRDR>remarks file toppar/protein_break.top 
+ RTFRDR>remarks   patches to remove peptide linkages 
+ RTFRDR> 
+ RTFRDR>! Paul Adams 28th June 1999 
+ RTFRDR>! Yale University 
+ RTFRDR> 
+ RTFRDR>set echo=false end 
+ %RTFRDR-ERR: duplicate (P-)RESIdue name DPEP
+ %RTFRDR-ERR: duplicate (P-)RESIdue name DPPP
+ RTFRDR> 
+ RTFRDR>remarks file toppar/water-allhdg5-4.top 
+ RTFRDR>remarks 
+ RTFRDR>remarks  TOPH19.SOL 
+ RTFRDR>remarks  ========== 
+ RTFRDR>remarks  topology file for solvent molecules 
+ RTFRDR>remarks  water models available: TIP3P model 
+ RTFRDR> 
+ RTFRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ RTFRDR>set message=off echo=off end 
+ RTFRDR> 
+ RTFRDR>end 
+ CNSsolve> 
+ CNSsolve>! Input structure 
+ CNSsolve>eval ($file="/home/joao/github/haddock3/examples/recipes/full_scoring/topology/T161-rescoring-5_2.pdb") 
+ EVALUATE: symbol $FILE set to "/home/joao/github/haddock3/examples/recipes/full_scoring/topology/T161-rescoring-5_2.pdb" (string)
+ CNSsolve>eval ($ncomponents=2) 
+ EVALUATE: symbol $NCOMPONENTS set to    2.00000     (real)
+ CNSsolve>eval ($prot_segid_1="A") 
+ EVALUATE: symbol $PROT_SEGID_1 set to "A" (string)
+ CNSsolve>eval ($prot_segid_2="B") 
+ EVALUATE: symbol $PROT_SEGID_2 set to "B" (string)
+ CNSsolve>eval ($ambig_fname="") 
+ EVALUATE: symbol $AMBIG_FNAME set to "" (string)
+ CNSsolve>eval ($unambig_fname="") 
+ EVALUATE: symbol $UNAMBIG_FNAME set to "" (string)
+ CNSsolve>eval ($hbond_fname="") 
+ EVALUATE: symbol $HBOND_FNAME set to "" (string)
+ CNSsolve>eval ($dihe_fname="") 
+ EVALUATE: symbol $DIHE_FNAME set to "" (string)
+ CNSsolve>eval ($tensor_fname="") 
+ EVALUATE: symbol $TENSOR_FNAME set to "" (string)
+ CNSsolve>eval ($seed=726) 
+ EVALUATE: symbol $SEED set to    726.000     (real)
+ CNSsolve> 
+ CNSsolve>! Output structure 
+ CNSsolve>eval ($output_psf_filename= "/home/joao/github/haddock3/examples/recipes/full_scoring/topology/T161-rescoring-5_2_haddock.psf") 
+ EVALUATE: symbol $OUTPUT_PSF_FILENAME set to "/home/joao/github/haddock3/examples/recipes/full_scoring/topology/T161-rescoring-5_2_haddock.psf" (string)
+ CNSsolve>eval ($output_pdb_filename= "/home/joao/github/haddock3/examples/recipes/full_scoring/topology/T161-rescoring-5_2_haddock.pdb") 
+ EVALUATE: symbol $OUTPUT_PDB_FILENAME set to "/home/joao/github/haddock3/examples/recipes/full_scoring/topology/T161-rescoring-5_2_haddock.pdb" (string)
+ CNSsolve> 
+ CNSsolve>! Link file 
+ CNSsolve>eval ($link_file = "/home/joao/github/haddock3/src/haddock/data/toppar/protein-allhdg5-4-noter.link" ) 
+ EVALUATE: symbol $LINK_FILE set to "/home/joao/github/haddock3/src/haddock/data/toppar/protein-allhdg5-4-noter.link" (string)
+ CNSsolve> 
+ CNSsolve>! Translation vectors 
+ CNSsolve>eval ($trans_vector_0 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_0" ) 
+ EVALUATE: symbol $TRANS_VECTOR_0 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_0" (string)
+ CNSsolve>eval ($trans_vector_1 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_1" ) 
+ EVALUATE: symbol $TRANS_VECTOR_1 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_1" (string)
+ CNSsolve>eval ($trans_vector_2 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_2" ) 
+ EVALUATE: symbol $TRANS_VECTOR_2 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_2" (string)
+ CNSsolve>eval ($trans_vector_3 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_3" ) 
+ EVALUATE: symbol $TRANS_VECTOR_3 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_3" (string)
+ CNSsolve>eval ($trans_vector_4 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_4" ) 
+ EVALUATE: symbol $TRANS_VECTOR_4 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_4" (string)
+ CNSsolve>eval ($trans_vector_5 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_5" ) 
+ EVALUATE: symbol $TRANS_VECTOR_5 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_5" (string)
+ CNSsolve>eval ($trans_vector_6 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_6" ) 
+ EVALUATE: symbol $TRANS_VECTOR_6 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_6" (string)
+ CNSsolve>eval ($trans_vector_7 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_7" ) 
+ EVALUATE: symbol $TRANS_VECTOR_7 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_7" (string)
+ CNSsolve>eval ($trans_vector_8 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_8" ) 
+ EVALUATE: symbol $TRANS_VECTOR_8 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_8" (string)
+ CNSsolve>eval ($trans_vector_9 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_9" ) 
+ EVALUATE: symbol $TRANS_VECTOR_9 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_9" (string)
+ CNSsolve>eval ($trans_vector_10 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_10" ) 
+ EVALUATE: symbol $TRANS_VECTOR_10 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_10" (string)
+ CNSsolve>eval ($trans_vector_11 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_11" ) 
+ EVALUATE: symbol $TRANS_VECTOR_11 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_11" (string)
+ CNSsolve>eval ($trans_vector_12 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_12" ) 
+ EVALUATE: symbol $TRANS_VECTOR_12 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_12" (string)
+ CNSsolve>eval ($trans_vector_13 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_13" ) 
+ EVALUATE: symbol $TRANS_VECTOR_13 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_13" (string)
+ CNSsolve>eval ($trans_vector_14 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_14" ) 
+ EVALUATE: symbol $TRANS_VECTOR_14 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_14" (string)
+ CNSsolve>eval ($trans_vector_15 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_15" ) 
+ EVALUATE: symbol $TRANS_VECTOR_15 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_15" (string)
+ CNSsolve>eval ($trans_vector_16 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_16" ) 
+ EVALUATE: symbol $TRANS_VECTOR_16 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_16" (string)
+ CNSsolve>eval ($trans_vector_17 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_17" ) 
+ EVALUATE: symbol $TRANS_VECTOR_17 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_17" (string)
+ CNSsolve>eval ($trans_vector_18 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_18" ) 
+ EVALUATE: symbol $TRANS_VECTOR_18 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_18" (string)
+ CNSsolve>eval ($trans_vector_19 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_19" ) 
+ EVALUATE: symbol $TRANS_VECTOR_19 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_19" (string)
+ CNSsolve>eval ($trans_vector_20 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_20" ) 
+ EVALUATE: symbol $TRANS_VECTOR_20 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_20" (string)
+ CNSsolve>eval ($trans_vector_21 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_21" ) 
+ EVALUATE: symbol $TRANS_VECTOR_21 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_21" (string)
+ CNSsolve>eval ($trans_vector_22 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_22" ) 
+ EVALUATE: symbol $TRANS_VECTOR_22 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_22" (string)
+ CNSsolve>eval ($trans_vector_23 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_23" ) 
+ EVALUATE: symbol $TRANS_VECTOR_23 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_23" (string)
+ CNSsolve>eval ($trans_vector_24 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_24" ) 
+ EVALUATE: symbol $TRANS_VECTOR_24 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_24" (string)
+ CNSsolve>eval ($trans_vector_25 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_25" ) 
+ EVALUATE: symbol $TRANS_VECTOR_25 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_25" (string)
+ CNSsolve>eval ($trans_vector_26 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_26" ) 
+ EVALUATE: symbol $TRANS_VECTOR_26 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_26" (string)
+ CNSsolve>eval ($trans_vector_27 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_27" ) 
+ EVALUATE: symbol $TRANS_VECTOR_27 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_27" (string)
+ CNSsolve>eval ($trans_vector_28 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_28" ) 
+ EVALUATE: symbol $TRANS_VECTOR_28 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_28" (string)
+ CNSsolve>eval ($trans_vector_29 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_29" ) 
+ EVALUATE: symbol $TRANS_VECTOR_29 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_29" (string)
+ CNSsolve>eval ($trans_vector_30 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_30" ) 
+ EVALUATE: symbol $TRANS_VECTOR_30 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_30" (string)
+ CNSsolve>eval ($trans_vector_31 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_31" ) 
+ EVALUATE: symbol $TRANS_VECTOR_31 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_31" (string)
+ CNSsolve>eval ($trans_vector_32 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_32" ) 
+ EVALUATE: symbol $TRANS_VECTOR_32 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_32" (string)
+ CNSsolve>eval ($trans_vector_33 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_33" ) 
+ EVALUATE: symbol $TRANS_VECTOR_33 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_33" (string)
+ CNSsolve>eval ($trans_vector_34 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_34" ) 
+ EVALUATE: symbol $TRANS_VECTOR_34 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_34" (string)
+ CNSsolve>eval ($trans_vector_35 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_35" ) 
+ EVALUATE: symbol $TRANS_VECTOR_35 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_35" (string)
+ CNSsolve>eval ($trans_vector_36 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_36" ) 
+ EVALUATE: symbol $TRANS_VECTOR_36 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_36" (string)
+ CNSsolve>eval ($trans_vector_37 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_37" ) 
+ EVALUATE: symbol $TRANS_VECTOR_37 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_37" (string)
+ CNSsolve>eval ($trans_vector_38 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_38" ) 
+ EVALUATE: symbol $TRANS_VECTOR_38 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_38" (string)
+ CNSsolve>eval ($trans_vector_39 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_39" ) 
+ EVALUATE: symbol $TRANS_VECTOR_39 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_39" (string)
+ CNSsolve>eval ($trans_vector_40 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_40" ) 
+ EVALUATE: symbol $TRANS_VECTOR_40 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_40" (string)
+ CNSsolve>eval ($trans_vector_41 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_41" ) 
+ EVALUATE: symbol $TRANS_VECTOR_41 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_41" (string)
+ CNSsolve>eval ($trans_vector_42 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_42" ) 
+ EVALUATE: symbol $TRANS_VECTOR_42 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_42" (string)
+ CNSsolve>eval ($trans_vector_43 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_43" ) 
+ EVALUATE: symbol $TRANS_VECTOR_43 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_43" (string)
+ CNSsolve>eval ($trans_vector_44 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_44" ) 
+ EVALUATE: symbol $TRANS_VECTOR_44 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_44" (string)
+ CNSsolve>eval ($trans_vector_45 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_45" ) 
+ EVALUATE: symbol $TRANS_VECTOR_45 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_45" (string)
+ CNSsolve>eval ($trans_vector_46 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_46" ) 
+ EVALUATE: symbol $TRANS_VECTOR_46 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_46" (string)
+ CNSsolve>eval ($trans_vector_47 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_47" ) 
+ EVALUATE: symbol $TRANS_VECTOR_47 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_47" (string)
+ CNSsolve>eval ($trans_vector_48 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_48" ) 
+ EVALUATE: symbol $TRANS_VECTOR_48 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_48" (string)
+ CNSsolve>eval ($trans_vector_49 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_49" ) 
+ EVALUATE: symbol $TRANS_VECTOR_49 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_49" (string)
+ CNSsolve>eval ($trans_vector_50 = "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_50" ) 
+ EVALUATE: symbol $TRANS_VECTOR_50 set to "/home/joao/github/haddock3/src/haddock/data/toppar/initial_positions/trans_vector_50" (string)
+ CNSsolve> 
+ CNSsolve>! Tensors 
+ CNSsolve>eval ($tensor_psf = "/home/joao/github/haddock3/src/haddock/data/toppar/tensor.psf" ) 
+ EVALUATE: symbol $TENSOR_PSF set to "/home/joao/github/haddock3/src/haddock/data/toppar/tensor.psf" (string)
+ CNSsolve>eval ($tensor_pdb = "/home/joao/github/haddock3/src/haddock/data/toppar/tensor.pdb" ) 
+ EVALUATE: symbol $TENSOR_PDB set to "/home/joao/github/haddock3/src/haddock/data/toppar/tensor.pdb" (string)
+ CNSsolve>eval ($tensor_para_psf = "/home/joao/github/haddock3/src/haddock/data/toppar/tensor_para.psf" ) 
+ EVALUATE: symbol $TENSOR_PARA_PSF set to "/home/joao/github/haddock3/src/haddock/data/toppar/tensor_para.psf" (string)
+ CNSsolve>eval ($tensor_para_pdb = "/home/joao/github/haddock3/src/haddock/data/toppar/tensor_para.pdb" ) 
+ EVALUATE: symbol $TENSOR_PARA_PDB set to "/home/joao/github/haddock3/src/haddock/data/toppar/tensor_para.pdb" (string)
+ CNSsolve>eval ($tensor_dani_psf = "/home/joao/github/haddock3/src/haddock/data/toppar/tensor_dani.psf" ) 
+ EVALUATE: symbol $TENSOR_DANI_PSF set to "/home/joao/github/haddock3/src/haddock/data/toppar/tensor_dani.psf" (string)
+ CNSsolve>eval ($tensor_dani_pdb = "/home/joao/github/haddock3/src/haddock/data/toppar/tensor_dani.pdb" ) 
+ EVALUATE: symbol $TENSOR_DANI_PDB set to "/home/joao/github/haddock3/src/haddock/data/toppar/tensor_dani.pdb" (string)
+ CNSsolve> 
+ CNSsolve>! Scatter lib 
+ CNSsolve>eval ($scatter_lib = "/home/joao/github/haddock3/src/haddock/data/toppar/scatter.lib" ) 
+ EVALUATE: symbol $SCATTER_LIB set to "/home/joao/github/haddock3/src/haddock/data/toppar/scatter.lib" (string)
+ CNSsolve> 
+ CNSsolve>! Axis 
+ CNSsolve>eval ($top_axis = "/home/joao/github/haddock3/src/haddock/data/toppar/top_axis.pro" ) 
+ EVALUATE: symbol $TOP_AXIS set to "/home/joao/github/haddock3/src/haddock/data/toppar/top_axis.pro" (string)
+ CNSsolve>eval ($par_axis = "/home/joao/github/haddock3/src/haddock/data/toppar/par_axis.pro" ) 
+ EVALUATE: symbol $PAR_AXIS set to "/home/joao/github/haddock3/src/haddock/data/toppar/par_axis.pro" (string)
+ CNSsolve>eval ($top_axis_dani = "/home/joao/github/haddock3/src/haddock/data/toppar/top_axis_dani.pro" ) 
+ EVALUATE: symbol $TOP_AXIS_DANI set to "/home/joao/github/haddock3/src/haddock/data/toppar/top_axis_dani.pro" (string)
+ CNSsolve> 
+ CNSsolve>! Water box 
+ CNSsolve>eval ($boxtyp20 = "/home/joao/github/haddock3/src/haddock/data/toppar/boxtyp20.pdb" ) 
+ EVALUATE: symbol $BOXTYP20 set to "/home/joao/github/haddock3/src/haddock/data/toppar/boxtyp20.pdb" (string)
+ CNSsolve> 
+ CNSsolve>!=================================================================! 
+ CNSsolve>! Do not change below this line unless you know what you are doing 
+ CNSsolve>!=================================================================! 
+ CNSsolve> 
+ CNSsolve>define( 
+ DEFINE>convert=false; 
+ DEFINE>separate=true; 
+ DEFINE>ile_CD_becomes="CD1"; 
+ DEFINE>OT1_becomes="O"; 
+ DEFINE>OT2_becomes="OXT"; 
+ DEFINE>auto_break=true; 
+ DEFINE>pbreak_cutoff=3.5; 
+ DEFINE>pcgbreak_cutoff=8.0; 
+ DEFINE>dbreak_cutoff=4.5; 
+ DEFINE>disulphide_dist=3.0; 
+ DEFINE>cyclicpept_dist=1.5; 
+ DEFINE>iron1cluster_dist=5.0; 
+ DEFINE>iron2cluster_dist=8.0; 
+ DEFINE>atom_select=(known and not hydrogen); 
+ DEFINE>dna_sele=(none); 
+ DEFINE>hydrogen_flag=true; 
+ DEFINE>hydrogen_build="all"; 
+ DEFINE>atom_build=(not(known)); 
+ DEFINE>atom_delete=(none); 
+ DEFINE>set_bfactor=true; 
+ DEFINE>bfactor=15.0; 
+ DEFINE>set_occupancy=true; 
+ DEFINE>occupancy=1.0; 
+ DEFINE>) 
+ CNSsolve> 
+ CNSsolve>evaluate ($chain = 1) 
+ EVALUATE: symbol $CHAIN set to    1.00000     (real)
+ CNSsolve>evaluate($coor_infile= $file) 
+ EVALUATE: symbol $COOR_INFILE set to "/home/joao/github/haddock3/examples/recipes/full_scoring/topology/T161-rescoring-5_2.pdb" (string)
+ CNSsolve> 
+ CNSsolve> segment 
+ SEGMENT>   chain 
+ CHAIN>     if ( &convert = true ) then 
+ NEXTCD: condition evaluated as false
+ CHAIN>       convert=true 
+ CHAIN>     end if 
+ CHAIN>     if ( &separate = true ) then 
+ NEXTCD: condition evaluated as true
+ CHAIN>       separate=true 
+ CHAIN>     end if 
+ CHAIN>!     if ( &BLANK%nucl_link_infile = false ) then 
+ CHAIN>!       @@&nucl_link_infile 
+ CHAIN>!     end if 
+ CHAIN>!     if ( &BLANK%cofac_link_infile = false ) then 
+ CHAIN>!       @@&cofac_link_infile 
+ CHAIN>!     end if 
+ CHAIN>     @@$link_file 
+ ASSFIL: file protein-allhdg5-4-noter.link opened.
+ CHAIN>remarks file toppar/protein-allhdg5-4-noter.link 
+ CHAIN>remarks 
+ CHAIN>remarks this is a macro to define standard protein peptide bonds 
+ CHAIN>remarks to generate a protein sequence. 
+ CHAIN> 
+ CHAIN>!added links for MSE (8-19-2011, ATB) 
+ CHAIN>!added links for CFE (6-5-2014, AB) 
+ CHAIN> 
+ CHAIN>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ CHAIN>set message=off echo=off end 
+ CHAIN> 
+ CHAIN>     coordinates @@$coor_infile 
+ ASSFIL: file T161-rescoring-5_2.pdb opened.
+ COOR>ATOM      1  N   GLU A   1      38.202  -8.907  -8.295  1.00 10.00      A    N 
+ SEGMNT-info: auto chain termination due to different segid.  249 residues were inserted into segid "A   "
+ SEGMNT-info: chain termination due to END keyword.   249 residues were inserted into segid "B   "
+ CHAIN>   end 
+ SEGMENT> end 
+ Status of internal molecular topology database:
+ -> NATOM=       7980(MAXA=     1000000)  NBOND=       8066(MAXB=     1000000)
+ -> NTHETA=     14624(MAXT=     2000000)  NGRP=         498(MAXGRP=   1000000)
+ -> NPHI=       12468(MAXP=     2000000)  NIMPHI=      4268(MAXIMP=   1000000)
+ -> NNB=         3732(MAXNB=    1000000) 
+ CNSsolve> 
+ CNSsolve> coordinates @@$coor_infile 
+ ASSFIL: file T161-rescoring-5_2.pdb opened.
+ COOR>ATOM      1  N   GLU A   1      38.202  -8.907  -8.295  1.00 10.00      A    N 
+ COOR>ATOM      2  HN  GLU A   1      39.024  -8.363  -8.272  1.00 10.00      A    H 
+ %READC-WRN: still   3177 missing coordinates (in selected subset)
+ CNSsolve> 
+ CNSsolve> if ( &BLANK%ile_CD_becomes = false ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   do (name=&ile_CD_becomes) (resn ILE and name CD) 
+ SELRPN:      0 atoms have been selected out of   7980
+ CNSsolve> end if 
+ CNSsolve> if ( &BLANK%OT1_becomes = false ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   do (name=&OT1_becomes) (name OT1) 
+ SELRPN:      0 atoms have been selected out of   7980
+ CNSsolve> end if 
+ CNSsolve> if ( &BLANK%OT2_becomes = false ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   do (name=&OT2_becomes) (name OT2) 
+ SELRPN:      0 atoms have been selected out of   7980
+ CNSsolve> end if 
+ CNSsolve> 
+ CNSsolve> !for the histidine patches: 
+ CNSsolve> if ($autohis = false) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>   evaluate($hisd_counter=1) 
+ CNSsolve>   while ($hisd_counter le $Toppar.nhisd_$chain) loop hisd 
+ CNSsolve>     if ($Toppar.hisd_resid_$chain_$hisd_counter > 0) then 
+ CNSsolve>       show (resn) (tag and resid $Toppar.hisd_resid_$chain_$hisd_counter) 
+ CNSsolve>       if ($result eq "HIS") then 
+ CNSsolve>         patch hisd reference=nil=(resid $Toppar.hisd_resid_$chain_$hisd_counter) end 
+ CNSsolve>       end if 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate($hisd_counter=$hisd_counter + 1) 
+ CNSsolve>   end loop hisd 
+ CNSsolve> 
+ CNSsolve>   evaluate($hise_counter=1) 
+ CNSsolve>   while ($hise_counter le $Toppar.nhise_$chain) loop hise 
+ CNSsolve>     if ($Toppar.hise_resid_$chain_$hise_counter > 0) then 
+ CNSsolve>       show (resn) (tag and resid $Toppar.hise_resid_$chain_$hise_counter) 
+ CNSsolve>       if ($result eq "HIS") then 
+ CNSsolve>         patch hise reference=nil=(resid $Toppar.hise_resid_$chain_$hise_counter) end 
+ CNSsolve>       end if 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate($hise_counter=$hise_counter + 1) 
+ CNSsolve>   end loop hise 
+ CNSsolve> end if 
+ CNSsolve> 
+ CNSsolve>! The following patches would define covalent bond between a CA+2 and oxygen ligands 
+ CNSsolve>! from Asp and Glu (first selection is amino-acid, second is ion) 
+ CNSsolve>! patch dca2 refe=1=(resid 25) refe=2=(resid 83) end 
+ CNSsolve>! patch dca2 refe=1=(resid 29) refe=2=(resid 83) end 
+ CNSsolve>! patch dca2 refe=1=(resid 35) refe=2=(resid 83) end 
+ CNSsolve>! patch eca2 refe=1=(resid 36) refe=2=(resid 83) end 
+ CNSsolve>! 
+ CNSsolve>! following patch is to attach a heme (resid YY) CAB atom to a cys (resid XX) 
+ CNSsolve>! patch phcb refe=1=(resid XX) refe=2=(resid YY) end 
+ CNSsolve>! following patch is to attach a heme (resid YY) CAC atom to a cys (resid XX) 
+ CNSsolve>! patch phcc refe=1=(resid XX) refe=2=(resid YY) end 
+ CNSsolve>! 
+ CNSsolve>! following patch is to define an isopeptide bond between a Cter and a Lys side-chain 
+ CNSsolve>! patch clys refe=1=(resid 72) refe=2=(resid 148) end 
+ CNSsolve>! 
+ CNSsolve>! following patch is to define an isopeptide bond between a Cter and a Lys side-chain 
+ CNSsolve>! patch clys refe=1=(resid 72) refe=2=(resid 148) end 
+ CNSsolve> 
+ CNSsolve> inline @RUN:patch-types-cg.cns 
+ ASSFIL: file patch-types-cg.cns opened.
+ CNSsolve>! patch-types-cg.cns 
+ CNSsolve>! 
+ CNSsolve>! *********************************************************************** 
+ CNSsolve>! * Copyright 2003-2018 Alexandre Bonvin, Utrecht University.           * 
+ CNSsolve>! * Originally adapted from Aria 1.2 from Nilges and Linge, EMBL.       * 
+ CNSsolve>! * and from the CNS distriution of Brunger and Adams                   * 
+ CNSsolve>! * All rights reserved.                                                * 
+ CNSsolve>! * This code is part of the HADDOCK software and governed by its       * 
+ CNSsolve>! * license. Please see the LICENSE file that should have been included * 
+ CNSsolve>! * as part of this package.                                            * 
+ CNSsolve>! *********************************************************************** 
+ CNSsolve>! 
+ CNSsolve>! encode beads info 
+ CNSsolve>evaluate ($bdnum = 0) 
+ EVALUATE: symbol $BDNUM set to    0.00000     (real)
+ CNSsolve>for $id in id (name BB and (not (resn ALA or resn PRO or resn HYP))) loop cgt1 
+ SELRPN:      0 atoms have been selected out of   7980
+ CNSsolve>  evaluate ($bdnum = $bdnum + 1) 
+ CNSsolve>  show (name) (id $id) 
+ CNSsolve>  evaluate ($bdname_$bdnum = $result) 
+ CNSsolve>  show (resid) (id $id) 
+ CNSsolve>  evaluate ($bdresi_$bdnum = $result) 
+ CNSsolve>  show (b) (id $id) 
+ CNSsolve>  evaluate ($bfactor_$bdnum = $result) 
+ CNSsolve>  evaluate ($ptype= "PTY"+encode($bfactor_$bdnum)) 
+ CNSsolve>  patch $ptype refe=NIL=(resid $bdresi_$bdnum) end 
+ CNSsolve>end loop cgt1 
+ CNSsolve> 
+ CNSsolve>! encode beads info for ALA 
+ CNSsolve>evaluate ($bdnum = 0) 
+ EVALUATE: symbol $BDNUM set to    0.00000     (real)
+ CNSsolve>for $id in id (name BB and resn ALA) loop cgt2 
+ SELRPN:      0 atoms have been selected out of   7980
+ CNSsolve>  evaluate ($bdnum = $bdnum + 1) 
+ CNSsolve>  show (name) (id $id) 
+ CNSsolve>  evaluate ($bdname_$bdnum = $result) 
+ CNSsolve>  show (resid) (id $id) 
+ CNSsolve>  evaluate ($bdresi_$bdnum = $result) 
+ CNSsolve>  show (b) (id $id) 
+ CNSsolve>  evaluate ($bfactor_$bdnum = $result) 
+ CNSsolve>  evaluate ($ptype= "PTA"+encode($bfactor_$bdnum)) 
+ CNSsolve>  patch $ptype refe=NIL=(resid $bdresi_$bdnum) end 
+ CNSsolve>end loop cgt2 
+ CNSsolve> 
+ CNSsolve>! encode beads info for PRO 
+ CNSsolve>evaluate ($bdnum = 0) 
+ EVALUATE: symbol $BDNUM set to    0.00000     (real)
+ CNSsolve>for $id in id (name BB and resn PRO) loop cgt3 
+ SELRPN:      0 atoms have been selected out of   7980
+ CNSsolve>  evaluate ($bdnum = $bdnum + 1) 
+ CNSsolve>  show (name) (id $id) 
+ CNSsolve>  evaluate ($bdname_$bdnum = $result) 
+ CNSsolve>  show (resid) (id $id) 
+ CNSsolve>  evaluate ($bdresi_$bdnum = $result) 
+ CNSsolve>  show (b) (id $id) 
+ CNSsolve>  evaluate ($bfactor_$bdnum = $result) 
+ CNSsolve>  evaluate ($ptype= "PTP"+encode($bfactor_$bdnum)) 
+ CNSsolve>  patch $ptype refe=NIL=(resid $bdresi_$bdnum) end 
+ CNSsolve>end loop cgt3 
+ CNSsolve> 
+ CNSsolve>! encode beads info for HYP 
+ CNSsolve>evaluate ($bdnum = 0) 
+ EVALUATE: symbol $BDNUM set to    0.00000     (real)
+ CNSsolve>for $id in id (name BB and resn HYP) loop cgt4 
+ SELRPN:      0 atoms have been selected out of   7980
+ CNSsolve>  evaluate ($bdnum = $bdnum + 1) 
+ CNSsolve>  show (name) (id $id) 
+ CNSsolve>  evaluate ($bdname_$bdnum = $result) 
+ CNSsolve>  show (resid) (id $id) 
+ CNSsolve>  evaluate ($bdresi_$bdnum = $result) 
+ CNSsolve>  show (b) (id $id) 
+ CNSsolve>  evaluate ($bfactor_$bdnum = $result) 
+ CNSsolve>  evaluate ($ptype= "PTH"+encode($bfactor_$bdnum)) 
+ CNSsolve>  patch $ptype refe=NIL=(resid $bdresi_$bdnum) end 
+ CNSsolve>end loop cgt4 
+ CNSsolve> 
+ CNSsolve> inline @RUN:patch-bb-cg.cns 
+ ASSFIL: file patch-bb-cg.cns opened.
+ CNSsolve>! patch-bb-cg.cns 
+ CNSsolve>! 
+ CNSsolve>! *********************************************************************** 
+ CNSsolve>! * Copyright 2003-2018 Alexandre Bonvin, Utrecht University.           * 
+ CNSsolve>! * Originally adapted from Aria 1.2 from Nilges and Linge, EMBL.       * 
+ CNSsolve>! * and from the CNS distriution of Brunger and Adams                   * 
+ CNSsolve>! * All rights reserved.                                                * 
+ CNSsolve>! * This code is part of the HADDOCK software and governed by its       * 
+ CNSsolve>! * license. Please see the LICENSE file that should have been included * 
+ CNSsolve>! * as part of this package.                                            * 
+ CNSsolve>! *********************************************************************** 
+ CNSsolve>! 
+ CNSsolve>set echo=true end 
+ CNSsolve>! define cutoff for chain break 
+ CNSsolve>evaluate ($bdbreak = 8.0) 
+ EVALUATE: symbol $BDBREAK set to    8.00000     (real)
+ CNSsolve> 
+ CNSsolve>! encode beads info 
+ CNSsolve>evaluate ($bdnum = 0) 
+ EVALUATE: symbol $BDNUM set to    0.00000     (real)
+ CNSsolve>for $id in id (name BB) loop cg1 
+ SELRPN:      0 atoms have been selected out of   7980
+ CNSsolve>  evaluate ($bdnum = $bdnum + 1) 
+ CNSsolve>  show (name) (id $id) 
+ CNSsolve>  evaluate ($bdname_$bdnum = $result) 
+ CNSsolve>  show (resid) (id $id) 
+ CNSsolve>  evaluate ($bdresi_$bdnum = $result) 
+ CNSsolve>  show (name) (bondedto (name $bdname_$bdnum and resid $bdresi_$bdnum)) 
+ CNSsolve>  if ($result NE 0) then 
+ CNSsolve>    evaluate ($sbdname_$bdnum = $result) 
+ CNSsolve>  else 
+ CNSsolve>    evaluate ($sbdname_$bdnum = "XXX") 
+ CNSsolve>  end if 
+ CNSsolve>end loop cg1 
+ CNSsolve> 
+ CNSsolve> 
+ CNSsolve>!!! BBB Angles 
+ CNSsolve> 
+ CNSsolve>evaluate ($ncount = 0) 
+ EVALUATE: symbol $NCOUNT set to    0.00000     (real)
+ CNSsolve>evaluate ($nend = $bdnum - 2) 
+ EVALUATE: symbol $NEND set to   -2.00000     (real)
+ CNSsolve>while ($ncount < $nend) loop cg2 
+ NEXTCD: condition evaluated as false
+ CNSsolve>  evaluate ($ncount = $ncount + 1) 
+ CNSsolve> 
+ CNSsolve>! define three consecutive backbone beads 
+ CNSsolve>  evaluate ($nat1 = $ncount) 
+ CNSsolve>  evaluate ($nat2 = $ncount + 1) 
+ CNSsolve>  evaluate ($nat3 = $ncount + 2) 
+ CNSsolve> 
+ CNSsolve>! get their atom names 
+ CNSsolve>  evaluate ($bname1 = $bdname_$nat1) 
+ CNSsolve>  evaluate ($bname2 = $bdname_$nat2) 
+ CNSsolve>  evaluate ($bname3 = $bdname_$nat3) 
+ CNSsolve> 
+ CNSsolve>! get their residue number 
+ CNSsolve>  evaluate ($bresi1 = $bdresi_$nat1) 
+ CNSsolve>  evaluate ($bresi2 = $bdresi_$nat2) 
+ CNSsolve>  evaluate ($bresi3 = $bdresi_$nat3) 
+ CNSsolve> 
+ CNSsolve>! define atom names for patch 
+ CNSsolve>  evaluate ($pat1 = "1"+$bname1) 
+ CNSsolve>  evaluate ($pat2 = "2"+$bname2) 
+ CNSsolve>  evaluate ($pat3 = "3"+$bname3) 
+ CNSsolve> 
+ CNSsolve>! check for breaks before defining any angle 
+ CNSsolve>  evaluate ($break = "FALSE") 
+ CNSsolve>  pick bond (name $bname1 and resid $bresi1) (name $bname2 and resid $bresi2) geometry 
+ CNSsolve>  if ($result > $bdbreak) then 
+ CNSsolve>    evaluate ($break = "TRUE") 
+ CNSsolve>  end if 
+ CNSsolve>  pick bond (name $bname2 and resid $bresi2) (name $bname3 and resid $bresi3) geometry 
+ CNSsolve>  if ($result > $bdbreak) then 
+ CNSsolve>    evaluate ($break = "TRUE") 
+ CNSsolve>  end if 
+ CNSsolve> 
+ CNSsolve>  if ($break EQ FALSE) then 
+ CNSsolve> 
+ CNSsolve>! define new backbone angle patch 
+ CNSsolve>    topology 
+ CNSsolve>      presidue cgang  ! Patch to add an angle between three beads 
+ CNSsolve>        add angle $pat1 $pat2 $pat3 
+ CNSsolve>      end 
+ CNSsolve>    end 
+ CNSsolve> 
+ CNSsolve>! apply new patch to the selected three beads 
+ CNSsolve>    patch cgang refe=1=(resid $bresi1) refe=2=(resid $bresi2) refe=3=(resid $bresi3) end 
+ CNSsolve>    display PATCH-BB-CG: ADDED ONE ANGLE BETWEEN $bname1 $bresi1 , $bname2 $bresi2 , $bname3 $bresi3 
+ CNSsolve> 
+ CNSsolve>  end if 
+ CNSsolve> 
+ CNSsolve>end loop cg2 
+ CNSsolve> 
+ CNSsolve> 
+ CNSsolve>!!! BBS Angles 
+ CNSsolve>evaluate ($ncount = 0) 
+ EVALUATE: symbol $NCOUNT set to    0.00000     (real)
+ CNSsolve>evaluate ($nend = $bdnum - 1) 
+ EVALUATE: symbol $NEND set to   -1.00000     (real)
+ CNSsolve>while ($ncount < $nend) loop cg3 
+ NEXTCD: condition evaluated as false
+ CNSsolve>  evaluate ($ncount = $ncount + 1) 
+ CNSsolve> 
+ CNSsolve>!! BBA Angles 
+ CNSsolve>! define two consecutive backbone beads 
+ CNSsolve>  evaluate ($nat1 = $ncount) 
+ CNSsolve>  evaluate ($nat2 = $ncount + 1) 
+ CNSsolve> 
+ CNSsolve>! get their atom names 
+ CNSsolve>  evaluate ($bname1 = $bdname_$nat1) 
+ CNSsolve>  evaluate ($bname2 = $bdname_$nat2) 
+ CNSsolve> 
+ CNSsolve>! get their side-chain beads names 
+ CNSsolve>  evaluate ($sbname1 = $sbdname_$nat1) 
+ CNSsolve>  evaluate ($sbname2 = $sbdname_$nat2) 
+ CNSsolve> 
+ CNSsolve>! get their residue number 
+ CNSsolve>  evaluate ($bresi1 = $bdresi_$nat1) 
+ CNSsolve>  evaluate ($bresi2 = $bdresi_$nat2) 
+ CNSsolve> 
+ CNSsolve>! define atom names for patch 
+ CNSsolve>  evaluate ($pat1 = "1"+$bname1) 
+ CNSsolve>  evaluate ($pat2 = "2"+$bname2) 
+ CNSsolve>  evaluate ($pas1 = "1"+$sbname1) 
+ CNSsolve>  evaluate ($pas2 = "2"+$sbname2) 
+ CNSsolve> 
+ CNSsolve>! check for breaks before defining any angle 
+ CNSsolve>  evaluate ($break = "FALSE") 
+ CNSsolve>  evaluate ($pbreak = "FALSE") 
+ CNSsolve>  pick bond (name $bname1 and resid $bresi1) (name $bname2 and resid $bresi2) geometry 
+ CNSsolve>  if ($result > $bdbreak) then 
+ CNSsolve>    evaluate ($break = "TRUE") 
+ CNSsolve>    evaluate ($pbreak = "TRUE") 
+ CNSsolve>  end if 
+ CNSsolve> 
+ CNSsolve>  if ($break EQ FALSE) then 
+ CNSsolve> 
+ CNSsolve>! define new side-chain angle patch for 1st residue 
+ CNSsolve>    if ($ncount EQ 1) then 
+ CNSsolve>      if ($sbname1 NE "XXX") then 
+ CNSsolve>! define SBB angle patch 
+ CNSsolve>        topology 
+ CNSsolve>          presidue scgang  ! Patch to add an angle between three beads 
+ CNSsolve>            add angle $pas1 $pat1 $pat2 
+ CNSsolve>          end 
+ CNSsolve>        end 
+ CNSsolve>! apply new patch to the selected three beads 
+ CNSsolve>        patch scgang refe=1=(resid $bresi1) refe=2=(resid $bresi1) refe=3=(resid $bresi2) end 
+ CNSsolve>        display PATCH-SBB-CG: ADDED ONE SIDE-CHAIN/BB ANGLE BETWEEN $sbname1 $bresi1 , $bname1 $bresi1 , $bname2 $bresi2 
+ CNSsolve>      end if 
+ CNSsolve>    end if 
+ CNSsolve> 
+ CNSsolve>! define new side-chain angle patch for 1st residue after chain break 
+ CNSsolve>    if ($pbreak EQ TRUE) then 
+ CNSsolve>      if ($sbname1 NE "XXX") then 
+ CNSsolve>! define SBB angle patch 
+ CNSsolve>        topology 
+ CNSsolve>          presidue scgsang  ! Patch to add an angle between three beads 
+ CNSsolve>            add angle $pas1 $pat1 $pat2 
+ CNSsolve>          end 
+ CNSsolve>        end 
+ CNSsolve>! apply new patch to the selected three beads 
+ CNSsolve>        patch scgsang refe=1=(resid $bresi1) refe=2=(resid $bresi1) refe=3=(resid $bresi2) end 
+ CNSsolve>        display PATCH-SBB-CG: ADDED ONE SIDE-CHAIN/BB ANGLE BETWEEN $sbname1 $bresi1 , $bname1 $bresi1 , $bname2 $bresi2 
+ CNSsolve>      end if 
+ CNSsolve>    end if 
+ CNSsolve> 
+ CNSsolve>! define BBS angle patch 
+ CNSsolve>    if ($sbname2 NE "XXX") then 
+ CNSsolve>      topology 
+ CNSsolve>        presidue cgsang  ! Patch to add an angle between three beads 
+ CNSsolve>          add angle $pat1 $pat2 $pas2 
+ CNSsolve>        end 
+ CNSsolve>      end 
+ CNSsolve>! apply new patch to the selected three beads 
+ CNSsolve>      patch cgsang refe=1=(resid $bresi1) refe=2=(resid $bresi2) refe=3=(resid $bresi2) end 
+ CNSsolve>      display PATCH-BBS-CG: ADDED ONE BB/SIDE-CHAIN ANGLE BETWEEN $bname1 $bresi1 , $bname2 $bresi2 , $sbname2 $bresi2 
+ CNSsolve>    end if 
+ CNSsolve> 
+ CNSsolve>  end if 
+ CNSsolve> 
+ CNSsolve>end loop cg3 
+ CNSsolve> 
+ CNSsolve> 
+ CNSsolve>!! BBB dihedral 
+ CNSsolve> 
+ CNSsolve>evaluate ($ncount = 0) 
+ EVALUATE: symbol $NCOUNT set to    0.00000     (real)
+ CNSsolve>evaluate ($nend = $bdnum - 3) 
+ EVALUATE: symbol $NEND set to   -3.00000     (real)
+ CNSsolve>while ($ncount < $nend) loop cg4 
+ NEXTCD: condition evaluated as false
+ CNSsolve>  evaluate ($ncount = $ncount + 1) 
+ CNSsolve> 
+ CNSsolve>! define four consecutive beads 
+ CNSsolve>  evaluate ($nat1 = $ncount) 
+ CNSsolve>  evaluate ($nat2 = $ncount + 1) 
+ CNSsolve>  evaluate ($nat3 = $ncount + 2) 
+ CNSsolve>  evaluate ($nat4 = $ncount + 3) 
+ CNSsolve> 
+ CNSsolve>! get their atom names 
+ CNSsolve>  evaluate ($bname1 = $bdname_$nat1) 
+ CNSsolve>  evaluate ($bname2 = $bdname_$nat2) 
+ CNSsolve>  evaluate ($bname3 = $bdname_$nat3) 
+ CNSsolve>  evaluate ($bname4 = $bdname_$nat4) 
+ CNSsolve> 
+ CNSsolve>! get their residue number 
+ CNSsolve>  evaluate ($bresi1 = $bdresi_$nat1) 
+ CNSsolve>  evaluate ($bresi2 = $bdresi_$nat2) 
+ CNSsolve>  evaluate ($bresi3 = $bdresi_$nat3) 
+ CNSsolve>  evaluate ($bresi4 = $bdresi_$nat4) 
+ CNSsolve> 
+ CNSsolve>! define atom names for patch 
+ CNSsolve>  evaluate ($pat1 = "1"+$bname1) 
+ CNSsolve>  evaluate ($pat2 = "2"+$bname2) 
+ CNSsolve>  evaluate ($pat3 = "3"+$bname3) 
+ CNSsolve>  evaluate ($pat4 = "4"+$bname4) 
+ CNSsolve> 
+ CNSsolve>  evaluate ($break = "FALSE") 
+ CNSsolve>! check for breaks before defining any dihedral 
+ CNSsolve>  pick bond (name $bname1 and resid $bresi1) (name $bname2 and resid $bresi2) geometry 
+ CNSsolve>  if ($result > $bdbreak) then 
+ CNSsolve>    evaluate ($break = "TRUE") 
+ CNSsolve>  end if 
+ CNSsolve>  pick bond (name $bname2 and resid $bresi2) (name $bname3 and resid $bresi3) geometry 
+ CNSsolve>  if ($result > $bdbreak) then 
+ CNSsolve>    evaluate ($break = "TRUE") 
+ CNSsolve>  end if 
+ CNSsolve>  pick bond (name $bname3 and resid $bresi3) (name $bname4 and resid $bresi4) geometry 
+ CNSsolve>  if ($result > $bdbreak) then 
+ CNSsolve>    evaluate ($break = "TRUE") 
+ CNSsolve>  end if 
+ CNSsolve> 
+ CNSsolve>  if ($break EQ FALSE) then 
+ CNSsolve> 
+ CNSsolve>! define new patch 
+ CNSsolve>    topology 
+ CNSsolve>      presidue cgdihe  ! Patch to add a dihedral angle between four beads 
+ CNSsolve>        add dihedral $pat1 $pat2 $pat3 $pat4 
+ CNSsolve>      end 
+ CNSsolve>    end 
+ CNSsolve> 
+ CNSsolve>! apply new patch to the selected four beads 
+ CNSsolve>    patch cgdihe refe=1=(resid $bresi1) refe=2=(resid $bresi2) refe=3=(resid $bresi3) refe=4=(resid $bresi4) end 
+ CNSsolve>    display PATCH-BB-CG: ADDED ONE DIHEDRAL BETWEEN $bname1 $bresi1 , $bname2 $bresi2 , $bname3 $bresi3 , $bname4 $bresi4 
+ CNSsolve> 
+ CNSsolve>  end if 
+ CNSsolve> 
+ CNSsolve>end loop cg4 
+ CNSsolve> 
+ CNSsolve> 
+ CNSsolve> 
+ CNSsolve> 
+ CNSsolve> if ($delenph = true) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   delete sele=(name H* and attr charge = 0) end 
+ SELRPN:   3168 atoms have been selected out of   7980
+ Status of internal molecular topology database:
+ -> NATOM=       4812(MAXA=     1000000)  NBOND=       4898(MAXB=     1000000)
+ -> NTHETA=      7032(MAXT=     2000000)  NGRP=         498(MAXGRP=   1000000)
+ -> NPHI=       12116(MAXP=     2000000)  NIMPHI=      2424(MAXIMP=   1000000)
+ -> NNB=          264(MAXNB=    1000000) 
+ CNSsolve> end if 
+ CNSsolve> 
+ CNSsolve> evaluate ($nstruc = 1) 
+ EVALUATE: symbol $NSTRUC set to    1.00000     (real)
+ CNSsolve> 
+ CNSsolve> coor init end 
+ COOR: selected main coordinates initialized
+ CNSsolve> coordinates 
+ COOR>   if ( &convert = true ) then 
+ NEXTCD: condition evaluated as false
+ COOR>     convert=true 
+ COOR>   end if 
+ COOR>   @@$file 
+ ASSFIL: file T161-rescoring-5_2.pdb opened.
+ COOR>ATOM      1  N   GLU A   1      38.202  -8.907  -8.295  1.00 10.00      A    N 
+ COOR>ATOM      2  HN  GLU A   1      39.024  -8.363  -8.272  1.00 10.00      A    H 
+ %READC-WRN: still      9 missing coordinates (in selected subset)
+ CNSsolve> 
+ CNSsolve> show sum(1) ( not(hydrogen) and not(known) ) 
+ SELRPN:      0 atoms have been selected out of   4812
+ SHOW: zero atoms selected
+ CNSsolve> if ( $select = 0 ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   display  %INFO: There are no coordinates missing for non-hydrogen atoms 
+ %INFO: There are no coordinates missing for non-hydrogen atoms
+ CNSsolve> end if 
+ CNSsolve> 
+ CNSsolve> if ( $log_level = verbose ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>   set message=normal echo=on end 
+ CNSsolve> else 
+ CNSsolve>   set message=off echo=off end 
+ %PARRDR-info: duplication of bond HC   NC2 
+ %PARRDR-info: duplication of angle CH2P CH2E HA  
+ POWELL: number of degrees of freedom=  2586
+ NBONDS: generating intra-molecular exclusion list with mode=-2
+ MAKINB: mode  -2 found    862 exclusions and      0 interactions(1-4)
+ NBONDS: found    82604 intra-atom interactions
+ %atoms "A   -101 -LYS -CD  " and "A   -101 -LYS -HZ2 " only  0.06 A apart
+ NBONDS: found    82099 intra-atom interactions
+ NBONDS: found        1 nonbonded violations
+ NBONDS: found    79884 intra-atom interactions
+ NBONDS: found    78793 intra-atom interactions
+ NBONDS: found    78963 intra-atom interactions
+ --------------- cycle=    10 ------ stepsize=    0.0001 -----------------------
+ | Etotal =177718.310 grad(E)=274.049    E(BOND)=48730.749  E(ANGL)=103410.177 |
+ | E(VDW )=25577.384                                                           |
+ -------------------------------------------------------------------------------
+ NBONDS: found    78714 intra-atom interactions
+ NBONDS: found    78492 intra-atom interactions
+ NBONDS: found    78305 intra-atom interactions
+ --------------- cycle=    20 ------ stepsize=   -0.0001 -----------------------
+ | Etotal =13163.414  grad(E)=51.576     E(BOND)=2486.949   E(ANGL)=5934.311   |
+ | E(VDW )=4742.154                                                            |
+ -------------------------------------------------------------------------------
+ NBONDS: found    78191 intra-atom interactions
+ NBONDS: found    78104 intra-atom interactions
+ --------------- cycle=    30 ------ stepsize=    0.0000 -----------------------
+ | Etotal =6766.090   grad(E)=34.272     E(BOND)=1327.547   E(ANGL)=1381.594   |
+ | E(VDW )=4056.949                                                            |
+ -------------------------------------------------------------------------------
+ NBONDS: found    78069 intra-atom interactions
+ NBONDS: found    78048 intra-atom interactions
+ --------------- cycle=    40 ------ stepsize=    0.0013 -----------------------
+ | Etotal =6078.826   grad(E)=34.995     E(BOND)=1306.262   E(ANGL)=806.459    |
+ | E(VDW )=3966.105                                                            |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    50 ------ stepsize=    0.0004 -----------------------
+ | Etotal =5506.224   grad(E)=30.029     E(BOND)=1176.764   E(ANGL)=395.467    |
+ | E(VDW )=3933.993                                                            |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ DCART: temperature coupling (TCOUpling) enabled
+ -------------------------- Cartesian dynamics start ---------------------------
+ | E(kin)+E(total)=103959.659      E(kin)=784.929       temperature=305.487    |
+ | Etotal =103174.730 grad(E)=208.076    E(BOND)=1176.764   E(ANGL)=395.467    |
+ | E(IMPR)=101602.499                                                          |
+ -------------------------------------------------------------------------------
+ ----------------- final step=       50 at      0.02500 ps ---------------------
+ | E(kin)+E(total)=56583.792       E(kin)=16244.534     temperature=6322.213   |
+ | Etotal =40339.258  grad(E)=89.559     E(BOND)=1344.428   E(ANGL)=7099.750   |
+ | E(IMPR)=31895.080                                                           |
+ -------------------------------------------------------------------------------
+ CENMAS: Information about center of free masses
+         position [A]          :      0.00304      0.25389      0.01152
+         velocity [A/ps]       :      0.02066      0.12913      0.15817
+         ang. mom. [amu A/ps]  :  36344.80978 138477.36209 123473.00219
+         kin. ener. [Kcal/mol] :      0.86778
+ POWELL: number of degrees of freedom=  2586
+ NBONDS: found    78139 intra-atom interactions
+ NBONDS: found    78060 intra-atom interactions
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =32469.007  grad(E)=36.292     E(BOND)=1510.596   E(ANGL)=6829.385   |
+ | E(IMPR)=19676.602  E(VDW )=4452.424                                         |
+ -------------------------------------------------------------------------------
+ NBONDS: found    78096 intra-atom interactions
+ --------------- cycle=    20 ------ stepsize=    0.0002 -----------------------
+ | Etotal =28652.738  grad(E)=39.215     E(BOND)=1699.890   E(ANGL)=6110.563   |
+ | E(IMPR)=16465.732  E(VDW )=4376.553                                         |
+ -------------------------------------------------------------------------------
+ NBONDS: found    78031 intra-atom interactions
+ NBONDS: found    78021 intra-atom interactions
+ --------------- cycle=    30 ------ stepsize=    0.0001 -----------------------
+ | Etotal =24472.017  grad(E)=38.508     E(BOND)=1645.062   E(ANGL)=5806.632   |
+ | E(IMPR)=12607.612  E(VDW )=4412.712                                         |
+ -------------------------------------------------------------------------------
+ NBONDS: found    78047 intra-atom interactions
+ --------------- cycle=    40 ------ stepsize=   -0.0001 -----------------------
+ | Etotal =21734.652  grad(E)=31.888     E(BOND)=1455.295   E(ANGL)=3707.485   |
+ | E(IMPR)=12450.509  E(VDW )=4121.363                                         |
+ -------------------------------------------------------------------------------
+ NBONDS: found    78060 intra-atom interactions
+ --------------- cycle=    50 ------ stepsize=   -0.0000 -----------------------
+ | Etotal =21554.582  grad(E)=30.424     E(BOND)=1411.883   E(ANGL)=3545.568   |
+ | E(IMPR)=12486.574  E(VDW )=4110.556                                         |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ DCART: temperature coupling (TCOUpling) enabled
+ -------------------------- Cartesian dynamics start ---------------------------
+ | E(kin)+E(total)=22344.915       E(kin)=790.333       temperature=307.590    |
+ | Etotal =21554.582  grad(E)=30.424     E(BOND)=1411.883   E(ANGL)=3545.568   |
+ | E(IMPR)=12486.574  E(VDW )=4110.556                                         |
+ -------------------------------------------------------------------------------
+ ----------------- final step=       50 at      0.02500 ps ---------------------
+ | E(kin)+E(total)=22942.073       E(kin)=798.475       temperature=310.759    |
+ | Etotal =22143.598  grad(E)=35.994     E(BOND)=1493.144   E(ANGL)=3757.748   |
+ | E(IMPR)=12694.429  E(VDW )=4198.277                                         |
+ -------------------------------------------------------------------------------
+ CENMAS: Information about center of free masses
+         position [A]          :      0.00165      0.25561      0.01418
+         velocity [A/ps]       :     -0.10912      0.21214     -0.30775
+         ang. mom. [amu A/ps]  : -15796.84676  -5697.15366 -24909.43243
+         kin. ener. [Kcal/mol] :      3.12371
+ %PARRDR-info: duplication of bond HC   NC2 
+ %PARRDR-info: duplication of angle CH2P CH2E HA  
+ POWELL: number of degrees of freedom=  2586
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found   2416 exclusions and      0 interactions(1-4)
+ NBONDS: found    76524 intra-atom interactions
+ NBONDS: found    76498 intra-atom interactions
+ NBONDS: found    76522 intra-atom interactions
+ --------------- cycle=    25 ------ stepsize=    0.0002 -----------------------
+ | Etotal =13468.465  grad(E)=20.062     E(BOND)=1103.404   E(ANGL)=4487.820   |
+ | E(IMPR)=7877.239   E(VDW )=0.001                                            |
+ -------------------------------------------------------------------------------
+ NBONDS: found    76523 intra-atom interactions
+ --------------- cycle=    50 ------ stepsize=    0.0000 -----------------------
+ | Etotal =11941.548  grad(E)=79.121     E(BOND)=1231.967   E(ANGL)=4299.425   |
+ | E(IMPR)=6410.157   E(VDW )=0.000                                            |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    75 ------ stepsize=    0.0000 -----------------------
+ | Etotal =11940.282  grad(E)=79.110     E(BOND)=1232.013   E(ANGL)=4299.377   |
+ | E(IMPR)=6408.892   E(VDW )=0.000                                            |
+ -------------------------------------------------------------------------------
+ POWELL: Line search terminated
+ POWELL: Current coordinates set to last minimum
+ DCART: temperature coupling (TCOUpling) enabled
+ -------------------------- Cartesian dynamics start ---------------------------
+ | E(kin)+E(total)=11583.033       E(kin)=785.084       temperature=305.547    |
+ | Etotal =10797.949  grad(E)=29.083     E(BOND)=1232.013   E(ANGL)=4299.377   |
+ | E(IMPR)=5266.560   E(VDW )=0.000                                            |
+ -------------------------------------------------------------------------------
+ NBONDS: found    76549 intra-atom interactions
+ NBONDS: found    76571 intra-atom interactions
+ NBONDS: found    76579 intra-atom interactions
+ NBONDS: found    76510 intra-atom interactions
+ NBONDS: found    76529 intra-atom interactions
+ NBONDS: found    76496 intra-atom interactions
+ NBONDS: found    76496 intra-atom interactions
+ NBONDS: found    76557 intra-atom interactions
+ NBONDS: found    76516 intra-atom interactions
+ NBONDS: found    76502 intra-atom interactions
+ NBONDS: found    76530 intra-atom interactions
+ NBONDS: found    76494 intra-atom interactions
+ ----------------- final step=      500 at      0.25000 ps ---------------------
+ | E(kin)+E(total)=1606.997        E(kin)=763.882       temperature=297.295    |
+ | Etotal =843.115    grad(E)=19.092     E(BOND)=357.542    E(ANGL)=464.836    |
+ | E(IMPR)=20.737     E(VDW )=0.000                                            |
+ -------------------------------------------------------------------------------
+ CENMAS: Information about center of free masses
+         position [A]          :      0.00117      0.25493      0.01175
+         velocity [A/ps]       :      0.14558      0.15446     -0.09500
+         ang. mom. [amu A/ps]  :  -6640.11180   4863.00780  25788.50604
+         kin. ener. [Kcal/mol] :      1.11407
+ EFLAGS: the following energy flags are set
+ EFLAGS: BOND ANGL DIHE IMPR VDW 
+ %PARRDR-info: duplication of bond HC   NC2 
+ %PARRDR-info: duplication of angle CH2P CH2E HA  
+ POWELL: number of degrees of freedom=  2586
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found   2416 exclusions and      0 interactions(1-4)
+ NBONDS: found    76513 intra-atom interactions
+ NBONDS: found    76475 intra-atom interactions
+ --------------- cycle=    50 ------ stepsize=    0.0011 -----------------------
+ | Etotal =67.860     grad(E)=2.265      E(BOND)=0.176      E(ANGL)=33.888     |
+ | E(DIHE)=25.973     E(IMPR)=0.404      E(VDW )=7.419                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   100 ------ stepsize=    0.0008 -----------------------
+ | Etotal =51.240     grad(E)=2.143      E(BOND)=0.164      E(ANGL)=33.277     |
+ | E(DIHE)=10.375     E(IMPR)=0.105      E(VDW )=7.319                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   150 ------ stepsize=    0.0007 -----------------------
+ | Etotal =45.641     grad(E)=2.148      E(BOND)=0.164      E(ANGL)=33.296     |
+ | E(DIHE)=3.719      E(IMPR)=0.136      E(VDW )=8.325                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   200 ------ stepsize=    0.0007 -----------------------
+ | Etotal =44.690     grad(E)=2.133      E(BOND)=0.139      E(ANGL)=33.263     |
+ | E(DIHE)=3.194      E(IMPR)=0.048      E(VDW )=8.046                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   250 ------ stepsize=    0.0007 -----------------------
+ | Etotal =43.923     grad(E)=2.136      E(BOND)=0.139      E(ANGL)=33.314     |
+ | E(DIHE)=2.519      E(IMPR)=0.053      E(VDW )=7.898                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   300 ------ stepsize=    0.0008 -----------------------
+ | Etotal =43.163     grad(E)=2.133      E(BOND)=0.133      E(ANGL)=33.265     |
+ | E(DIHE)=2.143      E(IMPR)=0.046      E(VDW )=7.575                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   350 ------ stepsize=    0.0009 -----------------------
+ | Etotal =42.654     grad(E)=2.131      E(BOND)=0.132      E(ANGL)=33.254     |
+ | E(DIHE)=1.862      E(IMPR)=0.043      E(VDW )=7.363                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   400 ------ stepsize=    0.0002 -----------------------
+ | Etotal =42.158     grad(E)=2.130      E(BOND)=0.120      E(ANGL)=33.249     |
+ | E(DIHE)=2.163      E(IMPR)=0.043      E(VDW )=6.584                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   450 ------ stepsize=   -0.0002 -----------------------
+ | Etotal =41.854     grad(E)=2.130      E(BOND)=0.120      E(ANGL)=33.253     |
+ | E(DIHE)=1.776      E(IMPR)=0.041      E(VDW )=6.663                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   500 ------ stepsize=   -0.0000 -----------------------
+ | Etotal =41.702     grad(E)=2.129      E(BOND)=0.110      E(ANGL)=33.253     |
+ | E(DIHE)=2.178      E(IMPR)=0.041      E(VDW )=6.120                         |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ DCART: temperature coupling (TCOUpling) enabled
+ -------------------------- Cartesian dynamics start ---------------------------
+ | E(kin)+E(total)=822.127         E(kin)=780.425       temperature=303.734    |
+ | Etotal =41.702     grad(E)=2.129      E(BOND)=0.110      E(ANGL)=33.253     |
+ | E(DIHE)=2.178      E(IMPR)=0.041      E(VDW )=6.120      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ NBONDS: found    76506 intra-atom interactions
+ NBONDS: found    76461 intra-atom interactions
+ NBONDS: found    76479 intra-atom interactions
+ NBONDS: found    76420 intra-atom interactions
+ NBONDS: found    76396 intra-atom interactions
+ NBONDS: found    76443 intra-atom interactions
+ NBONDS: found    76434 intra-atom interactions
+ NBONDS: found    76387 intra-atom interactions
+ NBONDS: found    76368 intra-atom interactions
+ NBONDS: found    76390 intra-atom interactions
+ NBONDS: found    76415 intra-atom interactions
+ NBONDS: found    76391 intra-atom interactions
+ NBONDS: found    76465 intra-atom interactions
+ NBONDS: found    76428 intra-atom interactions
+ NBONDS: found    76448 intra-atom interactions
+ NBONDS: found    76441 intra-atom interactions
+ NBONDS: found    76436 intra-atom interactions
+ NBONDS: found    76478 intra-atom interactions
+ NBONDS: found    76431 intra-atom interactions
+ NBONDS: found    76415 intra-atom interactions
+ NBONDS: found    76398 intra-atom interactions
+ NBONDS: found    76392 intra-atom interactions
+ NBONDS: found    76386 intra-atom interactions
+ NBONDS: found    76461 intra-atom interactions
+ NBONDS: found    76411 intra-atom interactions
+ NBONDS: found    76442 intra-atom interactions
+ ----------------- final step=      500 at      0.25000 ps ---------------------
+ | E(kin)+E(total)=1407.399        E(kin)=729.831       temperature=284.043    |
+ | Etotal =677.567    grad(E)=20.986     E(BOND)=93.715     E(ANGL)=357.119    |
+ | E(DIHE)=36.537     E(IMPR)=184.031    E(VDW )=6.167      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ CENMAS: Information about center of free masses
+         position [A]          :      0.01196      0.26696     -0.00679
+         velocity [A/ps]       :      0.43871      0.13464      0.31792
+         ang. mom. [amu A/ps]  :   1446.84348  -1181.00847   4135.90494
+         kin. ener. [Kcal/mol] :      0.32362
+ POWELL: number of degrees of freedom=  2586
+ NBONDS: found    76400 intra-atom interactions
+ --------------- cycle=    50 ------ stepsize=    0.0008 -----------------------
+ | Etotal =51.566     grad(E)=2.153      E(BOND)=0.110      E(ANGL)=33.303     |
+ | E(DIHE)=12.412     E(IMPR)=0.149      E(VDW )=5.592      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   100 ------ stepsize=    0.0016 -----------------------
+ | Etotal =44.112     grad(E)=2.139      E(BOND)=0.111      E(ANGL)=33.292     |
+ | E(DIHE)=4.909      E(IMPR)=0.085      E(VDW )=5.715      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   150 ------ stepsize=    0.0012 -----------------------
+ | Etotal =42.972     grad(E)=2.140      E(BOND)=0.142      E(ANGL)=33.286     |
+ | E(DIHE)=3.006      E(IMPR)=0.089      E(VDW )=6.449      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   200 ------ stepsize=    0.0006 -----------------------
+ | Etotal =41.903     grad(E)=2.129      E(BOND)=0.116      E(ANGL)=33.251     |
+ | E(DIHE)=1.888      E(IMPR)=0.043      E(VDW )=6.605      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   250 ------ stepsize=    0.0012 -----------------------
+ | Etotal =41.746     grad(E)=2.130      E(BOND)=0.112      E(ANGL)=33.254     |
+ | E(DIHE)=1.911      E(IMPR)=0.047      E(VDW )=6.422      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ NBONDS: found    76421 intra-atom interactions
+ --------------- cycle=   300 ------ stepsize=    0.0008 -----------------------
+ | Etotal =41.683     grad(E)=2.129      E(BOND)=0.108      E(ANGL)=33.252     |
+ | E(DIHE)=2.138      E(IMPR)=0.043      E(VDW )=6.142      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   350 ------ stepsize=    0.0007 -----------------------
+ | Etotal =41.681     grad(E)=2.129      E(BOND)=0.107      E(ANGL)=33.252     |
+ | E(DIHE)=2.157      E(IMPR)=0.043      E(VDW )=6.121      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   400 ------ stepsize=    0.0014 -----------------------
+ | Etotal =41.681     grad(E)=2.129      E(BOND)=0.107      E(ANGL)=33.252     |
+ | E(DIHE)=2.161      E(IMPR)=0.043      E(VDW )=6.117      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: Gradient converged. Normal termination
+ POWELL: Current coordinates set to last minimum
+ (atom-i        |atom-j        )    dist.   equil.   delta    energy   const. 
+
+ Number of violations greater    0.020:     0
+ RMS deviation=   0.000
+ (atom-i        |atom-j        |atom-k        )  angle    equil.     delta    energy  const. 
+
+ Number of violations greater    5.000:     0
+ RMS deviation=   0.375
+ Total number of dihedral angle restraints=     0
+  overall scale =    1.0000
+ Number of dihedral angle restraints=    0
+ Number of violations greater than    5.000:     0
+ RMS deviation=   0.000
+ --------------- cycle=     1 --------------------------------------------------
+ | Etotal =41.681     grad(E)=2.129      E(BOND)=0.107      E(ANGL)=33.252     |
+ | E(DIHE)=2.161      E(IMPR)=0.043      E(VDW )=6.118      E(ELEC)=0.000      |
+ | E(CDIH)=0.000      E(NOE )=0.000                                            |
+ -------------------------------------------------------------------------------
+ Total number of dihedral angle restraints=     0
+  overall scale =    1.0000
+ Number of dihedral angle restraints=    0
+ Number of violations greater than    5.000:     0
+ RMS deviation=   0.000
+ (atom-i        |atom-j        )    dist.   equil.   delta    energy   const. 
+
+ Number of violations greater    0.020:     0
+ RMS deviation=   0.000
+ (atom-i        |atom-j        |atom-k        )  angle    equil.     delta    energy  const. 
+
+ Number of violations greater    5.000:     0
+ RMS deviation=   0.375
+ %POWELL-ERR: all atoms fixed. No action
+ SCRATC-warning: Pairs of Interacting Groups erased.
+CIS peptide bon detected for residue 177
+CIS peptide bon detected for residue 177
+ %PARRDR-info: duplication of bond HC   NC2 
+ %PARRDR-info: duplication of angle CH2P CH2E HA  
+ POWELL: number of degrees of freedom=  2586
+ NBONDS: generating intra-molecular exclusion list with mode=-2
+ MAKINB: mode  -2 found    862 exclusions and      0 interactions(1-4)
+ %atoms "B   -223 -SER -HN  " and "B   -223 -SER -CA  " only  0.05 A apart
+ %atoms "B   -256 -ASP -HN  " and "B   -256 -ASP -CB  " only  0.08 A apart
+ NBONDS: found    82338 intra-atom interactions
+ NBONDS: found        2 nonbonded violations
+ %atoms "B   -111 -ARG -HH11" and "B   -111 -ARG -HH22" only  0.06 A apart
+ NBONDS: found    81920 intra-atom interactions
+ NBONDS: found        1 nonbonded violations
+ NBONDS: found    79544 intra-atom interactions
+ NBONDS: found    78602 intra-atom interactions
+ NBONDS: found    78951 intra-atom interactions
+ NBONDS: found    78773 intra-atom interactions
+ --------------- cycle=    10 ------ stepsize=    0.0001 -----------------------
+ | Etotal =155132.715 grad(E)=259.318    E(BOND)=46747.782  E(ANGL)=87554.973  |
+ | E(VDW )=20829.960                                                           |
+ -------------------------------------------------------------------------------
+ NBONDS: found    78546 intra-atom interactions
+ NBONDS: found    78279 intra-atom interactions
+ NBONDS: found    78143 intra-atom interactions
+ --------------- cycle=    20 ------ stepsize=   -0.0000 -----------------------
+ | Etotal =12147.126  grad(E)=53.726     E(BOND)=1929.672   E(ANGL)=4810.620   |
+ | E(VDW )=5406.833                                                            |
+ -------------------------------------------------------------------------------
+ NBONDS: found    78064 intra-atom interactions
+ --------------- cycle=    30 ------ stepsize=    0.0002 -----------------------
+ | Etotal =6569.344   grad(E)=32.169     E(BOND)=1245.850   E(ANGL)=1147.471   |
+ | E(VDW )=4176.023                                                            |
+ -------------------------------------------------------------------------------
+ NBONDS: found    78037 intra-atom interactions
+ --------------- cycle=    40 ------ stepsize=    0.0005 -----------------------
+ | Etotal =5864.951   grad(E)=32.548     E(BOND)=1212.156   E(ANGL)=593.338    |
+ | E(VDW )=4059.457                                                            |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    50 ------ stepsize=    0.0003 -----------------------
+ | Etotal =5514.634   grad(E)=30.037     E(BOND)=1177.466   E(ANGL)=401.453    |
+ | E(VDW )=3935.715                                                            |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ DCART: temperature coupling (TCOUpling) enabled
+ -------------------------- Cartesian dynamics start ---------------------------
+ | E(kin)+E(total)=126037.187      E(kin)=793.168       temperature=308.693    |
+ | Etotal =125244.020 grad(E)=229.689    E(BOND)=1177.466   E(ANGL)=401.453    |
+ | E(IMPR)=123665.101                                                          |
+ -------------------------------------------------------------------------------
+ ----------------- final step=       50 at      0.02500 ps ---------------------
+ | E(kin)+E(total)=65117.151       E(kin)=21143.058     temperature=8228.670   |
+ | Etotal =43974.093  grad(E)=97.246     E(BOND)=1913.173   E(ANGL)=8300.878   |
+ | E(IMPR)=33760.043                                                           |
+ -------------------------------------------------------------------------------
+ CENMAS: Information about center of free masses
+         position [A]          :     -0.00072      0.25792      0.01465
+         velocity [A/ps]       :     -0.28040      0.29380      0.30248
+         ang. mom. [amu A/ps]  :-138192.00562  86467.19882  67620.90301
+         kin. ener. [Kcal/mol] :      5.28324
+ POWELL: number of degrees of freedom=  2586
+ NBONDS: found    78004 intra-atom interactions
+ NBONDS: found    77974 intra-atom interactions
+ --------------- cycle=    10 ------ stepsize=    0.0005 -----------------------
+ | Etotal =35147.043  grad(E)=36.606     E(BOND)=1602.484   E(ANGL)=6893.355   |
+ | E(IMPR)=22219.736  E(VDW )=4431.468                                         |
+ -------------------------------------------------------------------------------
+ NBONDS: found    77958 intra-atom interactions
+ NBONDS: found    78018 intra-atom interactions
+ --------------- cycle=    20 ------ stepsize=    0.0006 -----------------------
+ | Etotal =31666.148  grad(E)=31.473     E(BOND)=1646.438   E(ANGL)=5852.669   |
+ | E(IMPR)=19931.807  E(VDW )=4235.233                                         |
+ -------------------------------------------------------------------------------
+ NBONDS: found    78014 intra-atom interactions
+ --------------- cycle=    30 ------ stepsize=    0.0004 -----------------------
+ | Etotal =30850.354  grad(E)=34.178     E(BOND)=1627.895   E(ANGL)=5794.684   |
+ | E(IMPR)=19186.358  E(VDW )=4241.417                                         |
+ -------------------------------------------------------------------------------
+ NBONDS: found    77998 intra-atom interactions
+ NBONDS: found    77998 intra-atom interactions
+ --------------- cycle=    40 ------ stepsize=    0.0009 -----------------------
+ | Etotal =29840.873  grad(E)=33.634     E(BOND)=1628.576   E(ANGL)=5273.689   |
+ | E(IMPR)=18795.443  E(VDW )=4143.165                                         |
+ -------------------------------------------------------------------------------
+ NBONDS: found    78009 intra-atom interactions
+ --------------- cycle=    50 ------ stepsize=    0.0006 -----------------------
+ | Etotal =28451.857  grad(E)=32.878     E(BOND)=1543.980   E(ANGL)=5642.434   |
+ | E(IMPR)=16980.845  E(VDW )=4284.598                                         |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ DCART: temperature coupling (TCOUpling) enabled
+ -------------------------- Cartesian dynamics start ---------------------------
+ | E(kin)+E(total)=29226.773       E(kin)=774.916       temperature=301.590    |
+ | Etotal =28451.857  grad(E)=32.878     E(BOND)=1543.980   E(ANGL)=5642.434   |
+ | E(IMPR)=16980.845  E(VDW )=4284.598                                         |
+ -------------------------------------------------------------------------------
+ NBONDS: found    78029 intra-atom interactions
+ NBONDS: found    78007 intra-atom interactions
+ ----------------- final step=       50 at      0.02500 ps ---------------------
+ | E(kin)+E(total)=28864.896       E(kin)=1435.020      temperature=558.496    |
+ | Etotal =27429.876  grad(E)=37.014     E(BOND)=1823.170   E(ANGL)=5813.078   |
+ | E(IMPR)=15562.797  E(VDW )=4230.832                                         |
+ -------------------------------------------------------------------------------
+ CENMAS: Information about center of free masses
+         position [A]          :     -0.00015      0.25935      0.01108
+         velocity [A/ps]       :     -0.05365      0.31108     -0.30737
+         ang. mom. [amu A/ps]  :  -7295.74930  79554.23848  62732.71272
+         kin. ener. [Kcal/mol] :      3.99945
+ %PARRDR-info: duplication of bond HC   NC2 
+ %PARRDR-info: duplication of angle CH2P CH2E HA  
+ POWELL: number of degrees of freedom=  2586
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found   2414 exclusions and      0 interactions(1-4)
+ NBONDS: found    76469 intra-atom interactions
+ NBONDS: found    76490 intra-atom interactions
+ NBONDS: found    76473 intra-atom interactions
+ NBONDS: found    76498 intra-atom interactions
+ --------------- cycle=    25 ------ stepsize=    0.0006 -----------------------
+ | Etotal =16295.366  grad(E)=11.786     E(BOND)=520.246    E(ANGL)=4014.667   |
+ | E(IMPR)=11760.452  E(VDW )=0.000                                            |
+ -------------------------------------------------------------------------------
+ NBONDS: found    76469 intra-atom interactions
+ NBONDS: found    76483 intra-atom interactions
+ NBONDS: found    76502 intra-atom interactions
+ NBONDS: found    76507 intra-atom interactions
+ NBONDS: found    76468 intra-atom interactions
+ --------------- cycle=    50 ------ stepsize=    0.0006 -----------------------
+ | Etotal =3662.852   grad(E)=23.082     E(BOND)=181.436    E(ANGL)=2150.239   |
+ | E(IMPR)=1331.177   E(VDW )=0.000                                            |
+ -------------------------------------------------------------------------------
+ NBONDS: found    76417 intra-atom interactions
+ NBONDS: found    76457 intra-atom interactions
+ NBONDS: found    76452 intra-atom interactions
+ NBONDS: found    76446 intra-atom interactions
+ --------------- cycle=    75 ------ stepsize=    0.0004 -----------------------
+ | Etotal =33.736     grad(E)=2.210      E(BOND)=0.069      E(ANGL)=33.618     |
+ | E(IMPR)=0.050      E(VDW )=0.000                                            |
+ -------------------------------------------------------------------------------
+ POWELL: Gradient converged. Normal termination
+ POWELL: Current coordinates set to last minimum
+ DCART: temperature coupling (TCOUpling) enabled
+ -------------------------- Cartesian dynamics start ---------------------------
+ | E(kin)+E(total)=818.738         E(kin)=785.475       temperature=305.699    |
+ | Etotal =33.263     grad(E)=2.112      E(BOND)=0.003      E(ANGL)=33.232     |
+ | E(IMPR)=0.028      E(VDW )=0.000                                            |
+ -------------------------------------------------------------------------------
+ NBONDS: found    76500 intra-atom interactions
+ NBONDS: found    76453 intra-atom interactions
+ NBONDS: found    76445 intra-atom interactions
+ NBONDS: found    76430 intra-atom interactions
+ NBONDS: found    76453 intra-atom interactions
+ NBONDS: found    76433 intra-atom interactions
+ ----------------- final step=      500 at      0.25000 ps ---------------------
+ | E(kin)+E(total)=1306.707        E(kin)=857.672       temperature=333.798    |
+ | Etotal =449.035    grad(E)=17.514     E(BOND)=71.284     E(ANGL)=229.670    |
+ | E(IMPR)=148.081    E(VDW )=0.000                                            |
+ -------------------------------------------------------------------------------
+ CENMAS: Information about center of free masses
+         position [A]          :      0.00350      0.26111      0.00340
+         velocity [A/ps]       :     -0.10245      0.04276      0.10516
+         ang. mom. [amu A/ps]  :  40567.69678 -23132.29346 -89922.60234
+         kin. ener. [Kcal/mol] :      0.48172
+ EFLAGS: the following energy flags are set
+ EFLAGS: BOND ANGL DIHE IMPR VDW 
+ %PARRDR-info: duplication of bond HC   NC2 
+ %PARRDR-info: duplication of angle CH2P CH2E HA  
+ POWELL: number of degrees of freedom=  2586
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found   2414 exclusions and      0 interactions(1-4)
+ NBONDS: found    76433 intra-atom interactions
+ --------------- cycle=    50 ------ stepsize=    0.0007 -----------------------
+ | Etotal =68.157     grad(E)=2.206      E(BOND)=0.170      E(ANGL)=33.355     |
+ | E(DIHE)=28.131     E(IMPR)=0.553      E(VDW )=5.947                         |
+ -------------------------------------------------------------------------------
+ NBONDS: found    76478 intra-atom interactions
+ NBONDS: found    76467 intra-atom interactions
+ --------------- cycle=   100 ------ stepsize=   -0.0005 -----------------------
+ | Etotal =52.979     grad(E)=2.294      E(BOND)=0.260      E(ANGL)=33.596     |
+ | E(DIHE)=10.669     E(IMPR)=1.210      E(VDW )=7.244                         |
+ -------------------------------------------------------------------------------
+ NBONDS: found    76456 intra-atom interactions
+ --------------- cycle=   150 ------ stepsize=    0.0002 -----------------------
+ | Etotal =44.356     grad(E)=2.139      E(BOND)=0.138      E(ANGL)=33.267     |
+ | E(DIHE)=3.424      E(IMPR)=0.068      E(VDW )=7.459                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   200 ------ stepsize=   -0.0004 -----------------------
+ | Etotal =42.695     grad(E)=2.132      E(BOND)=0.130      E(ANGL)=33.252     |
+ | E(DIHE)=2.127      E(IMPR)=0.044      E(VDW )=7.143                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   250 ------ stepsize=    0.0008 -----------------------
+ | Etotal =42.516     grad(E)=2.133      E(BOND)=0.121      E(ANGL)=33.255     |
+ | E(DIHE)=2.281      E(IMPR)=0.051      E(VDW )=6.808                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   300 ------ stepsize=    0.0011 -----------------------
+ | Etotal =42.410     grad(E)=2.130      E(BOND)=0.121      E(ANGL)=33.250     |
+ | E(DIHE)=2.214      E(IMPR)=0.041      E(VDW )=6.783                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   350 ------ stepsize=    0.0006 -----------------------
+ | Etotal =42.131     grad(E)=2.131      E(BOND)=0.113      E(ANGL)=33.247     |
+ | E(DIHE)=2.372      E(IMPR)=0.053      E(VDW )=6.347                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   400 ------ stepsize=    0.0013 -----------------------
+ | Etotal =41.735     grad(E)=2.129      E(BOND)=0.113      E(ANGL)=33.246     |
+ | E(DIHE)=2.019      E(IMPR)=0.048      E(VDW )=6.308                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   450 ------ stepsize=    0.0009 -----------------------
+ | Etotal =41.682     grad(E)=2.129      E(BOND)=0.111      E(ANGL)=33.246     |
+ | E(DIHE)=2.137      E(IMPR)=0.044      E(VDW )=6.146                         |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   500 ------ stepsize=    0.0012 -----------------------
+ | Etotal =41.680     grad(E)=2.129      E(BOND)=0.110      E(ANGL)=33.246     |
+ | E(DIHE)=2.165      E(IMPR)=0.044      E(VDW )=6.116                         |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ DCART: temperature coupling (TCOUpling) enabled
+ -------------------------- Cartesian dynamics start ---------------------------
+ | E(kin)+E(total)=821.438         E(kin)=779.758       temperature=303.474    |
+ | Etotal =41.680     grad(E)=2.129      E(BOND)=0.110      E(ANGL)=33.246     |
+ | E(DIHE)=2.165      E(IMPR)=0.044      E(VDW )=6.116      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ NBONDS: found    76468 intra-atom interactions
+ NBONDS: found    76526 intra-atom interactions
+ NBONDS: found    76508 intra-atom interactions
+ NBONDS: found    76460 intra-atom interactions
+ NBONDS: found    76419 intra-atom interactions
+ NBONDS: found    76432 intra-atom interactions
+ NBONDS: found    76435 intra-atom interactions
+ NBONDS: found    76469 intra-atom interactions
+ NBONDS: found    76497 intra-atom interactions
+ NBONDS: found    76508 intra-atom interactions
+ NBONDS: found    76531 intra-atom interactions
+ NBONDS: found    76525 intra-atom interactions
+ NBONDS: found    76517 intra-atom interactions
+ NBONDS: found    76525 intra-atom interactions
+ NBONDS: found    76537 intra-atom interactions
+ NBONDS: found    76479 intra-atom interactions
+ NBONDS: found    76503 intra-atom interactions
+ NBONDS: found    76532 intra-atom interactions
+ NBONDS: found    76565 intra-atom interactions
+ NBONDS: found    76547 intra-atom interactions
+ NBONDS: found    76522 intra-atom interactions
+ NBONDS: found    76552 intra-atom interactions
+ NBONDS: found    76538 intra-atom interactions
+ NBONDS: found    76565 intra-atom interactions
+ ----------------- final step=      500 at      0.25000 ps ---------------------
+ | E(kin)+E(total)=1409.801        E(kin)=756.524       temperature=294.432    |
+ | Etotal =653.277    grad(E)=20.207     E(BOND)=99.558     E(ANGL)=330.652    |
+ | E(DIHE)=18.018     E(IMPR)=196.129    E(VDW )=8.920      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ CENMAS: Information about center of free masses
+         position [A]          :      0.00703      0.24911      0.00349
+         velocity [A/ps]       :      0.19770     -0.04651     -0.39479
+         ang. mom. [amu A/ps]  :  -7273.18278   8278.18166   3001.07759
+         kin. ener. [Kcal/mol] :      0.20467
+ POWELL: number of degrees of freedom=  2586
+ NBONDS: found    76525 intra-atom interactions
+ --------------- cycle=    50 ------ stepsize=    0.0004 -----------------------
+ | Etotal =49.314     grad(E)=2.146      E(BOND)=0.174      E(ANGL)=33.272     |
+ | E(DIHE)=7.501      E(IMPR)=0.060      E(VDW )=8.307      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   100 ------ stepsize=    0.0009 -----------------------
+ | Etotal =43.613     grad(E)=2.135      E(BOND)=0.144      E(ANGL)=33.268     |
+ | E(DIHE)=2.658      E(IMPR)=0.054      E(VDW )=7.488      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   150 ------ stepsize=    0.0009 -----------------------
+ | Etotal =43.345     grad(E)=2.131      E(BOND)=0.131      E(ANGL)=33.249     |
+ | E(DIHE)=2.667      E(IMPR)=0.043      E(VDW )=7.256      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   200 ------ stepsize=    0.0001 -----------------------
+ | Etotal =42.851     grad(E)=2.133      E(BOND)=0.118      E(ANGL)=33.254     |
+ | E(DIHE)=2.788      E(IMPR)=0.047      E(VDW )=6.644      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   250 ------ stepsize=   -0.0006 -----------------------
+ | Etotal =41.748     grad(E)=2.129      E(BOND)=0.110      E(ANGL)=33.252     |
+ | E(DIHE)=2.326      E(IMPR)=0.056      E(VDW )=6.005      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   300 ------ stepsize=    0.0004 -----------------------
+ | Etotal =41.682     grad(E)=2.129      E(BOND)=0.110      E(ANGL)=33.246     |
+ | E(DIHE)=2.163      E(IMPR)=0.044      E(VDW )=6.120      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   350 ------ stepsize=    0.0030 -----------------------
+ | Etotal =41.680     grad(E)=2.129      E(BOND)=0.110      E(ANGL)=33.246     |
+ | E(DIHE)=2.179      E(IMPR)=0.044      E(VDW )=6.102      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=   400 ------ stepsize=    0.0004 -----------------------
+ | Etotal =41.680     grad(E)=2.129      E(BOND)=0.110      E(ANGL)=33.246     |
+ | E(DIHE)=2.164      E(IMPR)=0.044      E(VDW )=6.116      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: Gradient converged. Normal termination
+ POWELL: Current coordinates set to last minimum
+ (atom-i        |atom-j        )    dist.   equil.   delta    energy   const. 
+
+ Number of violations greater    0.020:     0
+ RMS deviation=   0.000
+ (atom-i        |atom-j        |atom-k        )  angle    equil.     delta    energy  const. 
+
+ Number of violations greater    5.000:     0
+ RMS deviation=   0.375
+ Total number of dihedral angle restraints=     0
+  overall scale =    1.0000
+ Number of dihedral angle restraints=    0
+ Number of violations greater than    5.000:     0
+ RMS deviation=   0.000
+ --------------- cycle=     2 --------------------------------------------------
+ | Etotal =41.680     grad(E)=2.129      E(BOND)=0.110      E(ANGL)=33.246     |
+ | E(DIHE)=2.165      E(IMPR)=0.044      E(VDW )=6.115      E(ELEC)=0.000      |
+ | E(CDIH)=0.000      E(NOE )=0.000                                            |
+ -------------------------------------------------------------------------------
+ Total number of dihedral angle restraints=     0
+  overall scale =    1.0000
+ Number of dihedral angle restraints=    0
+ Number of violations greater than    5.000:     0
+ RMS deviation=   0.000
+ (atom-i        |atom-j        )    dist.   equil.   delta    energy   const. 
+
+ Number of violations greater    0.020:     0
+ RMS deviation=   0.000
+ (atom-i        |atom-j        |atom-k        )  angle    equil.     delta    energy  const. 
+
+ Number of violations greater    5.000:     0
+ RMS deviation=   0.375
+ %POWELL-ERR: all atoms fixed. No action
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found     1714 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0001 -----------------------
+ | Etotal =95.167     grad(E)=3.270      E(BOND)=9.633      E(ANGL)=17.061     |
+ | E(DIHE)=7.049      E(IMPR)=7.409      E(VDW )=54.014     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =39.487     grad(E)=1.601      E(BOND)=4.553      E(ANGL)=5.637      |
+ | E(DIHE)=7.054      E(IMPR)=0.288      E(VDW )=21.955     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=     3 --------------------------------------------------
+ | Etotal =39.487     grad(E)=1.601      E(BOND)=4.553      E(ANGL)=5.637      |
+ | E(DIHE)=7.054      E(IMPR)=0.288      E(VDW )=21.955     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0001 -----------------------
+ | Etotal =95.167     grad(E)=3.270      E(BOND)=9.633      E(ANGL)=17.061     |
+ | E(DIHE)=7.049      E(IMPR)=7.409      E(VDW )=54.014     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =39.487     grad(E)=1.601      E(BOND)=4.553      E(ANGL)=5.637      |
+ | E(DIHE)=7.054      E(IMPR)=0.288      E(VDW )=21.955     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=     4 --------------------------------------------------
+ | Etotal =39.487     grad(E)=1.601      E(BOND)=4.553      E(ANGL)=5.637      |
+ | E(DIHE)=7.054      E(IMPR)=0.288      E(VDW )=21.955     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0001 -----------------------
+ | Etotal =95.167     grad(E)=3.270      E(BOND)=9.633      E(ANGL)=17.061     |
+ | E(DIHE)=7.049      E(IMPR)=7.409      E(VDW )=54.014     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =39.487     grad(E)=1.601      E(BOND)=4.553      E(ANGL)=5.637      |
+ | E(DIHE)=7.054      E(IMPR)=0.288      E(VDW )=21.955     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=     5 --------------------------------------------------
+ | Etotal =39.487     grad(E)=1.601      E(BOND)=4.553      E(ANGL)=5.637      |
+ | E(DIHE)=7.054      E(IMPR)=0.288      E(VDW )=21.955     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found      577 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =127.954    grad(E)=2.824      E(BOND)=16.343     E(ANGL)=20.441     |
+ | E(DIHE)=7.135      E(IMPR)=6.625      E(VDW )=77.410     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0008 -----------------------
+ | Etotal =83.456     grad(E)=6.338      E(BOND)=15.005     E(ANGL)=41.912     |
+ | E(DIHE)=7.130      E(IMPR)=7.418      E(VDW )=11.991     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=     6 --------------------------------------------------
+ | Etotal =67.743     grad(E)=2.510      E(BOND)=1.668      E(ANGL)=22.852     |
+ | E(DIHE)=7.157      E(IMPR)=5.957      E(VDW )=30.110     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =127.954    grad(E)=2.824      E(BOND)=16.343     E(ANGL)=20.441     |
+ | E(DIHE)=7.135      E(IMPR)=6.625      E(VDW )=77.410     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0008 -----------------------
+ | Etotal =83.456     grad(E)=6.338      E(BOND)=15.005     E(ANGL)=41.912     |
+ | E(DIHE)=7.130      E(IMPR)=7.418      E(VDW )=11.991     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=     7 --------------------------------------------------
+ | Etotal =67.743     grad(E)=2.510      E(BOND)=1.668      E(ANGL)=22.852     |
+ | E(DIHE)=7.157      E(IMPR)=5.957      E(VDW )=30.110     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =127.954    grad(E)=2.824      E(BOND)=16.343     E(ANGL)=20.441     |
+ | E(DIHE)=7.135      E(IMPR)=6.625      E(VDW )=77.410     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0008 -----------------------
+ | Etotal =83.456     grad(E)=6.338      E(BOND)=15.005     E(ANGL)=41.912     |
+ | E(DIHE)=7.130      E(IMPR)=7.418      E(VDW )=11.991     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=     8 --------------------------------------------------
+ | Etotal =67.743     grad(E)=2.510      E(BOND)=1.668      E(ANGL)=22.852     |
+ | E(DIHE)=7.157      E(IMPR)=5.957      E(VDW )=30.110     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found      423 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =94.380     grad(E)=3.200      E(BOND)=12.929     E(ANGL)=17.971     |
+ | E(DIHE)=7.115      E(IMPR)=5.244      E(VDW )=51.122     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =36.916     grad(E)=3.046      E(BOND)=1.606      E(ANGL)=16.006     |
+ | E(DIHE)=7.121      E(IMPR)=4.287      E(VDW )=7.895      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=     9 --------------------------------------------------
+ | Etotal =36.916     grad(E)=3.046      E(BOND)=1.606      E(ANGL)=16.006     |
+ | E(DIHE)=7.121      E(IMPR)=4.287      E(VDW )=7.895      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =94.380     grad(E)=3.200      E(BOND)=12.929     E(ANGL)=17.971     |
+ | E(DIHE)=7.115      E(IMPR)=5.244      E(VDW )=51.122     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =36.916     grad(E)=3.046      E(BOND)=1.606      E(ANGL)=16.006     |
+ | E(DIHE)=7.121      E(IMPR)=4.287      E(VDW )=7.895      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    10 --------------------------------------------------
+ | Etotal =36.916     grad(E)=3.046      E(BOND)=1.606      E(ANGL)=16.006     |
+ | E(DIHE)=7.121      E(IMPR)=4.287      E(VDW )=7.895      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =94.380     grad(E)=3.200      E(BOND)=12.929     E(ANGL)=17.971     |
+ | E(DIHE)=7.115      E(IMPR)=5.244      E(VDW )=51.122     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =36.916     grad(E)=3.046      E(BOND)=1.606      E(ANGL)=16.006     |
+ | E(DIHE)=7.121      E(IMPR)=4.287      E(VDW )=7.895      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    11 --------------------------------------------------
+ | Etotal =36.916     grad(E)=3.046      E(BOND)=1.606      E(ANGL)=16.006     |
+ | E(DIHE)=7.121      E(IMPR)=4.287      E(VDW )=7.895      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found     1020 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =99.797     grad(E)=3.002      E(BOND)=9.657      E(ANGL)=21.930     |
+ | E(DIHE)=7.125      E(IMPR)=3.427      E(VDW )=57.658     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =40.784     grad(E)=1.089      E(BOND)=3.862      E(ANGL)=19.132     |
+ | E(DIHE)=7.119      E(IMPR)=1.373      E(VDW )=9.298      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    12 --------------------------------------------------
+ | Etotal =40.784     grad(E)=1.089      E(BOND)=3.862      E(ANGL)=19.132     |
+ | E(DIHE)=7.119      E(IMPR)=1.373      E(VDW )=9.298      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =99.797     grad(E)=3.002      E(BOND)=9.657      E(ANGL)=21.930     |
+ | E(DIHE)=7.125      E(IMPR)=3.427      E(VDW )=57.658     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =40.784     grad(E)=1.089      E(BOND)=3.862      E(ANGL)=19.132     |
+ | E(DIHE)=7.119      E(IMPR)=1.373      E(VDW )=9.298      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    13 --------------------------------------------------
+ | Etotal =40.784     grad(E)=1.089      E(BOND)=3.862      E(ANGL)=19.132     |
+ | E(DIHE)=7.119      E(IMPR)=1.373      E(VDW )=9.298      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =99.797     grad(E)=3.002      E(BOND)=9.657      E(ANGL)=21.930     |
+ | E(DIHE)=7.125      E(IMPR)=3.427      E(VDW )=57.658     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =40.784     grad(E)=1.089      E(BOND)=3.862      E(ANGL)=19.132     |
+ | E(DIHE)=7.119      E(IMPR)=1.373      E(VDW )=9.298      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    14 --------------------------------------------------
+ | Etotal =40.784     grad(E)=1.089      E(BOND)=3.862      E(ANGL)=19.132     |
+ | E(DIHE)=7.119      E(IMPR)=1.373      E(VDW )=9.298      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found      872 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =123.559    grad(E)=3.113      E(BOND)=15.403     E(ANGL)=16.864     |
+ | E(DIHE)=7.073      E(IMPR)=10.484     E(VDW )=73.735     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =62.428     grad(E)=3.069      E(BOND)=6.263      E(ANGL)=20.883     |
+ | E(DIHE)=7.069      E(IMPR)=5.035      E(VDW )=23.179     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    15 --------------------------------------------------
+ | Etotal =62.428     grad(E)=3.069      E(BOND)=6.263      E(ANGL)=20.883     |
+ | E(DIHE)=7.069      E(IMPR)=5.035      E(VDW )=23.179     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =123.559    grad(E)=3.113      E(BOND)=15.403     E(ANGL)=16.864     |
+ | E(DIHE)=7.073      E(IMPR)=10.484     E(VDW )=73.735     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =62.428     grad(E)=3.069      E(BOND)=6.263      E(ANGL)=20.883     |
+ | E(DIHE)=7.069      E(IMPR)=5.035      E(VDW )=23.179     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    16 --------------------------------------------------
+ | Etotal =62.428     grad(E)=3.069      E(BOND)=6.263      E(ANGL)=20.883     |
+ | E(DIHE)=7.069      E(IMPR)=5.035      E(VDW )=23.179     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =123.559    grad(E)=3.113      E(BOND)=15.403     E(ANGL)=16.864     |
+ | E(DIHE)=7.073      E(IMPR)=10.484     E(VDW )=73.735     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =62.428     grad(E)=3.069      E(BOND)=6.263      E(ANGL)=20.883     |
+ | E(DIHE)=7.069      E(IMPR)=5.035      E(VDW )=23.179     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    17 --------------------------------------------------
+ | Etotal =62.428     grad(E)=3.069      E(BOND)=6.263      E(ANGL)=20.883     |
+ | E(DIHE)=7.069      E(IMPR)=5.035      E(VDW )=23.179     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found      752 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =117.244    grad(E)=3.641      E(BOND)=20.341     E(ANGL)=15.947     |
+ | E(DIHE)=7.163      E(IMPR)=9.082      E(VDW )=64.711     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =46.456     grad(E)=2.401      E(BOND)=7.054      E(ANGL)=8.422      |
+ | E(DIHE)=7.139      E(IMPR)=8.213      E(VDW )=15.628     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    18 --------------------------------------------------
+ | Etotal =46.456     grad(E)=2.401      E(BOND)=7.054      E(ANGL)=8.422      |
+ | E(DIHE)=7.139      E(IMPR)=8.213      E(VDW )=15.628     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =117.244    grad(E)=3.641      E(BOND)=20.341     E(ANGL)=15.947     |
+ | E(DIHE)=7.163      E(IMPR)=9.082      E(VDW )=64.711     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =46.456     grad(E)=2.401      E(BOND)=7.054      E(ANGL)=8.422      |
+ | E(DIHE)=7.139      E(IMPR)=8.213      E(VDW )=15.628     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    19 --------------------------------------------------
+ | Etotal =46.456     grad(E)=2.401      E(BOND)=7.054      E(ANGL)=8.422      |
+ | E(DIHE)=7.139      E(IMPR)=8.213      E(VDW )=15.628     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =117.244    grad(E)=3.641      E(BOND)=20.341     E(ANGL)=15.947     |
+ | E(DIHE)=7.163      E(IMPR)=9.082      E(VDW )=64.711     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =46.456     grad(E)=2.401      E(BOND)=7.054      E(ANGL)=8.422      |
+ | E(DIHE)=7.139      E(IMPR)=8.213      E(VDW )=15.628     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    20 --------------------------------------------------
+ | Etotal =46.456     grad(E)=2.401      E(BOND)=7.054      E(ANGL)=8.422      |
+ | E(DIHE)=7.139      E(IMPR)=8.213      E(VDW )=15.628     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found      959 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =120.810    grad(E)=2.873      E(BOND)=15.872     E(ANGL)=12.290     |
+ | E(DIHE)=7.133      E(IMPR)=8.410      E(VDW )=77.105     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =56.159     grad(E)=2.545      E(BOND)=10.344     E(ANGL)=14.329     |
+ | E(DIHE)=7.117      E(IMPR)=4.359      E(VDW )=20.010     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    21 --------------------------------------------------
+ | Etotal =56.159     grad(E)=2.545      E(BOND)=10.344     E(ANGL)=14.329     |
+ | E(DIHE)=7.117      E(IMPR)=4.359      E(VDW )=20.010     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =120.810    grad(E)=2.873      E(BOND)=15.872     E(ANGL)=12.290     |
+ | E(DIHE)=7.133      E(IMPR)=8.410      E(VDW )=77.105     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =56.159     grad(E)=2.545      E(BOND)=10.344     E(ANGL)=14.329     |
+ | E(DIHE)=7.117      E(IMPR)=4.359      E(VDW )=20.010     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    22 --------------------------------------------------
+ | Etotal =56.159     grad(E)=2.545      E(BOND)=10.344     E(ANGL)=14.329     |
+ | E(DIHE)=7.117      E(IMPR)=4.359      E(VDW )=20.010     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =120.810    grad(E)=2.873      E(BOND)=15.872     E(ANGL)=12.290     |
+ | E(DIHE)=7.133      E(IMPR)=8.410      E(VDW )=77.105     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =56.159     grad(E)=2.545      E(BOND)=10.344     E(ANGL)=14.329     |
+ | E(DIHE)=7.117      E(IMPR)=4.359      E(VDW )=20.010     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    23 --------------------------------------------------
+ | Etotal =56.159     grad(E)=2.545      E(BOND)=10.344     E(ANGL)=14.329     |
+ | E(DIHE)=7.117      E(IMPR)=4.359      E(VDW )=20.010     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found     1025 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =160.523    grad(E)=3.345      E(BOND)=19.930     E(ANGL)=20.937     |
+ | E(DIHE)=7.104      E(IMPR)=18.508     E(VDW )=94.044     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =85.528     grad(E)=2.993      E(BOND)=14.264     E(ANGL)=24.339     |
+ | E(DIHE)=7.122      E(IMPR)=5.743      E(VDW )=34.060     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    24 --------------------------------------------------
+ | Etotal =85.528     grad(E)=2.993      E(BOND)=14.264     E(ANGL)=24.339     |
+ | E(DIHE)=7.122      E(IMPR)=5.743      E(VDW )=34.060     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =160.523    grad(E)=3.345      E(BOND)=19.930     E(ANGL)=20.937     |
+ | E(DIHE)=7.104      E(IMPR)=18.508     E(VDW )=94.044     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =85.528     grad(E)=2.993      E(BOND)=14.264     E(ANGL)=24.339     |
+ | E(DIHE)=7.122      E(IMPR)=5.743      E(VDW )=34.060     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    25 --------------------------------------------------
+ | Etotal =85.528     grad(E)=2.993      E(BOND)=14.264     E(ANGL)=24.339     |
+ | E(DIHE)=7.122      E(IMPR)=5.743      E(VDW )=34.060     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =160.523    grad(E)=3.345      E(BOND)=19.930     E(ANGL)=20.937     |
+ | E(DIHE)=7.104      E(IMPR)=18.508     E(VDW )=94.044     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =85.528     grad(E)=2.993      E(BOND)=14.264     E(ANGL)=24.339     |
+ | E(DIHE)=7.122      E(IMPR)=5.743      E(VDW )=34.060     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    26 --------------------------------------------------
+ | Etotal =85.528     grad(E)=2.993      E(BOND)=14.264     E(ANGL)=24.339     |
+ | E(DIHE)=7.122      E(IMPR)=5.743      E(VDW )=34.060     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found      604 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =135.647    grad(E)=3.276      E(BOND)=27.046     E(ANGL)=17.461     |
+ | E(DIHE)=7.144      E(IMPR)=3.573      E(VDW )=80.424     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0003 -----------------------
+ | Etotal =64.041     grad(E)=1.438      E(BOND)=5.788      E(ANGL)=21.769     |
+ | E(DIHE)=7.153      E(IMPR)=2.174      E(VDW )=27.156     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    27 --------------------------------------------------
+ | Etotal =64.041     grad(E)=1.438      E(BOND)=5.788      E(ANGL)=21.769     |
+ | E(DIHE)=7.153      E(IMPR)=2.174      E(VDW )=27.156     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =135.647    grad(E)=3.276      E(BOND)=27.046     E(ANGL)=17.461     |
+ | E(DIHE)=7.144      E(IMPR)=3.573      E(VDW )=80.424     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0003 -----------------------
+ | Etotal =64.041     grad(E)=1.438      E(BOND)=5.788      E(ANGL)=21.769     |
+ | E(DIHE)=7.153      E(IMPR)=2.174      E(VDW )=27.156     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    28 --------------------------------------------------
+ | Etotal =64.041     grad(E)=1.438      E(BOND)=5.788      E(ANGL)=21.769     |
+ | E(DIHE)=7.153      E(IMPR)=2.174      E(VDW )=27.156     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =135.647    grad(E)=3.276      E(BOND)=27.046     E(ANGL)=17.461     |
+ | E(DIHE)=7.144      E(IMPR)=3.573      E(VDW )=80.424     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0003 -----------------------
+ | Etotal =64.041     grad(E)=1.438      E(BOND)=5.788      E(ANGL)=21.769     |
+ | E(DIHE)=7.153      E(IMPR)=2.174      E(VDW )=27.156     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    29 --------------------------------------------------
+ | Etotal =64.041     grad(E)=1.438      E(BOND)=5.788      E(ANGL)=21.769     |
+ | E(DIHE)=7.153      E(IMPR)=2.174      E(VDW )=27.156     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found     1729 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0000 -----------------------
+ | Etotal =102.716    grad(E)=3.026      E(BOND)=14.238     E(ANGL)=19.384     |
+ | E(DIHE)=7.061      E(IMPR)=7.913      E(VDW )=54.120     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0007 -----------------------
+ | Etotal =41.898     grad(E)=2.949      E(BOND)=0.593      E(ANGL)=11.744     |
+ | E(DIHE)=7.068      E(IMPR)=2.214      E(VDW )=20.280     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    30 --------------------------------------------------
+ | Etotal =41.898     grad(E)=2.949      E(BOND)=0.593      E(ANGL)=11.744     |
+ | E(DIHE)=7.068      E(IMPR)=2.214      E(VDW )=20.280     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0000 -----------------------
+ | Etotal =102.716    grad(E)=3.026      E(BOND)=14.238     E(ANGL)=19.384     |
+ | E(DIHE)=7.061      E(IMPR)=7.913      E(VDW )=54.120     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0007 -----------------------
+ | Etotal =41.898     grad(E)=2.949      E(BOND)=0.593      E(ANGL)=11.744     |
+ | E(DIHE)=7.068      E(IMPR)=2.214      E(VDW )=20.280     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    31 --------------------------------------------------
+ | Etotal =41.898     grad(E)=2.949      E(BOND)=0.593      E(ANGL)=11.744     |
+ | E(DIHE)=7.068      E(IMPR)=2.214      E(VDW )=20.280     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0000 -----------------------
+ | Etotal =102.716    grad(E)=3.026      E(BOND)=14.238     E(ANGL)=19.384     |
+ | E(DIHE)=7.061      E(IMPR)=7.913      E(VDW )=54.120     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0007 -----------------------
+ | Etotal =41.898     grad(E)=2.949      E(BOND)=0.593      E(ANGL)=11.744     |
+ | E(DIHE)=7.068      E(IMPR)=2.214      E(VDW )=20.280     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    32 --------------------------------------------------
+ | Etotal =41.898     grad(E)=2.949      E(BOND)=0.593      E(ANGL)=11.744     |
+ | E(DIHE)=7.068      E(IMPR)=2.214      E(VDW )=20.280     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found      573 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0003 -----------------------
+ | Etotal =133.517    grad(E)=2.912      E(BOND)=18.572     E(ANGL)=21.987     |
+ | E(DIHE)=7.124      E(IMPR)=5.640      E(VDW )=80.195     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =81.235     grad(E)=5.671      E(BOND)=14.721     E(ANGL)=37.971     |
+ | E(DIHE)=7.124      E(IMPR)=4.195      E(VDW )=17.224     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    33 --------------------------------------------------
+ | Etotal =72.962     grad(E)=2.819      E(BOND)=1.016      E(ANGL)=26.374     |
+ | E(DIHE)=7.144      E(IMPR)=5.609      E(VDW )=32.819     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0003 -----------------------
+ | Etotal =133.517    grad(E)=2.912      E(BOND)=18.572     E(ANGL)=21.987     |
+ | E(DIHE)=7.124      E(IMPR)=5.640      E(VDW )=80.195     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =81.235     grad(E)=5.671      E(BOND)=14.721     E(ANGL)=37.971     |
+ | E(DIHE)=7.124      E(IMPR)=4.195      E(VDW )=17.224     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    34 --------------------------------------------------
+ | Etotal =72.962     grad(E)=2.819      E(BOND)=1.016      E(ANGL)=26.374     |
+ | E(DIHE)=7.144      E(IMPR)=5.609      E(VDW )=32.819     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0003 -----------------------
+ | Etotal =133.517    grad(E)=2.912      E(BOND)=18.572     E(ANGL)=21.987     |
+ | E(DIHE)=7.124      E(IMPR)=5.640      E(VDW )=80.195     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =81.235     grad(E)=5.671      E(BOND)=14.721     E(ANGL)=37.971     |
+ | E(DIHE)=7.124      E(IMPR)=4.195      E(VDW )=17.224     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    35 --------------------------------------------------
+ | Etotal =72.962     grad(E)=2.819      E(BOND)=1.016      E(ANGL)=26.374     |
+ | E(DIHE)=7.144      E(IMPR)=5.609      E(VDW )=32.819     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found      426 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =102.419    grad(E)=3.171      E(BOND)=15.669     E(ANGL)=16.028     |
+ | E(DIHE)=7.114      E(IMPR)=5.529      E(VDW )=58.079     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0007 -----------------------
+ | Etotal =32.817     grad(E)=1.825      E(BOND)=0.420      E(ANGL)=15.513     |
+ | E(DIHE)=7.073      E(IMPR)=4.653      E(VDW )=5.158      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    36 --------------------------------------------------
+ | Etotal =32.817     grad(E)=1.825      E(BOND)=0.420      E(ANGL)=15.513     |
+ | E(DIHE)=7.073      E(IMPR)=4.653      E(VDW )=5.158      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =102.419    grad(E)=3.171      E(BOND)=15.669     E(ANGL)=16.028     |
+ | E(DIHE)=7.114      E(IMPR)=5.529      E(VDW )=58.079     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0007 -----------------------
+ | Etotal =32.817     grad(E)=1.825      E(BOND)=0.420      E(ANGL)=15.513     |
+ | E(DIHE)=7.073      E(IMPR)=4.653      E(VDW )=5.158      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    37 --------------------------------------------------
+ | Etotal =32.817     grad(E)=1.825      E(BOND)=0.420      E(ANGL)=15.513     |
+ | E(DIHE)=7.073      E(IMPR)=4.653      E(VDW )=5.158      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =102.419    grad(E)=3.171      E(BOND)=15.669     E(ANGL)=16.028     |
+ | E(DIHE)=7.114      E(IMPR)=5.529      E(VDW )=58.079     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0007 -----------------------
+ | Etotal =32.817     grad(E)=1.825      E(BOND)=0.420      E(ANGL)=15.513     |
+ | E(DIHE)=7.073      E(IMPR)=4.653      E(VDW )=5.158      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    38 --------------------------------------------------
+ | Etotal =32.817     grad(E)=1.825      E(BOND)=0.420      E(ANGL)=15.513     |
+ | E(DIHE)=7.073      E(IMPR)=4.653      E(VDW )=5.158      E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found     1042 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =101.538    grad(E)=3.167      E(BOND)=8.948      E(ANGL)=21.686     |
+ | E(DIHE)=7.127      E(IMPR)=5.492      E(VDW )=58.286     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =45.529     grad(E)=1.630      E(BOND)=4.691      E(ANGL)=18.519     |
+ | E(DIHE)=7.125      E(IMPR)=0.621      E(VDW )=14.573     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    39 --------------------------------------------------
+ | Etotal =45.529     grad(E)=1.630      E(BOND)=4.691      E(ANGL)=18.519     |
+ | E(DIHE)=7.125      E(IMPR)=0.621      E(VDW )=14.573     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =101.538    grad(E)=3.167      E(BOND)=8.948      E(ANGL)=21.686     |
+ | E(DIHE)=7.127      E(IMPR)=5.492      E(VDW )=58.286     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =45.529     grad(E)=1.630      E(BOND)=4.691      E(ANGL)=18.519     |
+ | E(DIHE)=7.125      E(IMPR)=0.621      E(VDW )=14.573     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    40 --------------------------------------------------
+ | Etotal =45.529     grad(E)=1.630      E(BOND)=4.691      E(ANGL)=18.519     |
+ | E(DIHE)=7.125      E(IMPR)=0.621      E(VDW )=14.573     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =101.538    grad(E)=3.167      E(BOND)=8.948      E(ANGL)=21.686     |
+ | E(DIHE)=7.127      E(IMPR)=5.492      E(VDW )=58.286     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0006 -----------------------
+ | Etotal =45.529     grad(E)=1.630      E(BOND)=4.691      E(ANGL)=18.519     |
+ | E(DIHE)=7.125      E(IMPR)=0.621      E(VDW )=14.573     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    41 --------------------------------------------------
+ | Etotal =45.529     grad(E)=1.630      E(BOND)=4.691      E(ANGL)=18.519     |
+ | E(DIHE)=7.125      E(IMPR)=0.621      E(VDW )=14.573     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found      883 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =124.913    grad(E)=3.127      E(BOND)=15.317     E(ANGL)=23.408     |
+ | E(DIHE)=7.097      E(IMPR)=11.527     E(VDW )=67.565     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =64.681     grad(E)=2.595      E(BOND)=7.029      E(ANGL)=22.403     |
+ | E(DIHE)=7.085      E(IMPR)=3.657      E(VDW )=24.507     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    42 --------------------------------------------------
+ | Etotal =64.681     grad(E)=2.595      E(BOND)=7.029      E(ANGL)=22.403     |
+ | E(DIHE)=7.085      E(IMPR)=3.657      E(VDW )=24.507     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =124.913    grad(E)=3.127      E(BOND)=15.317     E(ANGL)=23.408     |
+ | E(DIHE)=7.097      E(IMPR)=11.527     E(VDW )=67.565     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =64.681     grad(E)=2.595      E(BOND)=7.029      E(ANGL)=22.403     |
+ | E(DIHE)=7.085      E(IMPR)=3.657      E(VDW )=24.507     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    43 --------------------------------------------------
+ | Etotal =64.681     grad(E)=2.595      E(BOND)=7.029      E(ANGL)=22.403     |
+ | E(DIHE)=7.085      E(IMPR)=3.657      E(VDW )=24.507     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =124.913    grad(E)=3.127      E(BOND)=15.317     E(ANGL)=23.408     |
+ | E(DIHE)=7.097      E(IMPR)=11.527     E(VDW )=67.565     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =64.681     grad(E)=2.595      E(BOND)=7.029      E(ANGL)=22.403     |
+ | E(DIHE)=7.085      E(IMPR)=3.657      E(VDW )=24.507     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    44 --------------------------------------------------
+ | Etotal =64.681     grad(E)=2.595      E(BOND)=7.029      E(ANGL)=22.403     |
+ | E(DIHE)=7.085      E(IMPR)=3.657      E(VDW )=24.507     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found      768 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =124.998    grad(E)=3.863      E(BOND)=21.827     E(ANGL)=17.012     |
+ | E(DIHE)=7.239      E(IMPR)=12.865     E(VDW )=66.055     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =46.145     grad(E)=2.019      E(BOND)=6.398      E(ANGL)=11.223     |
+ | E(DIHE)=7.176      E(IMPR)=5.638      E(VDW )=15.710     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    45 --------------------------------------------------
+ | Etotal =46.145     grad(E)=2.019      E(BOND)=6.398      E(ANGL)=11.223     |
+ | E(DIHE)=7.176      E(IMPR)=5.638      E(VDW )=15.710     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =124.998    grad(E)=3.863      E(BOND)=21.827     E(ANGL)=17.012     |
+ | E(DIHE)=7.239      E(IMPR)=12.865     E(VDW )=66.055     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =46.145     grad(E)=2.019      E(BOND)=6.398      E(ANGL)=11.223     |
+ | E(DIHE)=7.176      E(IMPR)=5.638      E(VDW )=15.710     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    46 --------------------------------------------------
+ | Etotal =46.145     grad(E)=2.019      E(BOND)=6.398      E(ANGL)=11.223     |
+ | E(DIHE)=7.176      E(IMPR)=5.638      E(VDW )=15.710     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =124.998    grad(E)=3.863      E(BOND)=21.827     E(ANGL)=17.012     |
+ | E(DIHE)=7.239      E(IMPR)=12.865     E(VDW )=66.055     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =46.145     grad(E)=2.019      E(BOND)=6.398      E(ANGL)=11.223     |
+ | E(DIHE)=7.176      E(IMPR)=5.638      E(VDW )=15.710     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    47 --------------------------------------------------
+ | Etotal =46.145     grad(E)=2.019      E(BOND)=6.398      E(ANGL)=11.223     |
+ | E(DIHE)=7.176      E(IMPR)=5.638      E(VDW )=15.710     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found      995 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =123.740    grad(E)=2.898      E(BOND)=13.956     E(ANGL)=12.281     |
+ | E(DIHE)=7.087      E(IMPR)=12.017     E(VDW )=78.398     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =56.160     grad(E)=2.610      E(BOND)=10.260     E(ANGL)=14.563     |
+ | E(DIHE)=7.082      E(IMPR)=3.476      E(VDW )=20.779     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    48 --------------------------------------------------
+ | Etotal =56.160     grad(E)=2.610      E(BOND)=10.260     E(ANGL)=14.563     |
+ | E(DIHE)=7.082      E(IMPR)=3.476      E(VDW )=20.779     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =123.740    grad(E)=2.898      E(BOND)=13.956     E(ANGL)=12.281     |
+ | E(DIHE)=7.087      E(IMPR)=12.017     E(VDW )=78.398     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =56.160     grad(E)=2.610      E(BOND)=10.260     E(ANGL)=14.563     |
+ | E(DIHE)=7.082      E(IMPR)=3.476      E(VDW )=20.779     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    49 --------------------------------------------------
+ | Etotal =56.160     grad(E)=2.610      E(BOND)=10.260     E(ANGL)=14.563     |
+ | E(DIHE)=7.082      E(IMPR)=3.476      E(VDW )=20.779     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =123.740    grad(E)=2.898      E(BOND)=13.956     E(ANGL)=12.281     |
+ | E(DIHE)=7.087      E(IMPR)=12.017     E(VDW )=78.398     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =56.160     grad(E)=2.610      E(BOND)=10.260     E(ANGL)=14.563     |
+ | E(DIHE)=7.082      E(IMPR)=3.476      E(VDW )=20.779     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    50 --------------------------------------------------
+ | Etotal =56.160     grad(E)=2.610      E(BOND)=10.260     E(ANGL)=14.563     |
+ | E(DIHE)=7.082      E(IMPR)=3.476      E(VDW )=20.779     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found      999 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =154.242    grad(E)=3.554      E(BOND)=20.958     E(ANGL)=19.753     |
+ | E(DIHE)=7.106      E(IMPR)=14.640     E(VDW )=91.785     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =75.792     grad(E)=2.994      E(BOND)=11.038     E(ANGL)=27.801     |
+ | E(DIHE)=7.088      E(IMPR)=4.528      E(VDW )=25.337     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    51 --------------------------------------------------
+ | Etotal =75.792     grad(E)=2.994      E(BOND)=11.038     E(ANGL)=27.801     |
+ | E(DIHE)=7.088      E(IMPR)=4.528      E(VDW )=25.337     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =154.242    grad(E)=3.554      E(BOND)=20.958     E(ANGL)=19.753     |
+ | E(DIHE)=7.106      E(IMPR)=14.640     E(VDW )=91.785     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =75.792     grad(E)=2.994      E(BOND)=11.038     E(ANGL)=27.801     |
+ | E(DIHE)=7.088      E(IMPR)=4.528      E(VDW )=25.337     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    52 --------------------------------------------------
+ | Etotal =75.792     grad(E)=2.994      E(BOND)=11.038     E(ANGL)=27.801     |
+ | E(DIHE)=7.088      E(IMPR)=4.528      E(VDW )=25.337     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =154.242    grad(E)=3.554      E(BOND)=20.958     E(ANGL)=19.753     |
+ | E(DIHE)=7.106      E(IMPR)=14.640     E(VDW )=91.785     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0004 -----------------------
+ | Etotal =75.792     grad(E)=2.994      E(BOND)=11.038     E(ANGL)=27.801     |
+ | E(DIHE)=7.088      E(IMPR)=4.528      E(VDW )=25.337     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    53 --------------------------------------------------
+ | Etotal =75.792     grad(E)=2.994      E(BOND)=11.038     E(ANGL)=27.801     |
+ | E(DIHE)=7.088      E(IMPR)=4.528      E(VDW )=25.337     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found     10 exclusions and      0 interactions(1-4)
+ NBONDS: found      578 intra-atom interactions
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =135.000    grad(E)=3.177      E(BOND)=27.827     E(ANGL)=20.673     |
+ | E(DIHE)=7.104      E(IMPR)=1.281      E(VDW )=78.115     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0012 -----------------------
+ | Etotal =157.070    grad(E)=10.900     E(BOND)=13.401     E(ANGL)=103.319    |
+ | E(DIHE)=7.126      E(IMPR)=8.120      E(VDW )=25.105     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    54 --------------------------------------------------
+ | Etotal =70.611     grad(E)=2.113      E(BOND)=4.728      E(ANGL)=27.271     |
+ | E(DIHE)=7.125      E(IMPR)=2.422      E(VDW )=29.066     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =135.000    grad(E)=3.177      E(BOND)=27.827     E(ANGL)=20.673     |
+ | E(DIHE)=7.104      E(IMPR)=1.281      E(VDW )=78.115     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0012 -----------------------
+ | Etotal =157.070    grad(E)=10.900     E(BOND)=13.401     E(ANGL)=103.319    |
+ | E(DIHE)=7.126      E(IMPR)=8.120      E(VDW )=25.105     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    55 --------------------------------------------------
+ | Etotal =70.611     grad(E)=2.113      E(BOND)=4.728      E(ANGL)=27.271     |
+ | E(DIHE)=7.125      E(IMPR)=2.422      E(VDW )=29.066     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: number of degrees of freedom= 14436
+ --------------- cycle=     5 ------ stepsize=    0.0002 -----------------------
+ | Etotal =135.000    grad(E)=3.177      E(BOND)=27.827     E(ANGL)=20.673     |
+ | E(DIHE)=7.104      E(IMPR)=1.281      E(VDW )=78.115     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    10 ------ stepsize=    0.0012 -----------------------
+ | Etotal =157.070    grad(E)=10.900     E(BOND)=13.401     E(ANGL)=103.319    |
+ | E(DIHE)=7.126      E(IMPR)=8.120      E(VDW )=25.105     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=    56 --------------------------------------------------
+ | Etotal =70.611     grad(E)=2.113      E(BOND)=4.728      E(ANGL)=27.271     |
+ | E(DIHE)=7.125      E(IMPR)=2.422      E(VDW )=29.066     E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+ NBONDS: generating intra-molecular exclusion list with mode=-3
+ MAKINB: mode  -3 found  11920 exclusions and      0 interactions(1-4)
+ NBONDS: found   239226 intra-atom interactions
+ --------------- cycle=    57 --------------------------------------------------
+ | Etotal =110333.019 grad(E)=62.465     E(BOND)=49.523     E(ANGL)=379.157    |
+ | E(DIHE)=2724.016   E(IMPR)=65.533     E(VDW )=107114.790 E(ELEC)=0.000      |
+ -------------------------------------------------------------------------------
+OUTPUT: /home/joao/github/haddock3/examples/recipes/full_scoring/topology/T161-rescoring-5_2_haddock.pdb
+OUTPUT: /home/joao/github/haddock3/examples/recipes/full_scoring/topology/T161-rescoring-5_2_haddock.psf
+ HEAP: maximum use      =    12048896 current use      =       96000 bytes
+ HEAP: maximum overhead =        2592 current overhead =         752 bytes
+          ============================================================
+           Maximum dynamic memory allocation:    12048896 bytes
+           Maximum dynamic memory overhead:          2592 bytes
+           Program started at: 11:56:56 on 20-Jul-2021
+           Program stopped at: 11:57:15 on 20-Jul-2021
+           CPU time used:      18.1402 seconds
+          ============================================================

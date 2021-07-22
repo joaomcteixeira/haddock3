@@ -1,0 +1,55 @@
+{
+    "input": [
+        {
+            "created": "2021-07-20 11:56:37",
+            "file_name": "structure.pdb",
+            "file_type": {
+                "py/reduce": [
+                    {
+                        "py/type": "haddock.ontology.Format"
+                    },
+                    {
+                        "py/tuple": [
+                            "pdb"
+                        ]
+                    }
+                ]
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/double_scoring",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": null
+        }
+    ],
+    "output": [
+        {
+            "created": "2021-07-20 11:56:37",
+            "file_name": "structure_haddock.psf",
+            "file_type": {
+                "py/reduce": [
+                    {
+                        "py/type": "haddock.ontology.Format"
+                    },
+                    {
+                        "py/tuple": [
+                            "psf"
+                        ]
+                    }
+                ]
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/double_scoring/topology",
+            "py/object": "haddock.ontology.TopologyFile"
+        },
+        {
+            "created": "2021-07-20 11:56:37",
+            "file_name": "structure_haddock.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/double_scoring/topology",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 5
+            }
+        }
+    ]
+}

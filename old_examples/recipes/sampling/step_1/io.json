@@ -1,0 +1,162 @@
+{
+    "input": [
+        {
+            "created": "2021-07-20 11:58:23",
+            "file_name": "2oob_haddock.pdb",
+            "file_type": {
+                "py/reduce": [
+                    {
+                        "py/type": "haddock.ontology.Format"
+                    },
+                    {
+                        "py/tuple": [
+                            "pdb"
+                        ]
+                    }
+                ]
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/sampling/topology",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "created": "2021-07-20 11:58:23",
+                "file_name": "2oob_haddock.psf",
+                "file_type": {
+                    "py/reduce": [
+                        {
+                            "py/type": "haddock.ontology.Format"
+                        },
+                        {
+                            "py/tuple": [
+                                "psf"
+                            ]
+                        }
+                    ]
+                },
+                "path": "/home/joao/github/haddock3/examples/recipes/sampling/topology",
+                "py/object": "haddock.ontology.TopologyFile"
+            }
+        }
+    ],
+    "output": [
+        {
+            "created": "2021-07-20 11:58:29",
+            "file_name": "haddock_top_1.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/sampling/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 4
+            }
+        },
+        {
+            "created": "2021-07-20 11:58:29",
+            "file_name": "haddock_top_2.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/sampling/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 4
+            }
+        },
+        {
+            "created": "2021-07-20 11:58:29",
+            "file_name": "haddock_top_3.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/sampling/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 4
+            }
+        },
+        {
+            "created": "2021-07-20 11:58:29",
+            "file_name": "haddock_top_4.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/sampling/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 4
+            }
+        },
+        {
+            "created": "2021-07-20 11:58:29",
+            "file_name": "haddock_top_5.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/sampling/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 4
+            }
+        },
+        {
+            "created": "2021-07-20 11:58:29",
+            "file_name": "haddock_top_6.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/sampling/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 4
+            }
+        },
+        {
+            "created": "2021-07-20 11:58:29",
+            "file_name": "haddock_top_7.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/sampling/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 4
+            }
+        },
+        {
+            "created": "2021-07-20 11:58:29",
+            "file_name": "haddock_top_8.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/sampling/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 4
+            }
+        },
+        {
+            "created": "2021-07-20 11:58:29",
+            "file_name": "haddock_top_9.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/sampling/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 4
+            }
+        },
+        {
+            "created": "2021-07-20 11:58:29",
+            "file_name": "haddock_top_10.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/sampling/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 4
+            }
+        }
+    ]
+}

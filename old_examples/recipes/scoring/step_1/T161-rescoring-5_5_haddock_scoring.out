@@ -1,0 +1,484 @@
+          ============================================================
+          |                                                          |
+          |            Crystallography & NMR System (CNS)            |
+          |                         CNSsolve                         |
+          |                                                          |
+          ============================================================
+           Version: 1.3 at patch level U
+           Status: Special UU release with Rg and paramagnetic
+                   restraints (A. Bonvin, UU 2011)
+          ============================================================
+           Written by: A.T.Brunger, P.D.Adams, G.M.Clore, W.L.DeLano,
+                       P.Gros, R.W.Grosse-Kunstleve,J.-S.Jiang,J.M.Krahn,
+                       J.Kuszewski, M.Nilges, N.S.Pannu, R.J.Read,
+                       L.M.Rice, G.F.Schroeder, T.Simonson, G.L.Warren.
+           Copyright (c) 1997-2010 Yale University
+          ============================================================
+           Running on machine: hostname unknown (x86_64/Linux,64-bit)
+           Program started by: unknown
+           Program started at: 14:35:26 on 22-Jul-2021
+          ============================================================
+
+ FFT3C: Using FFTPACK4.1
+
+ CNSsolve> 
+ CNSsolve>! Parameters 
+ CNSsolve>eval ($noecv=false) 
+ EVALUATE: symbol $NOECV set to FALSE (logical)
+ CNSsolve>eval ($npart=1) 
+ EVALUATE: symbol $NPART set to    1.00000     (real)
+ CNSsolve>eval ($dihed=false) 
+ EVALUATE: symbol $DIHED set to FALSE (logical)
+ CNSsolve>eval ($noe=true) 
+ EVALUATE: symbol $NOE set to TRUE (logical)
+ CNSsolve>eval ($cdih=false) 
+ EVALUATE: symbol $CDIH set to FALSE (logical)
+ CNSsolve>eval ($sani=false) 
+ EVALUATE: symbol $SANI set to FALSE (logical)
+ CNSsolve>eval ($vean=false) 
+ EVALUATE: symbol $VEAN set to FALSE (logical)
+ CNSsolve>eval ($xrdc=false) 
+ EVALUATE: symbol $XRDC set to FALSE (logical)
+ CNSsolve>eval ($dani=false) 
+ EVALUATE: symbol $DANI set to FALSE (logical)
+ CNSsolve>eval ($xpcs=false) 
+ EVALUATE: symbol $XPCS set to FALSE (logical)
+ CNSsolve>eval ($harm=false) 
+ EVALUATE: symbol $HARM set to FALSE (logical)
+ CNSsolve>eval ($zres=false) 
+ EVALUATE: symbol $ZRES set to FALSE (logical)
+ CNSsolve>eval ($rg=false) 
+ EVALUATE: symbol $RG set to FALSE (logical)
+ CNSsolve>eval ($em=false) 
+ EVALUATE: symbol $EM set to FALSE (logical)
+ CNSsolve>eval ($sym=false) 
+ EVALUATE: symbol $SYM set to FALSE (logical)
+ CNSsolve>eval ($ncs=false) 
+ EVALUATE: symbol $NCS set to FALSE (logical)
+ CNSsolve>eval ($log_level="verbose") 
+ EVALUATE: symbol $LOG_LEVEL set to "verbose" (string)
+ CNSsolve>eval ($dielec="cdie") 
+ EVALUATE: symbol $DIELEC set to "cdie" (string)
+ CNSsolve>eval ($epsilon1=1) 
+ EVALUATE: symbol $EPSILON1 set to    1.00000     (real)
+ CNSsolve>eval ($waterdock=false) 
+ EVALUATE: symbol $WATERDOCK set to FALSE (logical)
+ CNSsolve>eval ($keepwater=false) 
+ EVALUATE: symbol $KEEPWATER set to FALSE (logical)
+ CNSsolve> 
+ CNSsolve>! FF parameters 
+ CNSsolve>parameter 
+ PARRDR>  @@/home/joao/github/haddock3/src/haddock/data/toppar/haddock.param 
+ ASSFIL: file haddock.param opened.
+ PARRDR>remarks file toppar/ion.param 
+ PARRDR>remarks nonbonded parameters for common ions 
+ PARRDR>remarks new parameters derived from literature for single atom species 
+ PARRDR>remarks PDA 02/09/99 
+ PARRDR> 
+ PARRDR>set echo=off end 
+ PARRDR>! Put in this file your ligand parameters if needed 
+ PARRDR>remarks file toppar/protein-allhdg5-4.param 
+ PARRDR>remark 
+ PARRDR>remark   for file protein-allhdg-ucl.top  version UCL  date 14-MAR-00 
+ PARRDR>remark   for file protein-allhdg-dih-ucl.top  version UCL  date 07-JUL-01 
+ PARRDR>remark   Geometric energy function parameters for distance geometry and 
+ PARRDR>remark   simulated annealing. 
+ PARRDR>remark   Original author: Michael Nilges, EMBL Heidelberg 
+ PARRDR>remark   Modifications: Mark A. Williams, UCL London 
+ PARRDR>remark   Several modifications for HADDOCK: Alexandre Bonvin, Utrecht Uni 
+ PARRDR>remark   Last modification 27-02-2014 
+ PARRDR> 
+ PARRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ PARRDR>set message=off echo=off end 
+ PARRDR> 
+ PARRDR>remarks file toppar/water-allhdg5-4.param 
+ PARRDR>remarks 
+ PARRDR>remarks   PARAM19.SOL (solvent parameters) 
+ PARRDR>remarks   =========== 
+ PARRDR>remarks   available: TIPS3P and DMSO model 
+ PARRDR> 
+ PARRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ PARRDR>set message=off echo=off end 
+ PARRDR>end 
+ %PARRDR-info: duplication of bond HC   NC2 
+ %PARRDR-info: duplication of angle CH2P CH2E HA  
+ CNSsolve> 
+ CNSsolve>! Toplogy 
+ CNSsolve>topology 
+ RTFRDR>  @@/home/joao/github/haddock3/src/haddock/data/toppar/haddock.top 
+ ASSFIL: file haddock.top opened.
+ RTFRDR>remarks file toppar/ion.top 
+ RTFRDR>remarks topology and masses for common ions 
+ RTFRDR>remarks Dingle atom ion residues are given the name of the element. 
+ RTFRDR>remarks By default the atom will be uncharged (eg. the residue MG will 
+ RTFRDR>remarks contain the atom called MG with zero charge). 
+ RTFRDR>remarks To use the charged species the charge state is appended to 
+ RTFRDR>remarks the atom name (eg to use MG2+ the residue name is MG2, and the 
+ RTFRDR>remarks atom name is MG+2 and has charge +2.0). 
+ RTFRDR>remarks NOTE: not all ionic species are represented 
+ RTFRDR>remarks PDA 02/09/99 
+ RTFRDR> 
+ RTFRDR>set echo=false end 
+ RTFRDR>! Put in this file your ligand topology if needed 
+ RTFRDR>remarks file toppar/protein-allhdg5-4.top 
+ RTFRDR>remarks 
+ RTFRDR>remarks   file topallhdg.pro  version 5.4  date 07-July-10 
+ RTFRDR>remarks      for file parallhdg.pro version 5.4 date 07-July-10 or later 
+ RTFRDR>remarks   Geometric energy function parameters for distance geometry and 
+ RTFRDR>remarks      simulated annealing. 
+ RTFRDR>remarks   Author: Michael Nilges, EMBL Heidelberg; Institut Pasteur, Paris 
+ RTFRDR>remarks   This file contains modifications from M. Williams, UCL London 
+ RTFRDR>remarks   and multiple modifications for HADDOCK from A. Bonvin, Utrecht University 
+ RTFRDR>remarks   Last modification 24-09-2014 
+ RTFRDR> 
+ RTFRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ RTFRDR>set message=off echo=off end 
+ %RTFIO-warning: undefined masses in residue CYC 
+ %RTFIO error encountered: there are undefined masses.
+   (CNS is in mode: SET ABORT=NORMal END)
+ RTFRDR>remarks file toppar/protein_break.top 
+ RTFRDR>remarks   patches to remove peptide linkages 
+ RTFRDR> 
+ RTFRDR>! Paul Adams 28th June 1999 
+ RTFRDR>! Yale University 
+ RTFRDR> 
+ RTFRDR>set echo=false end 
+ %RTFRDR-ERR: duplicate (P-)RESIdue name DPEP
+ %RTFRDR-ERR: duplicate (P-)RESIdue name DPPP
+ RTFRDR> 
+ RTFRDR>remarks file toppar/water-allhdg5-4.top 
+ RTFRDR>remarks 
+ RTFRDR>remarks  TOPH19.SOL 
+ RTFRDR>remarks  ========== 
+ RTFRDR>remarks  topology file for solvent molecules 
+ RTFRDR>remarks  water models available: TIP3P model 
+ RTFRDR> 
+ RTFRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ RTFRDR>set message=off echo=off end 
+ RTFRDR> 
+ RTFRDR>end 
+ CNSsolve> 
+ CNSsolve>! Input structure 
+ CNSsolve>eval ($file="/home/joao/github/haddock3/examples/recipes/scoring/topology/T161-rescoring-5_5_haddock.pdb") 
+ EVALUATE: symbol $FILE set to "/home/joao/github/haddock3/examples/recipes/scoring/topology/T161-rescoring-5_5_haddock.pdb" (string)
+ CNSsolve>eval ($ncomponents=2) 
+ EVALUATE: symbol $NCOMPONENTS set to    2.00000     (real)
+ CNSsolve>eval ($prot_segid_1="A") 
+ EVALUATE: symbol $PROT_SEGID_1 set to "A" (string)
+ CNSsolve>eval ($prot_segid_2="B") 
+ EVALUATE: symbol $PROT_SEGID_2 set to "B" (string)
+ CNSsolve>eval ($ambig_fname="") 
+ EVALUATE: symbol $AMBIG_FNAME set to "" (string)
+ CNSsolve>eval ($unambig_fname="") 
+ EVALUATE: symbol $UNAMBIG_FNAME set to "" (string)
+ CNSsolve>eval ($hbond_fname="") 
+ EVALUATE: symbol $HBOND_FNAME set to "" (string)
+ CNSsolve>eval ($dihe_fname="") 
+ EVALUATE: symbol $DIHE_FNAME set to "" (string)
+ CNSsolve>eval ($tensor_fname="") 
+ EVALUATE: symbol $TENSOR_FNAME set to "" (string)
+ CNSsolve>eval ($seed=726) 
+ EVALUATE: symbol $SEED set to    726.000     (real)
+ CNSsolve> 
+ CNSsolve>! Output structure 
+ CNSsolve>eval ($input_psf_filename= "/home/joao/github/haddock3/examples/recipes/scoring/topology/T161-rescoring-5_5_haddock.psf") 
+ EVALUATE: symbol $INPUT_PSF_FILENAME set to "/home/joao/github/haddock3/examples/recipes/scoring/topology/T161-rescoring-5_5_haddock.psf" (string)
+ CNSsolve>eval ($output_pdb_filename= "/home/joao/github/haddock3/examples/recipes/scoring/step_1/T161-rescoring-5_5_haddock.pdb") 
+ EVALUATE: symbol $OUTPUT_PDB_FILENAME set to "/home/joao/github/haddock3/examples/recipes/scoring/step_1/T161-rescoring-5_5_haddock.pdb" (string)
+ CNSsolve> 
+ CNSsolve>! scoring.cns 
+ CNSsolve>!     Minimizes complex and score 
+ CNSsolve>! 
+ CNSsolve>! *********************************************************************** 
+ CNSsolve>! * Copyright 2003-2020 Alexandre Bonvin, Utrecht University.           * 
+ CNSsolve>! * This code is part of the HADDOCK software and governed by its       * 
+ CNSsolve>! * license. Please see the LICENSE file that should have been included * 
+ CNSsolve>! * as part of this package.                                            * 
+ CNSsolve>! *********************************************************************** 
+ CNSsolve>! 
+ CNSsolve> 
+ CNSsolve>define( 
+ DEFINE>noe=false; 
+ DEFINE>noecv=false; 
+ DEFINE>npart=1; 
+ DEFINE>sym=false; 
+ DEFINE>ncs=false; 
+ DEFINE>log_level="verbose"; 
+ DEFINE>dielec="cdie"; 
+ DEFINE>epsilon1=1 
+ EPSILON1=) 
+ CNSsolve> 
+ CNSsolve>evaluate ($Data.dielec        = $dielec) 
+ EVALUATE: symbol $DATA.DIELEC set to "cdie" (string)
+ CNSsolve>evaluate ($Data.epsilon1      = $epsilon1) 
+ EVALUATE: symbol $DATA.EPSILON1 set to    1.00000     (real)
+ CNSsolve>evaluate ($Data.flags.dihed   = $dihed) 
+ EVALUATE: symbol $DATA.FLAGS.DIHED set to FALSE (logical)
+ CNSsolve>evaluate ($Data.flags.noe     = $noe) 
+ EVALUATE: symbol $DATA.FLAGS.NOE set to TRUE (logical)
+ CNSsolve>evaluate ($Data.flags.cdih    = $cdih) 
+ EVALUATE: symbol $DATA.FLAGS.CDIH set to FALSE (logical)
+ CNSsolve>evaluate ($Data.flags.sani    = $sani) 
+ EVALUATE: symbol $DATA.FLAGS.SANI set to FALSE (logical)
+ CNSsolve>evaluate ($Data.flags.vean    = $vean) 
+ EVALUATE: symbol $DATA.FLAGS.VEAN set to FALSE (logical)
+ CNSsolve>evaluate ($Data.flags.xrdc    = $xrdc) 
+ EVALUATE: symbol $DATA.FLAGS.XRDC set to FALSE (logical)
+ CNSsolve>evaluate ($Data.flags.DANI    = $dani) 
+ EVALUATE: symbol $DATA.FLAGS.DANI set to FALSE (logical)
+ CNSsolve>evaluate ($Data.flags.XPCS    = $xpcs) 
+ EVALUATE: symbol $DATA.FLAGS.XPCS set to FALSE (logical)
+ CNSsolve>evaluate ($Data.flags.harm    = $harm) 
+ EVALUATE: symbol $DATA.FLAGS.HARM set to FALSE (logical)
+ CNSsolve>evaluate ($Data.flags.zres    = $zres) 
+ EVALUATE: symbol $DATA.FLAGS.ZRES set to FALSE (logical)
+ CNSsolve>evaluate ($Data.flags.rg      = $rg) 
+ EVALUATE: symbol $DATA.FLAGS.RG set to FALSE (logical)
+ CNSsolve>evaluate ($Data.flags.em      = $em) 
+ EVALUATE: symbol $DATA.FLAGS.EM set to FALSE (logical)
+ CNSsolve>evaluate ($Data.flags.sym     = $sym) 
+ EVALUATE: symbol $DATA.FLAGS.SYM set to FALSE (logical)
+ CNSsolve>evaluate ($Data.flags.ncs     = $ncs) 
+ EVALUATE: symbol $DATA.FLAGS.NCS set to FALSE (logical)
+ CNSsolve>evaluate ($Data.waterdock     = $waterdock) 
+ EVALUATE: symbol $DATA.WATERDOCK set to FALSE (logical)
+ CNSsolve>evaluate ($Refine.keepwater   = $keepwater) 
+ EVALUATE: symbol $REFINE.KEEPWATER set to FALSE (logical)
+ CNSsolve> 
+ CNSsolve> 
+ CNSsolve>if ( $log_level = verbose ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>  set message=normal echo=on end 
+ CNSsolve>else 
+ CNSsolve>  set message=off echo=off end 
+ MISCOM: file exists
+ MISCOM: file exists
+ REMARKS FILENAME="T161-rescoring-5_5_haddock.psf"
+ REMARKS peptide link removed (applied DPEP): from A    227  to A    239
+ REMARKS peptide link removed (applied DPEP): from B    227  to B    239
+ REMARKS coordinates built for more than 100 hundred atoms
+ REMARKS DATE:22-Jul-2021  14:35:22       created by user: unknown
+ REMARKS VERSION:1.3U
+ %PARRDR-info: duplication of bond HC   NC2 
+ %PARRDR-info: duplication of angle CH2P CH2E HA  
+ NBONDS: generating intra-molecular exclusion list with mode= 5
+ MAKINB: mode   5 found  12052 exclusions and   8550 interactions(1-4)
+ NBONDS: found   312273 intra-atom interactions
+ --------------- cycle=     1 --------------------------------------------------
+ | Etotal =-18525.344 grad(E)=9.277      E(BOND)=51.623     E(ANGL)=389.335    |
+ | E(DIHE)=2753.783   E(IMPR)=67.261     E(VDW )=-1769.118  E(ELEC)=-20018.228 |
+ -------------------------------------------------------------------------------
+AUTOMATIC DEFINITION OF FLEXIBLE SEGMENTS BASED ON INTERMOLECULAR PROXIMITY FOR MOLECULE 1
+THE FOLLOWING RESIDUES HAVE BEEN DEFINED AS FLEXIBLE for molecule 1
+AUTOMATIC DEFINITION OF FLEXIBLE SEGMENTS BASED ON INTERMOLECULAR PROXIMITY FOR MOLECULE 2
+THE FOLLOWING RESIDUES HAVE BEEN DEFINED AS FLEXIBLE for molecule 2
+FLEXIBILITY STATISTIC FOR MOLECULE 1 : Nres=0 Nrigid=0 Nflex=0
+FLEXIBILITY STATISTIC FOR MOLECULE 2 : Nres=0 Nrigid=0 Nflex=0
+ POWELL: number of degrees of freedom=  2586
+ NBONDS: generating intra-molecular exclusion list with mode= 5
+ MAKINB: mode   5 found   6026 exclusions and   4275 interactions(1-4)
+ NBONDS: found   150307 intra-atom interactions
+ NBONDS: generating intra-molecular exclusion list with mode= 5
+ MAKINB: mode   5 found   6026 exclusions and   4275 interactions(1-4)
+ NBONDS: found   150623 intra-atom interactions
+ NBONDS: found   150338 intra-atom interactions
+ NBONDS: found   150624 intra-atom interactions
+ NBONDS: found   150341 intra-atom interactions
+ NBONDS: found   150647 intra-atom interactions
+ NBONDS: found   150346 intra-atom interactions
+ NBONDS: found   150655 intra-atom interactions
+ --------------- cycle=    25 ------ stepsize=    0.0008 -----------------------
+ | Etotal =-18711.431 grad(E)=7.969      E(BOND)=69.277     E(ANGL)=400.433    |
+ | E(DIHE)=2772.927   E(IMPR)=74.696     E(VDW )=-1698.183  E(ELEC)=-20330.581 |
+ -------------------------------------------------------------------------------
+ NBONDS: found   150336 intra-atom interactions
+ NBONDS: found   150650 intra-atom interactions
+ NBONDS: found   150330 intra-atom interactions
+ NBONDS: found   150654 intra-atom interactions
+ NBONDS: found   150339 intra-atom interactions
+ NBONDS: found   150661 intra-atom interactions
+ --------------- cycle=    50 ------ stepsize=    0.0001 -----------------------
+ | Etotal =-18862.359 grad(E)=7.693      E(BOND)=71.228     E(ANGL)=398.628    |
+ | E(DIHE)=2777.525   E(IMPR)=90.010     E(VDW )=-1694.682  E(ELEC)=-20505.068 |
+ -------------------------------------------------------------------------------
+ NBONDS: found   150358 intra-atom interactions
+ NBONDS: found   150663 intra-atom interactions
+ --------------- cycle=    75 ------ stepsize=    0.0008 -----------------------
+ | Etotal =-18908.620 grad(E)=7.632      E(BOND)=69.188     E(ANGL)=398.073    |
+ | E(DIHE)=2777.228   E(IMPR)=77.315     E(VDW )=-1694.748  E(ELEC)=-20535.678 |
+ -------------------------------------------------------------------------------
+ NBONDS: found   150360 intra-atom interactions
+ NBONDS: found   150665 intra-atom interactions
+ NBONDS: found   150371 intra-atom interactions
+ NBONDS: found   150669 intra-atom interactions
+ --------------- cycle=   100 ------ stepsize=    0.0004 -----------------------
+ | Etotal =-18942.348 grad(E)=7.614      E(BOND)=69.240     E(ANGL)=400.199    |
+ | E(DIHE)=2776.912   E(IMPR)=77.853     E(VDW )=-1695.453  E(ELEC)=-20571.099 |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ --------------- cycle=     2 --------------------------------------------------
+ | Etotal =-18942.348 grad(E)=7.614      E(BOND)=69.240     E(ANGL)=400.199    |
+ | E(DIHE)=2776.912   E(IMPR)=77.853     E(VDW )=-1695.453  E(ELEC)=-20571.099 |
+ -------------------------------------------------------------------------------
+FREE MOLECULES INTERNAL ENERGY = -18942.3
+ POWELL: number of degrees of freedom= 14436
+ NBONDS: found   150307 intra-atom interactions
+ NBONDS: found   150623 intra-atom interactions
+ --------------- cycle=    10 ------ stepsize=    0.0001 -----------------------
+ | Etotal =-18540.169 grad(E)=3.651      E(BOND)=67.413     E(ANGL)=339.827    |
+ | E(DIHE)=2752.707   E(IMPR)=76.450     E(VDW )=-1723.093  E(ELEC)=-20053.472 |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    20 ------ stepsize=    0.0001 -----------------------
+ | Etotal =-18651.916 grad(E)=3.805      E(BOND)=80.773     E(ANGL)=364.844    |
+ | E(DIHE)=2751.186   E(IMPR)=93.854     E(VDW )=-1730.159  E(ELEC)=-20212.414 |
+ -------------------------------------------------------------------------------
+ NBONDS: found   150327 intra-atom interactions
+ NBONDS: found   150599 intra-atom interactions
+ --------------- cycle=    30 ------ stepsize=    0.0001 -----------------------
+ | Etotal =-18750.772 grad(E)=2.881      E(BOND)=73.685     E(ANGL)=373.136    |
+ | E(DIHE)=2753.445   E(IMPR)=103.177    E(VDW )=-1725.276  E(ELEC)=-20328.939 |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    40 ------ stepsize=    0.0001 -----------------------
+ | Etotal =-18819.419 grad(E)=3.409      E(BOND)=76.342     E(ANGL)=364.485    |
+ | E(DIHE)=2755.955   E(IMPR)=98.669     E(VDW )=-1712.184  E(ELEC)=-20402.687 |
+ -------------------------------------------------------------------------------
+ --------------- cycle=    50 ------ stepsize=    0.0002 -----------------------
+ | Etotal =-18879.835 grad(E)=3.260      E(BOND)=74.049     E(ANGL)=357.882    |
+ | E(DIHE)=2759.195   E(IMPR)=91.642     E(VDW )=-1706.089  E(ELEC)=-20456.515 |
+ -------------------------------------------------------------------------------
+ POWELL: STEP number limit. Normal termination
+ POWELL: Current coordinates set to last minimum
+ %PARRDR-info: duplication of bond HC   NC2 
+ %PARRDR-info: duplication of angle CH2P CH2E HA  
+ NBONDS: generating intra-molecular exclusion list with mode= 5
+ MAKINB: mode   5 found   6026 exclusions and   4275 interactions(1-4)
+ NBONDS: found   150368 intra-atom interactions
+ NBONDS: generating intra-molecular exclusion list with mode= 5
+ MAKINB: mode   5 found   6026 exclusions and   4275 interactions(1-4)
+ NBONDS: found   150648 intra-atom interactions
+ --------------- cycle=     3 --------------------------------------------------
+ | Etotal =-18879.835 grad(E)=3.260      E(BOND)=74.049     E(ANGL)=357.882    |
+ | E(DIHE)=2759.195   E(IMPR)=91.642     E(VDW )=-1706.089  E(ELEC)=-20456.515 |
+ -------------------------------------------------------------------------------
+ NBONDS: generating intra-molecular exclusion list with mode= 5
+ MAKINB: mode   5 found      0 exclusions and      0 interactions(1-4)
+ NBONDS: found    11316 intra-atom interactions
+ --------------- cycle=     4 --------------------------------------------------
+ | Etotal =-111.316   grad(E)=0.596      E(BOND)=0.000      E(ANGL)=0.000      |
+ | E(DIHE)=0.000      E(IMPR)=0.000      E(VDW )=-58.469    E(ELEC)=-52.847    |
+ -------------------------------------------------------------------------------
+ %NEXTCD-ERR: Symbol not found:
+ if ($Data.noecv 
+     ^^^^^^^^^^^
+ Total number of dihedral angle restraints=     0
+  overall scale =    1.0000
+ Number of dihedral angle restraints=    0
+ Number of violations greater than    5.000:     0
+ RMS deviation=   0.000
+ (atom-i        |atom-j        )    dist.   equil.   delta    energy   const. 
+
+ (atom-i        |atom-j        )    dist.   equil.   delta    energy   const. 
+
+ (atom-i        |atom-j        )    dist.   equil.   delta    energy   const. 
+
+ (atom-i        |atom-j        )    dist.   equil.   delta    energy   const. 
+
+ (atom-i        |atom-j        )    dist.   equil.   delta    energy   const. 
+
+ (atom-i        |atom-j        )    dist.   equil.   delta    energy   const. 
+
+ (atom-i        |atom-j        )    dist.   equil.   delta    energy   const. 
+
+ Number of violations greater    0.050:     0
+ (atom-i        |atom-j        |atom-k        )  angle    equil.     delta    energy  const. 
+
+ (atom-i        |atom-j        |atom-k        )  angle    equil.     delta    energy  const. 
+
+ (atom-i        |atom-j        |atom-k        )  angle    equil.     delta    energy  const. 
+
+ (atom-i        |atom-j        |atom-k        )  angle    equil.     delta    energy  const. 
+
+ (atom-i        |atom-j        |atom-k        )  angle    equil.     delta    energy  const. 
+
+ (atom-i        |atom-j        |atom-k        )  angle    equil.     delta    energy  const. 
+
+ (atom-i        |atom-j        |atom-k        )  angle    equil.     delta    energy  const. 
+
+ Number of violations greater    5.000:     0
+ (atom-i        |atom-j        |atom-k        |atom-L        )    angle    equil.   delta    energy   const.   period
+
+ (atom-i        |atom-j        |atom-k        |atom-L        )    angle    equil.   delta    energy   const.   period
+
+ (atom-i        |atom-j        |atom-k        |atom-L        )    angle    equil.   delta    energy   const.   period
+
+ (atom-i        |atom-j        |atom-k        |atom-L        )    angle    equil.   delta    energy   const.   period
+
+ (atom-i        |atom-j        |atom-k        |atom-L        )    angle    equil.   delta    energy   const.   period
+
+ (atom-i        |atom-j        |atom-k        |atom-L        )    angle    equil.   delta    energy   const.   period
+
+ (atom-i        |atom-j        |atom-k        |atom-L        )    angle    equil.   delta    energy   const.   period
+
+ Number of violations greater    5.000:     0
+ (atom-i        |atom-j        |atom-k        |atom-L        )    angle    equil.   delta    energy   const.   period
+
+ (atom-i        |atom-j        |atom-k        |atom-L        )    angle    equil.   delta    energy   const.   period
+
+ (atom-i        |atom-j        |atom-k        |atom-L        )    angle    equil.   delta    energy   const.   period
+
+ (atom-i        |atom-j        |atom-k        |atom-L        )    angle    equil.   delta    energy   const.   period
+
+ (atom-i        |atom-j        |atom-k        |atom-L        )    angle    equil.   delta    energy   const.   period
+
+ (atom-i        |atom-j        |atom-k        |atom-L        )    angle    equil.   delta    energy   const.   period
+
+ (atom-i        |atom-j        |atom-k        |atom-L        )    angle    equil.   delta    energy   const.   period
+
+ Number of violations greater   30.000:     0
+ SURFAC: half the sigma value being used for atomic radii.
+ SURFAC: ACCEssible surface area
+ SURFAC: ACCUracy= 0.07 RH2O=  1.40
+         Z-grid=  0.32 number-of-Z-sections=  169
+         measures-of-arc= 19630 and 28910
+ SURFAC: half the sigma value being used for atomic radii.
+ SURFAC: ACCEssible surface area
+ SURFAC: ACCUracy= 0.07 RH2O=  1.40
+         Z-grid=  0.32 number-of-Z-sections=  167
+         measures-of-arc= 19684 and 29036
+ SURFAC: half the sigma value being used for atomic radii.
+ SURFAC: ACCEssible surface area
+ SURFAC: ACCUracy= 0.07 RH2O=  1.40
+         Z-grid=  0.32 number-of-Z-sections=  177
+         measures-of-arc= 40607 and 58264
+ MOMENTS
+ 440257.41439600   -692.10521506  15152.51277387
+                 580127.87806923     61.56325821
+                                3535416.55982055
+
+OUTPUT: /home/joao/github/haddock3/examples/recipes/scoring/step_1/T161-rescoring-5_5_haddock.pdb
+ HEAP: maximum use      =    15128256 current use      =       96000 bytes
+ HEAP: maximum overhead =        2928 current overhead =         752 bytes
+          ============================================================
+           Maximum dynamic memory allocation:    15128256 bytes
+           Maximum dynamic memory overhead:          2928 bytes
+           Program started at: 14:35:26 on 22-Jul-2021
+           Program stopped at: 14:35:30 on 22-Jul-2021
+           CPU time used:       3.5262 seconds
+          ============================================================

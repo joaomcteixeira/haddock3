@@ -1,0 +1,55 @@
+{
+    "input": [
+        {
+            "created": "2021-07-20 11:58:23",
+            "file_name": "2oob.pdb",
+            "file_type": {
+                "py/reduce": [
+                    {
+                        "py/type": "haddock.ontology.Format"
+                    },
+                    {
+                        "py/tuple": [
+                            "pdb"
+                        ]
+                    }
+                ]
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/sampling",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": null
+        }
+    ],
+    "output": [
+        {
+            "created": "2021-07-20 11:58:23",
+            "file_name": "2oob_haddock.psf",
+            "file_type": {
+                "py/reduce": [
+                    {
+                        "py/type": "haddock.ontology.Format"
+                    },
+                    {
+                        "py/tuple": [
+                            "psf"
+                        ]
+                    }
+                ]
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/sampling/topology",
+            "py/object": "haddock.ontology.TopologyFile"
+        },
+        {
+            "created": "2021-07-20 11:58:23",
+            "file_name": "2oob_haddock.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/sampling/topology",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 5
+            }
+        }
+    ]
+}

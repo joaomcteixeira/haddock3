@@ -1,0 +1,174 @@
+{
+    "input": [
+        {
+            "created": "2021-07-20 11:57:31",
+            "file_name": "T161-rescoring-5_1_haddock.pdb",
+            "file_type": {
+                "py/reduce": [
+                    {
+                        "py/type": "haddock.ontology.Format"
+                    },
+                    {
+                        "py/tuple": [
+                            "pdb"
+                        ]
+                    }
+                ]
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/topology",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "created": "2021-07-20 11:57:31",
+                "file_name": "T161-rescoring-5_1_haddock.psf",
+                "file_type": {
+                    "py/reduce": [
+                        {
+                            "py/type": "haddock.ontology.Format"
+                        },
+                        {
+                            "py/tuple": [
+                                "psf"
+                            ]
+                        }
+                    ]
+                },
+                "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/topology",
+                "py/object": "haddock.ontology.TopologyFile"
+            }
+        },
+        {
+            "created": "2021-07-20 11:57:31",
+            "file_name": "T161-rescoring-5_2_haddock.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/topology",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "created": "2021-07-20 11:57:31",
+                "file_name": "T161-rescoring-5_2_haddock.psf",
+                "file_type": {
+                    "py/id": 5
+                },
+                "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/topology",
+                "py/object": "haddock.ontology.TopologyFile"
+            }
+        },
+        {
+            "created": "2021-07-20 11:57:31",
+            "file_name": "T161-rescoring-5_3_haddock.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/topology",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "created": "2021-07-20 11:57:31",
+                "file_name": "T161-rescoring-5_3_haddock.psf",
+                "file_type": {
+                    "py/id": 5
+                },
+                "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/topology",
+                "py/object": "haddock.ontology.TopologyFile"
+            }
+        },
+        {
+            "created": "2021-07-20 11:57:31",
+            "file_name": "T161-rescoring-5_4_haddock.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/topology",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "created": "2021-07-20 11:57:31",
+                "file_name": "T161-rescoring-5_4_haddock.psf",
+                "file_type": {
+                    "py/id": 5
+                },
+                "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/topology",
+                "py/object": "haddock.ontology.TopologyFile"
+            }
+        },
+        {
+            "created": "2021-07-20 11:57:31",
+            "file_name": "T161-rescoring-5_5_haddock.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/topology",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "created": "2021-07-20 11:57:31",
+                "file_name": "T161-rescoring-5_5_haddock.psf",
+                "file_type": {
+                    "py/id": 5
+                },
+                "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/topology",
+                "py/object": "haddock.ontology.TopologyFile"
+            }
+        }
+    ],
+    "output": [
+        {
+            "created": "2021-07-20 11:57:38",
+            "file_name": "T161-rescoring-5_1_haddock.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 4
+            }
+        },
+        {
+            "created": "2021-07-20 11:57:38",
+            "file_name": "T161-rescoring-5_2_haddock.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 7
+            }
+        },
+        {
+            "created": "2021-07-20 11:57:38",
+            "file_name": "T161-rescoring-5_3_haddock.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 9
+            }
+        },
+        {
+            "created": "2021-07-20 11:57:38",
+            "file_name": "T161-rescoring-5_4_haddock.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 11
+            }
+        },
+        {
+            "created": "2021-07-20 11:57:38",
+            "file_name": "T161-rescoring-5_5_haddock.pdb",
+            "file_type": {
+                "py/id": 3
+            },
+            "path": "/home/joao/github/haddock3/examples/recipes/full_scoring/step_1",
+            "py/object": "haddock.ontology.PDBFile",
+            "topology": {
+                "py/id": 13
+            }
+        }
+    ]
+}
