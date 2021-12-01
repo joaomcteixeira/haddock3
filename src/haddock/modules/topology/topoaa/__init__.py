@@ -6,7 +6,6 @@ from haddock import log
 from haddock.libs import libpdb
 from haddock.libs.libcns import (
     generate_default_header,
-    load_input_mols,
     load_workflow_params,
     prepare_output,
     prepare_single_input,
@@ -29,7 +28,7 @@ def generate_topology(input_pdb, step_path, recipe_str, defaults,
     input_mols = defaults.pop('input', {})
 
     general_param = load_workflow_params(defaults)
-    input_mols_params = load_input_mols(input_mols)
+    input_mols_params = load_workflow_params(input_mols, param_header='')
 
     general_param = general_param + input_mols_params
 

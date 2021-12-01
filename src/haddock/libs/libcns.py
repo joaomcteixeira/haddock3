@@ -1,4 +1,5 @@
 """CNS scripts util functions."""
+import collections.abc
 from os import linesep
 from pathlib import Path
 
@@ -50,6 +51,7 @@ def filter_empty_vars(v):
         (lambda x: isinstance(x, str), bool),
         (lambda x: isinstance(x, bool), true),  # it should return True
         (lambda x: isinstance(x, Path), true),
+        (lambda x: isinstance(x, dict), true),
         (lambda x: type(x) in (int, float), true),
         (lambda x: x is None, false),
         )
@@ -63,7 +65,10 @@ def filter_empty_vars(v):
         raise TypeError(emsg)
 
 
-def load_workflow_params(default_params):
+def load_workflow_params(
+        params,
+        param_header=f'{linesep}! Parameters{linesep}',
+        ):
     """
     Write the values at the header section.
 
@@ -81,35 +86,20 @@ def load_workflow_params(default_params):
     str
         The string with the CNS parameters defined.
     """
-    param_header = f'{linesep}! Parameters{linesep}'
-
     non_empty_parameters = (
         (k, v)
-        for k, v in default_params.items()
+        for k, v in params.items()
         if filter_empty_vars(v)
         )
 
-    # types besides the ones in the if-statements should not enter this loop
-    for param, v in non_empty_parameters:
-        param_header += write_eval_line(param, v)
+    for mol, params in non_empty_parameters:
 
-    return param_header
+        if isinstance(params, collections.abc.Mapping):
+            yield from load_workflow_params(params, param_header=param_header)
 
-
-def load_input_mols(mols):
-    """Load input molecules as defined by the topoaa/defaults.cfg."""
-    param_header = ''
-
-    for mol, params in mols.items():
-
-        non_empty_parameters = (
-            (k, v)
-            for k, v in params.items()
-            if filter_empty_vars(v)
-            )
-
-        for param, value in non_empty_parameters:
-            param_header += write_eval_line(f'{param}_{mol}', value)
+        else:
+            for param, value in non_empty_parameters:
+                yield write_eval_line(f'{param}_{mol}', value)
 
     return param_header
 
