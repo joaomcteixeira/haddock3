@@ -1,84 +1,83 @@
-"""HADDOCK3 module to select a top cluster/model"""
-import logging
+"""Select a top cluster module."""
+import math
+import os
 from pathlib import Path
-from haddock.modules import BaseHaddockModule
-from haddock.libs.libontology import ModuleIO
 
-logger = logging.getLogger(__name__)
+from haddock.modules import BaseHaddockModule
+
 
 RECIPE_PATH = Path(__file__).resolve().parent
-DEFAULT_CONFIG = Path(RECIPE_PATH, "defaults.cfg")
+DEFAULT_CONFIG = Path(RECIPE_PATH, "defaults.yaml")
 
 
 class HaddockModule(BaseHaddockModule):
+    """Haddock Module for 'seletopclusts'."""
 
-    def __init__(
-            self,
-            order,
-            path,
-            *ignore,
-            init_params=DEFAULT_CONFIG,
-            **everything):
+    name = RECIPE_PATH.name
+
+    def __init__(self, order, path, *ignore, init_params=DEFAULT_CONFIG,
+                 **everything):
         super().__init__(order, path, init_params)
 
     @classmethod
     def confirm_installation(cls):
+        """Confirm if module is installed."""
         return
 
-    def run(self, **params):
-        logger.info("Running [seletopclusts] module")
+    def _run(self):
+        """Execute the module's protocol."""
+        if self.params["top_models"] <= 0:
+            _msg = "top_models must be either > 0 or nan."
+            self.finish_with_error(_msg)
 
-        super().run(params)
+        if not isinstance(self.params["top_cluster"], list):
+            _msg = "top_cluster must be a list, it can be an empty one."
+            self.finish_with_error(_msg)
 
-        # Get the models generated in previous step
-        if not type(self.previous_io) == iter:
-            # this module needs to come after one that produced an iterable
-            pass
-
-        # retrieve the clusters from a dictionary generated in the previous
-        # step the cluster_id just tells us how populated a given cluster is
-        # if we discard this value we can have lists
-        average_dic = {}
-        cluster_dic = {}
-        # Q: Why this [0] here?
-        for cluster_id in self.previous_io.output[0]:
-            cluster_id = int(cluster_id)
-            # sort the models inside the cluster based on its score
-            # TODO: refactor this, its ugly :p
-            list_to_be_sorted = [(e, e.score) for e in self.previous_io.output[0][str(cluster_id)]]
-            list_to_be_sorted.sort(key=lambda x: x[1])
-            structure_list = [e[0] for e in list_to_be_sorted]
-            cluster_dic[cluster_id] = structure_list
-
-            # get the average score of the cluster based on ALL the elements
-            scores = [e[1] for e in list_to_be_sorted]
-            average_score = sum(scores) / float(len(scores))
-            average_dic[cluster_id] = average_score
-
-        # sort the clusters based on their average
-        sorted_dic = sorted(average_dic.items(), key=lambda item: item[1])
-        sorted_dic = dict(sorted_dic)
+        models_to_select = self.previous_io.retrieve_models()
 
         # how many models should we output?
-        models = []
-        for select_id in self.params['top_cluster']:
-            # which cluster should we retrieve?
-            # top_cluster = 1 == the best one, should be index 0
-            try:
-                target_id = list(sorted_dic.keys())[select_id - 1]
-            except IndexError:
-                logger.warning(f'Cluster ranking #{select_id} not found,'
-                               ' skipping selection')
-                continue
+        self.output_models = []
+        if not self.params["top_cluster"]:
+            target_rankings = list(set([p.clt_rank for p in models_to_select]))
+            target_rankins_str = ",".join(map(str, target_rankings))
+            self.log(f"Selecting all clusters: {target_rankins_str}")
+        else:
+            target_rankings = list(set(self.params["top_cluster"]))
+            target_rankins_str = ",".join(map(str, target_rankings))
+            self.log(f"Selecting clusters: {target_rankins_str}")
 
-            if self.params['top_models'] == 'all':
-                for pdb in cluster_dic[target_id]:
-                    models.append(pdb)
+        for target_ranking in target_rankings:
+            if math.isnan(self.params["top_models"]):
+                for pdb in models_to_select:
+                    if pdb.clt_rank == target_ranking:
+                        self.output_models.append(pdb)
             else:
-                for pdb in cluster_dic[target_id][:self.params['top_models']]:
-                    models.append(pdb)
+                for model_ranking in range(1, self.params["top_models"] + 1):
+                    for pdb in models_to_select:
+                        if (
+                                pdb.clt_rank == target_ranking
+                                and pdb.clt_model_rank == model_ranking
+                                ):
+                            self.log(
+                                f" {pdb.file_name} "
+                                f"> cluster_{target_ranking}_"
+                                f"model_{model_ranking}.pdb"
+                                )
+                            self.output_models.append(pdb)
 
-        # Save module information
-        io = ModuleIO()
-        io.add(models, "o")
-        io.save(self.path)
+        with open('seletopclusts.txt', 'w') as fh:
+            fh.write("rel_path\tori_name\tcluster_name\tmd5" + os.linesep)
+            for model in self.output_models:
+                name = Path(
+                    f"cluster_{model.clt_rank}_model"
+                    f"_{model.clt_model_rank}.pdb")
+                name.write_text(model.rel_path.read_text())
+
+                fh.write(
+                    f"{model.rel_path}\t"
+                    f"{model.ori_name}\t"
+                    f"{name}\t"
+                    f"{model.md5}" + os.linesep)
+
+        self.export_output_models()

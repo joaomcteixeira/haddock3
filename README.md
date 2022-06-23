@@ -1,74 +1,61 @@
-# WARNING: The `main` branch is not production-ready
+Welcome to the HADDOCK3-Beta version.
 
-The `main` branch is a prototype of newly refined architecture and it
-does not yet contain the functionalities we have reported previously.
-For a running version of HADDOCK3 please refer to the `alpha1` or the
-release page. However, we won't develop `alpha1` further. Stay tuned for
-new updates on the `main` branch as we are actively working on it.
-Cheers!
+The `main` branch represents the latest state of HADDOCK v3. Currently,
+stable beta version.
+
+[![unit tests](https://github.com/haddocking/haddock3/workflows/tests/badge.svg?branch=main)](https://github.com/haddocking/haddock3/actions?workflow=tests)
+[![build](https://github.com/haddocking/haddock3/workflows/build/badge.svg?branch=main)](https://github.com/haddocking/haddock3/actions?workflow=build)
+[![docs](https://github.com/haddocking/haddock3/workflows/docs/badge.svg?branch=main)](https://github.com/haddocking/haddock3/actions?workflow=docs)
 
 * * *
 
 # HADDOCK3
+
 ## 1. Installation
 
-### 1.1 Clone this repository:
+To install HADDOCK3 follow the instructions in the [INSTALL](docs/INSTALL.md)
+file.
+
+## 2. Documentation
+
+HADDOCK3-beta documentation is not yet hosted online. You need to generate it
+locally. First, install HADDOCK3 and activate the `haddock3` python environment
+as explained in the [installation instructions](docs/INSTALL.md). Then, in your
+terminal window, run:
 
 ```bash
-git clone --recursive https://github.com/haddocking/haddock3.git
-cd haddock3
-cd src/fcc/src
-chmod u+x Makefile
-./Makefile
-cd -
+tox -e docs
 ```
 
-### 1.2 Create a virtual environment with Python 3.8+ and install dependencies:
-#### with `venv`
+*Ignore any warning messages.* After, use your favorite browser to open the file
+`haddock3-docs/index.html`. This will open a local webpage with the complete
+HADDOCK3 documentation. Navigate around, enjoy, and contribute.
+
+## 3. Examples
+
+### 3.1. Basic scoring of an ensemble of 5 structures:
+
+In the `examples/` folder you find several examples for you to test and
+learn HADDOCK3. Additional information is in the documentation pages.
 
 ```bash
-virtualenv-3.8 venv
-source venv/bin/activate
-pip install -r requirements.txt
-python setup.py develop --no-deps
+cd examples/scoring/
+haddock3 emscoring-test.cfg
 ```
 
-#### with `conda`
-```bash
-conda env create -f requirements.yml
-conda activate haddock3
-python setup.py develop --no-deps
-```
+## 4. Contribute
 
-### 1.3 Make a CNS binary shortcut to the expected path:
+If you want to contribute to HADDOCK3's development, read the
+[CONTRIBUTING](CONTRIBUTING.md) file for instructions.
 
-```bash
-mkdir -p bin/
+## 5. Keep in contact and support us
 
-# on mac
-ln -s /PATH/TO/cns_solve-1.31-UU-MacIntel.exe bin/cns
+HADDOCK3 is an academic project supported by various grants, including the EU
+BioExcel Center of Excellence for Computational Biomolecular Research. HADDOCK3
+is fully open-source and free to download. If you clone this repository and use
+HADDOCK3 for your research, please support us by signing [this Google
+form][googleform] if you have not yet done so. This will allow us contact you
+when needed for HADDOCK3-related issues, and also provide us a mean to
+demonstrate impact when reporting for grants.
 
-# on linux
-ln -s /PATH/TO/CNS_FOLDER/intel-x86_64bit-linux/source/cns_solve-2002171359.exe bin/cns
-```
-
-### 1.4 Keep up to date
-
-In the `github` folder of `haddock3` run:
-
-```bash
-git pull --recurse-submodules
-```
-
-This will pull the latest changes to your local folder and because you
-installed `haddock3` with the option `develop` those changes become
-available immediately.
-
-## 2. Examples
-
-### 2.1. Basic scoring of an ensemble of 5 structures:
-
-```bash
-cd examples/recipes/scoring/
-haddock3 scoring.toml
-```
+[googleform]: https://docs.google.com/forms/d/e/1FAIpQLScDcd0rWtuzJ_4nftkDAHoLVwr1IAVwNJGhbaZdTYZ4vWu25w/viewform

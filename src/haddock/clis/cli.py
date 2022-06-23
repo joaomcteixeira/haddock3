@@ -1,29 +1,40 @@
 #!/usr/bin/env python3
-import argparse
-import logging
-import sys
-from argparse import ArgumentTypeError
-from functools import partial
+"""
+Run HADDOCK3 docking simulation.
 
-from haddock import current_version
-from haddock.libs.libutil import file_exists
+This is the main command-line client to run HADDOCK3 docking
+simulations. To prepare a simulation, setup configuration file defining
+a HADDOCK3 workflow and use this command-line client to execute that
+workflow.
+
+Usage::
+
+    haddock3 -h
+    haddock3 <CONFIG FILE>
+"""
+import argparse
+import sys
+from pathlib import Path
+
+from haddock import log
+from haddock.core.defaults import RUNDIR
+from haddock.gear.extend_run import EXTEND_RUN_DEFAULT, add_extend_run
 from haddock.gear.restart_run import add_restart_arg
+from haddock.libs.libcli import add_version_arg, arg_file_exist
+from haddock.libs.liblog import add_loglevel_arg
 
 
 # Command line interface parser
 ap = argparse.ArgumentParser()
 
-_arg_file_exist = partial(
-    file_exists,
-    exception=ArgumentTypeError,
-    emsg="File {!r} does not exist or is not a file.")
 ap.add_argument(
     "recipe",
-    type=_arg_file_exist,
+    type=arg_file_exist,
     help="The input recipe file path",
     )
 
 add_restart_arg(ap)
+add_extend_run(ap)
 
 ap.add_argument(
     "--setup",
@@ -32,20 +43,12 @@ ap.add_argument(
     dest='setup_only',
     )
 
-_log_levels = ("DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL")
-ap.add_argument(
-    "--log-level",
-    default="INFO",
-    choices=_log_levels,
-    )
+add_loglevel_arg(ap)
+add_version_arg(ap)
 
-ap.add_argument(
-    "-v",
-    "--version",
-    help="show version",
-    action="version",
-    version=f'{ap.prog} - {current_version}',
-    )
+
+def _ap():
+    return ap
 
 
 def load_args(ap):
@@ -60,18 +63,19 @@ def cli(ap, main):
 
 
 def maincli():
-    """Main client execution."""
+    """Execute main client."""
     cli(ap, main)
 
 
 def main(
         recipe,
         restart=None,
+        extend_run=EXTEND_RUN_DEFAULT,
         setup_only=False,
         log_level="INFO",
         ):
     """
-    Execute HADDOCK3 client logic.
+    Run an HADDOCK3 workflow.
 
     Parameters
     ----------
@@ -79,53 +83,106 @@ def main(
         The path to the recipe (config file).
 
     restart : int
-        At which step to restart haddock3 run.
+        The step to restart the run from (inclusive).
+        Defaults to None, which ignores this option.
 
-    setup_only : bool
+    extend_run : str or Path
+        The path created with `haddock3-copy` to start the run from.
+        Defaults to None, which ignores this option.
+
+    setup_only : bool, optional
         Whether to setup the run without running it.
+        Defaults to False.
 
-    log_level : str
+    log_level : str, optional
         The logging level: INFO, DEBUG, ERROR, WARNING, CRITICAL.
     """
     # anti-pattern to speed up CLI initiation
-    from haddock.libs.libworkflow import WorkflowManager
+    from time import time
+
+    from haddock.gear.extend_run import WorkflowManagerExtend
     from haddock.gear.greetings import get_adieu, get_initial_greeting
     from haddock.gear.prepare_run import setup_run
-    from haddock.core.exceptions import HaddockError, ConfigurationError
+    from haddock.libs.libio import working_directory
+    from haddock.libs.liblog import (
+        add_log_for_CLI,
+        add_stringio_handler,
+        log_file_name,
+        log_formatters,
+        )
+    from haddock.libs.libtimer import convert_seconds_to_min_sec
+    from haddock.libs.libutil import log_error_and_exit
+    from haddock.libs.libworkflow import WorkflowManager
+    from haddock.modules import get_module_steps_folders
 
-    # Configuring logging
-    logging.basicConfig(
-        level=log_level,
-        format="[%(asctime)s] %(name)s:L%(lineno)d %(levelname)s - %(message)s",
+    start = time()
+    # the io.StringIO handler is a trick to save the log while run_dir
+    # is not read from the configuration file and the log can be saved
+    # in the final file.
+    #
+    # Nonetheless, the log is saved in stdout and stderr in case it
+    # breaks before the actual logfile is defined.
+    # See lines further down on how we resolve this trick
+    add_stringio_handler(
+        log,
+        log_level=log_level,
+        formatter=log_formatters[log_level],
         )
 
-    # Special case only using print instead of logging
-    logging.info(get_initial_greeting())
+    log.info(get_initial_greeting())
 
-    try:
-        params, other_params = setup_run(recipe, restart_from=restart)
+    with log_error_and_exit():
+        params, other_params = setup_run(
+            recipe,
+            restart_from=restart,
+            extend_run=extend_run,
+            )
 
-    except HaddockError as err:
-        logging.error(err)
-        raise err
+    # here we the io.StringIO handler log information, and reset the log
+    # handlers to fit the CLI and HADDOCK3 specifications.
+    log_temporary = log.handlers[-1].stream.getvalue()
+    _run_dir = other_params[RUNDIR]
+    log_file = Path(_run_dir, log_file_name)
+    add_log_for_CLI(log, log_level, log_file)
 
-    if not setup_only:
-        try:
-            workflow = WorkflowManager(
-                workflow_params=params,
-                start=restart,
-                **other_params,
-                )
+    # here we append the log information in the previous io.StringIO()
+    # handler in the log file already in the run_dir
+    with open(log_file, 'a') as fout:
+        fout.write(log_temporary)
 
-            # Main loop of execution
-            workflow.run()
+    if setup_only:
+        log.info('We have setup the run, only.')
+        log.info(get_adieu())
+        return
 
-        except HaddockError as err:
-            raise err
-            logging.error(err)
+    if extend_run:
+        restart_step = len(get_module_steps_folders(extend_run))
+        WorkflowManager_ = WorkflowManagerExtend
+
+    else:
+        restart_step = restart
+        WorkflowManager_ = WorkflowManager
+
+    with (
+            working_directory(other_params[RUNDIR]),
+            log_error_and_exit(),
+            ):
+
+        workflow = WorkflowManager_(
+            workflow_params=params,
+            start=restart_step,
+            **other_params,
+            )
+
+        # Main loop of execution
+        workflow.run()
+        workflow.clean()
 
     # Finish
-    logging.info(get_adieu())
+    end = time()
+    elapsed = convert_seconds_to_min_sec(end - start)
+    log.info(f"This HADDOCK3 run took: {elapsed}")
+    log.info(get_adieu())
 
 
 if __name__ == "__main__":

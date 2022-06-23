@@ -1,17 +1,18 @@
 """General utilities."""
-import logging
+import collections.abc
+import contextlib
+import re
 import shutil
 import subprocess
+import sys
 from copy import deepcopy
 from functools import partial
-from operator import ge
 from os import cpu_count
 from pathlib import Path
 
+from haddock import log
 from haddock.core.exceptions import SetupError
-
-
-logger = logging.getLogger(__name__)
+from haddock.gear.greetings import get_goodbye_help
 
 
 check_subprocess = partial(
@@ -36,9 +37,36 @@ def get_result_or_same_in_list(function, value):
 
 
 def make_list_if_string(item):
+    """Put `item` into a list."""
     if isinstance(item, str):
         return [item]
     return item
+
+
+def transform_to_list(item):
+    """
+    Put `item` into a list if not a list already.
+
+    If it is set, transforms the set into a list.
+
+    If it is a dict, returns a list of the keys.
+
+    If it is tuple, returns the tuple.
+
+    If a list, returns the same.
+
+    Everything else returns `item` inside a one element list.
+    """
+    if isinstance(item, set):
+        return list(item)
+
+    if isinstance(item, dict):
+        return list(item.keys())
+
+    if isinstance(item, (list, tuple)):
+        return item
+
+    return [item]
 
 
 def copy_files_to_dir(paths, directory):
@@ -57,15 +85,17 @@ def copy_files_to_dir(paths, directory):
         shutil.copy(path, directory)
 
 
-def zero_fill(number, digits=2):
-    """Makes a number string zero filled to the left."""
-    return str(number).zfill(digits)
-
-
 def remove_folder(folder):
-    """Removes a folder if it exists."""
-    if folder.exists():
-        logger.warning(f'{folder} exists and it will be REMOVED!')
+    """
+    Remove a folder if it exists.
+
+    Parameters
+    ----------
+    folder : str or Path
+        Path to folder to remove.
+    """
+    if Path(folder).exists():
+        log.warning(f'{folder} exists and it will be REMOVED!')
         shutil.rmtree(folder)
 
 
@@ -126,15 +156,15 @@ def parse_ncores(n=None, njobs=None, max_cpus=None):
 
     if njobs:
         ncores = min(n, njobs, max_cpus)
-        logger.info(
+        log.info(
             f"Selected {ncores} cores to process {njobs} jobs, with {max_cpus} "
             "maximum available cores."
             )
         return ncores
 
-    logger.info(f"`njobs` not specified, evaluating initial value {n}...")
+    log.debug(f"`njobs` not specified, evaluating initial value {n}...")
     ncores = min(n, max_cpus)
-    logger.info(f"Selected {ncores} for a maximum of {max_cpus} CPUs")
+    log.debug(f"Selected {ncores} for a maximum of {max_cpus} CPUs")
     return ncores
 
 
@@ -171,38 +201,123 @@ def non_negative_int(
     raise exception(emsg.format(n))
 
 
-def file_exists(
-        path,
-        exception=ValueError,
-        emsg="`path` is not a file or does not exist",
-        ):
+def recursive_dict_update(d, u):
     """
-    Asserts file exist.
+    Update dictionary `d` according to `u` recursively.
+
+    https://stackoverflow.com/questions/3232943
+
+    Returns
+    -------
+    dict
+        A new dict object with updated key: values. The original dictionaries
+        are not modified.
+    """
+    def _recurse(d_, u_):
+        for k, v in u_.items():
+            if isinstance(v, collections.abc.Mapping):
+                d_[k] = _recurse(d_.get(k, {}), v)
+            else:
+                d_[k] = deepcopy(v)  # in case these are also lists
+
+        return d_
+
+    new = deepcopy(d)
+    _recurse(new, u)
+
+    return new
+
+
+def get_number_from_path_stem(path):
+    """
+    Extract tail number from path.
+
+    Examples
+    --------
+
+        >>> get_number_from_path_stem('src/file_1.pdb')
+        >>> 1
+
+        >>> get_number_from_path_stem('src/file_3.pdb')
+        >>> 3
+
+        >>> get_number_from_path_stem('file_1231.pdb')
+        >>> 1231
+
+        >>> get_number_from_path_stem('src/file11')
+        >>> 11
+
+        >>> get_number_from_path_stem('src/file_1234_1.pdb')
+        >>> 1
 
     Parameters
     ----------
-    path : str or pathlib.Path
-        The file path.
+    path : str or Path obj
+        The path to evaluate.
 
-    exception : Exception
-        The Exception to raise in case `path` is not file or does not
-        exist.
-
-    emsg : str
-        The error message to give to `exception`. May accept formatting
-        to pass `path`.
-
-    Raises
-    ------
-    Exception
-        Any exception that pathlib.Path can raise.
+    Returns
+    -------
+    int
+        The tail integer of the path.
     """
-    p = Path(path)
+    stem = Path(path).stem
+    number = re.findall(r'\d+', stem)[-1]
+    return int(number)
 
-    valid = [p.exists, p.is_file]
 
-    if all(f() for f in valid):
-        return p
+def sort_numbered_paths(*paths):
+    """
+    Sort input paths to tail number.
 
-    # don't change to f-strings, .format has a purpose
-    raise exception(emsg.format(str(path)))
+    If possible, sort criteria is provided by
+    :py:func:`get_number_from_path_stem`.
+    If paths do not have a numbered tag, sort paths alphabetically.
+
+    Parameters
+    ----------
+    *inputs : str or pathlib.Path
+        Paths to files.
+
+    Returns
+    -------
+    list
+        The sorted pathlist. The original types are not modified. If
+        strings are given, strings are returns, if Paths are given
+        paths are returned.
+    """
+    try:
+        return sorted(paths, key=get_number_from_path_stem)
+    except TypeError as err:
+        log.exception(err)
+        emsg = (
+            "Mind the packing *argument, input should be strings or Paths, "
+            "not a list."
+            )
+        raise TypeError(emsg)
+    except IndexError:
+        return sorted(paths, key=lambda x: Path(x).stem)
+
+
+@contextlib.contextmanager
+def log_error_and_exit():
+    """Exit with exception."""
+    try:
+        yield
+    except Exception as err:
+        log.exception(err)
+        log.error(err)
+        log.error(
+            'An error has occurred, see log file. '
+            'And contact the developers if needed.'
+            )
+        log.info(get_goodbye_help())
+        sys.exit(1)
+
+
+def extract_keys_recursive(config):
+    """Extract keys recursively for the needed modules."""
+    for param_name, value in config.items():
+        if isinstance(value, collections.abc.Mapping):
+            yield from extract_keys_recursive(value)
+        else:
+            yield param_name

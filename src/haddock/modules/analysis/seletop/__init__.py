@@ -1,16 +1,18 @@
-"""HADDOCK3 module to select a top cluster/model"""
-import logging
+"""Select a top models."""
 from pathlib import Path
-from haddock.modules import BaseHaddockModule
-from haddock.libs.libontology import Format, ModuleIO
 
-logger = logging.getLogger(__name__)
+from haddock.libs.libontology import Format
+from haddock.modules import BaseHaddockModule
+
 
 RECIPE_PATH = Path(__file__).resolve().parent
-DEFAULT_CONFIG = Path(RECIPE_PATH, "defaults.cfg")
+DEFAULT_CONFIG = Path(RECIPE_PATH, "defaults.yaml")
 
 
 class HaddockModule(BaseHaddockModule):
+    """HADDOCK3 module to select top cluster/model."""
+
+    name = RECIPE_PATH.name
 
     def __init__(
             self,
@@ -23,30 +25,32 @@ class HaddockModule(BaseHaddockModule):
 
     @classmethod
     def confirm_installation(cls):
+        """Confirm if module is installed."""
         return
 
-    def run(self, **params):
-        logger.info("Running [seletop] module")
-
-        super().run(params)
-
+    def _run(self):
+        """Execute module."""
         # Get the models generated in previous step
         if type(self.previous_io) == iter:
-            self.finish_with_error('This module cannot come after one'
+            self.finish_with_error('[seletop] This module cannot come after one'
                                    ' that produced an iterable')
 
-        models_to_select = [p for p in self.previous_io.output if p.file_type == Format.PDB]
+        models_to_select = [
+            p
+            for p in self.previous_io.output
+            if p.file_type == Format.PDB
+            ]
 
         # sort the models based on their score
         models_to_select.sort(key=lambda x: x.score)
 
         if len(models_to_select) < self.params['select']:
-            logger.warning('Number of models to be selected is larger'
-                           ' than generated models, selecting ALL')
+            self.log((
+                'Number of models to be selected is larger'
+                ' than generated models, selecting ALL'),
+                level='warning',
+                )
 
         # select the models based on the parameter
-        selected_models = models_to_select[:self.params['select']]
-
-        io = ModuleIO()
-        io.add(selected_models, "o")
-        io.save(self.path)
+        self.output_models = models_to_select[:self.params['select']]
+        self.export_output_models()

@@ -1,23 +1,24 @@
-"""Running Lightdock as a module"""
-import logging
+"""LightDock integration sampling module."""
 import shutil
 import subprocess
-
 from pathlib import Path
 
+from haddock import log
 from haddock.libs import libpdb
-from haddock.libs.libontology import Format, ModuleIO, PDBFile
+from haddock.libs.libio import working_directory
+from haddock.libs.libontology import Format, PDBFile
 from haddock.libs.libutil import check_subprocess
-from haddock.modules import BaseHaddockModule, working_directory
+from haddock.modules import BaseHaddockModule
 
-
-logger = logging.getLogger(__name__)
 
 RECIPE_PATH = Path(__file__).resolve().parent
-DEFAULT_CONFIG = Path(RECIPE_PATH, "defaults.cfg")
+DEFAULT_CONFIG = Path(RECIPE_PATH, "defaults.yaml")
 
 
 class HaddockModule(BaseHaddockModule):
+    """HADDOCK3 Lightdock module."""
+
+    name = RECIPE_PATH.name
 
     def __init__(
             self,
@@ -34,31 +35,36 @@ class HaddockModule(BaseHaddockModule):
         """Confirm this module is installed."""
         check_subprocess('lightdock3.py -h')
 
-    def run(self, **params):
-        logger.info("Running [sampling-lightdock] module")
-
-        super().run(params)
-
+    def _run(self):
+        """Execute module."""
         # Get the models generated in previous step
-        models_to_score = [p for p in self.previous_io.output if p.file_type == Format.PDB]
+        models = [
+            p
+            for p in self.previous_io.output
+            if p.file_type == Format.PDB
+            ]
 
         # Check if multiple models are provided
-        if len(models_to_score) > 1:
+        if len(models) > 1:
             _msg = "Only one model allowed in LightDock sampling module"
             self.finish_with_error(_msg)
 
-        model = models_to_score[0]
+        model = models[0]
         # Check if chain IDs are present
         _path = Path(model.path, model.file_name)
         segids, chains = libpdb.identify_chainseg(_path)
         if set(segids) != set(chains):
-            logger.info("No chain IDs found, using segid information")
-            libpdb.swap_segid_chain(Path(model.path) / model.file_name,
-                                        self.path / model.file_name)
+            log.info("No chain IDs found, using segid information")
+            libpdb.swap_segid_chain(
+                Path(model.path, model.file_name),
+                Path(self.path, model.file_name),
+                )
         else:
             # Copy original model to this working path
-            shutil.copyfile(Path(model.path) / model.file_name, self.path /
-                            model.file_name)
+            shutil.copyfile(
+                Path(model.path, model.file_name),
+                Path(self.path, model.file_name),
+                )
 
         model_with_chains = self.path / model.file_name
         # Split by chain
@@ -76,7 +82,7 @@ class HaddockModule(BaseHaddockModule):
                            f"{lig_chain}.{Format.PDB}")
 
         # Setup
-        logger.info("Running LightDock setup")
+        log.info("Running LightDock setup")
         with working_directory(self.path):
             swarms = self.params["swarms"]
             glowworms = self.params["glowworms"]
@@ -91,7 +97,7 @@ class HaddockModule(BaseHaddockModule):
             subprocess.call(cmd, shell=True)
 
         # Simulation
-        logger.info("Running LightDock simulation")
+        log.info("Running LightDock simulation")
         with working_directory(self.path):
             steps = self.params["steps"]
             scoring = self.params["scoring"]
@@ -102,7 +108,7 @@ class HaddockModule(BaseHaddockModule):
         # Clustering
 
         # Ranking
-        logger.info("Generating ranking")
+        log.info("Generating ranking")
         with working_directory(self.path):
             steps = self.params["steps"]
             swarms = self.params["swarms"]
@@ -111,17 +117,25 @@ class HaddockModule(BaseHaddockModule):
 
         # Generate top, requires a hack to use original structures (H, OXT,
         #  etc.)
-        logger.info("Generating top structures")
+        log.info("Generating top structures")
         with working_directory(self.path):
             # Save structures, needs error control
-            shutil.copyfile(self.path / receptor_pdb_file, self.path /
-                            f"tmp_{receptor_pdb_file}")
-            shutil.copyfile(self.path / ligand_pdb_file, self.path /
-                            f"tmp_{ligand_pdb_file}")
-            shutil.copy(self.path / receptor_pdb_file, self.path /
-                        f"lightdock_{receptor_pdb_file}")
-            shutil.copy(self.path / ligand_pdb_file, self.path /
-                        f"lightdock_{ligand_pdb_file}")
+            shutil.copyfile(
+                Path(self.path, receptor_pdb_file),
+                Path(self.path, f"tmp_{receptor_pdb_file}"),
+                )
+            shutil.copyfile(
+                Path(self.path, ligand_pdb_file),
+                Path(self.path, f"tmp_{ligand_pdb_file}")
+                )
+            shutil.copy(
+                Path(self.path, receptor_pdb_file),
+                Path(self.path, f"lightdock_{receptor_pdb_file}"),
+                )
+            shutil.copy(
+                Path(self.path, ligand_pdb_file),
+                Path(self.path, f"lightdock_{ligand_pdb_file}"),
+                )
             # Create top
             steps = self.params["steps"]
             top = self.params["top"]
@@ -140,8 +154,5 @@ class HaddockModule(BaseHaddockModule):
                                     topology=model.topology,
                                     path=self.path))
 
-        # Save module information
-        io = ModuleIO()
-        io.add(models_to_score)
-        io.add(expected, "o")
-        io.save(self.path)
+        self.output_models = models
+        self.export_output_models()

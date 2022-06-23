@@ -1,23 +1,22 @@
-"""All default parameters used by the framework"""
-import os
+"""All default parameters used by the framework."""
+import string
 import sys
-import multiprocessing
-import logging
 from pathlib import Path
 
-from haddock import haddock3_repository_path, haddock3_source_path
+import yaml
 
+from haddock import core_path, haddock3_repository_path, log
 
-logger = logging.getLogger(__name__)
 
 # Locate the CNS binary
 cns_exec = Path(haddock3_repository_path, "bin", "cns")
 if not cns_exec.exists():
-    logger.error(
+    log.error(
         'CNS executable `bin/cns` not found. '
         'Did you installed HADDOCK3 properly?'
         )
     sys.exit()
+
 
 # Module input and generated data will be stored in folder starting by
 #  this prefix
@@ -28,3 +27,12 @@ MODULE_IO_FILE = "io.json"
 
 # Temptative number of max allowed number of modules to execute
 MAX_NUM_MODULES = 10000
+
+valid_run_dir_chars = string.ascii_letters + string.digits + "._-/\\"
+
+RUNDIR = "run_dir"
+
+with open(Path(core_path, "mandatory.yaml"), 'r') as fin:
+    _ycfg = yaml.safe_load(fin)
+max_molecules_allowed = _ycfg["molecules"]["maxitems"]
+del _ycfg
